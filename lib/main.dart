@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:letaskono_zawaj/core/database/cache/cache_helper.dart';
+import 'package:letaskono_zawaj/core/service/service_locator.dart';
 
-void main() {
+void main() async{
+  await getIt<CacheHelper>().init();
   runApp(const MyApp());
 }
 

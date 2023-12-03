@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 
 class AppTextStyles {
-  static const cairoW400PrimaryColor = TextStyle(
+  static const cairoW800PrimaryColor = TextStyle(
     fontFamily: 'Cairo',
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w800,
     color: AppColors.primaryColor,
   );
   static const cairoW400Grey = TextStyle(

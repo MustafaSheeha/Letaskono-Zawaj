@@ -1,5 +1,5 @@
 
 class AppRoutes {
-  static String splash='/';
-  static String onBoarding='/onBoarding';
+  static String splash='splash';
+  static String onBoarding='onBoarding';
 }

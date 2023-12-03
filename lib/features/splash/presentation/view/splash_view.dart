@@ -23,10 +23,10 @@ class _SplashViewState extends State<SplashView> {
           splashIconSize: 0.7 * screenWidth,
           pageTransitionType: PageTransitionType.rightToLeft,
           splashTransition: SplashTransition.scaleTransition,
-          animationDuration: const Duration(seconds: 3),
+          animationDuration: const Duration(seconds: 2),
           curve: Curves.bounceOut,
-          splash: SplashWidget(),
-          nextScreen: OnBoardingView()),
+          splash: const SplashWidget(),
+          nextScreen: const OnBoardingView()),
     );
   }
 }

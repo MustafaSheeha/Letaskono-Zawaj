@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:letaskono_zawaj/core/routes/app_routes.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
+import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
+import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
+import 'package:letaskono_zawaj/features/on_boarding/data/on_boarding_list.dart';
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/widgets/on_boarding_body.dart';
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/widgets/skip_text_widget.dart';
 
-class OnBoardingView extends StatelessWidget {
-  OnBoardingView({super.key});
-  final PageController controller = PageController();
+class OnBoardingView extends StatefulWidget {
+  const OnBoardingView({super.key});
+
+  @override
+  State<OnBoardingView> createState() => _OnBoardingViewState();
+}
+
+class _OnBoardingViewState extends State<OnBoardingView> {
+  final PageController controller = PageController(initialPage: 0);
+
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -18,16 +31,50 @@ class OnBoardingView extends StatelessWidget {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
-              SkipTextWidget(screenWidth: screenWidth),
-              OnBoardingBody(controller: controller),
-              CustomElevatedButton(
-                text: AppStrings.next,
-                onPressed: () {},
+              SkipTextWidget(onPressed: () {
+                naviPushReplacementNamed(context, AppRoutes.register);
+              },),
+              OnBoardingBody(
+                controller: controller,
+                onPageChanged: (index) {
+                  setState(() {
+                    currentIndex = index;
+                  });
+                },
               ),
+              currentIndex != onBoardingList.length - 1
+                  ? CustomElevatedButton(
+                      text: AppStrings.next,
+                      onPressed: () {
+                        goToNextOnBoarding();
+                      },
+                    )
+                  : Column(
+                      children: [
+                        CustomElevatedButton(
+                          onPressed: () {
+                            naviPushReplacementNamed(context, AppRoutes.register);
+                          },
+                          text: AppStrings.createNewAccount,
+                        ),
+                        CustomTextButton(
+                          text: AppStrings.login,
+                          fontSize: 0.04*screenWidth,
+                          onPressed: () {
+                            naviPushReplacementNamed(context, AppRoutes.login);
+                          },
+                        )
+                      ],
+                    ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void goToNextOnBoarding() {
+    controller.nextPage(
+        duration: const Duration(microseconds: 200), curve: Curves.bounceIn);
   }
 }

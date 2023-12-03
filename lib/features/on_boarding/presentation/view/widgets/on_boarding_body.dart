@@ -5,17 +5,19 @@ import 'package:letaskono_zawaj/features/on_boarding/presentation/view/widgets/o
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/widgets/quote_widget.dart';
 
 class OnBoardingBody extends StatelessWidget {
-  const OnBoardingBody({super.key, required this.controller});
+  const OnBoardingBody({super.key, required this.controller, required this.onPageChanged});
   final PageController controller;
+  final void Function(int) onPageChanged;
   @override
   Widget build(BuildContext context) {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: 0.83 * screenHeight,
+      height: 0.79 * screenHeight,
       child: PageView.builder(
         reverse: true,
         controller: controller,
+        onPageChanged: onPageChanged,
         itemCount: onBoardingList.length,
         itemBuilder: (context, index) {
           return Column(

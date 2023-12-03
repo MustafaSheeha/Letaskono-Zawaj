@@ -4,18 +4,19 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 
 class SkipTextWidget extends StatelessWidget {
   const SkipTextWidget({
-    super.key,
-    required this.screenWidth,
+    super.key, required this.onPressed,
   });
-
-  final double screenWidth;
+final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
+    
+    final screenWidth = MediaQuery.of(context).size.width;
+    // final screenHeight = MediaQuery.of(context).size.height;
     return Align(
       alignment: Alignment.centerLeft,
       child: CustomTextButton(
-          onPressed: () {},
+          onPressed: onPressed,
           text: AppStrings.skip,
           fontSize: 0.06 * screenWidth),
     );

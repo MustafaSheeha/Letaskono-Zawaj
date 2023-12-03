@@ -11,8 +11,14 @@ class LetaskonoZawajApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp.router(
-      routerConfig: goRouter,
+    return  MaterialApp(
+      home: const SplashView(),
+      routes: {
+        AppRoutes.splash:(context) => const SplashView(),
+        AppRoutes.onBoarding:(context) => const OnBoardingView(),
+        AppRoutes.register:(context) => const RegisterView(),
+        AppRoutes.login:(context) => const LoginView(),
+      },
       theme: AppThemeData().theme(),
     );
   }

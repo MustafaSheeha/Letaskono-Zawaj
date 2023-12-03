@@ -8,17 +8,20 @@ List<OnBoardingModel> onBoardingList = [
     quoteOne: AppStrings.quran1,
     quoteTwo: AppStrings.quran2,
     quoteThree: AppStrings.quran3,
+    isThird: false,
   ),
   OnBoardingModel(
     imagePath: Assets.onBoardingTwo,
     quoteOne: AppStrings.onBoardingSlagonOne,
     quoteTwo: AppStrings.onBoardingSlagonTwo,
     quoteThree: AppStrings.onBoardingSlagonThree,
+    isThird: false,
   ),
   OnBoardingModel(
     imagePath: Assets.onBoardingThree,
     quoteOne: AppStrings.body1,
     quoteTwo: AppStrings.body2,
     quoteThree: AppStrings.body3,
+    isThird: true,
   ),
 ];

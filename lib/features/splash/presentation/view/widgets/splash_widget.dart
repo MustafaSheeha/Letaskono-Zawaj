@@ -31,7 +31,7 @@ class SplashWidget extends StatelessWidget {
           ),
         ),
         Text(
-          AppStrings.homeSlagon1,
+          AppStrings.appSlagon,
           style: TextStyle(
             fontSize: 0.05 * screenWidth,
             fontWeight: FontWeight.bold,

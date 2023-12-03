@@ -8,10 +8,10 @@ abstract class AppStrings {
       'إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُون';
   static const quran4 = 'فَانكِحُوا مَا طَابَ لَكُم مِّنَ النِّسَاءِ';
 
-  static const homeSlagon1 = 'طريقك لزواج إسلامي صحيح يرضي الله عز وجل';
-  static const homeSlagon2a = 'البيت المسلم الصحيح';
-  static const homeSlagon2b = 'يبدأ';
-  static const homeSlagon2c = 'من زواج صحيح';
+  static const appSlagon = 'طريقك لزواج إسلامي صحيح يرضي الله عز وجل';
+  static const onBoardingSlagonOne = 'البيت المسلم الصحيح';
+  static const onBoardingSlagonTwo = 'يبدأ';
+  static const onBoardingSlagonThree = 'من زواج صحيح';
   static const signUpSlagon = 'أربع زوجات خير من ثلاث';
   static const signInSlagon = 'ثلاث زوجات خير من واحدة';
   static const headLine = 'مبادرة لتسكنوا للزواج الشرعي الصحيح';

@@ -7,8 +7,7 @@ class LetaskonoZawajApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp.router(
-      routerConfig: goRouter,
+    return  MaterialApp(
       theme: AppThemeData().theme(),
     );
   }

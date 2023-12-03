@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
@@ -16,7 +15,9 @@ class SkipTextWidget extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: CustomTextButton(
-          text: AppStrings.skip, fontSize: 0.06 * screenWidth),
+          onPressed: () {},
+          text: AppStrings.skip,
+          fontSize: 0.06 * screenWidth),
     );
   }
 }

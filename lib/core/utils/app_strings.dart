@@ -32,11 +32,14 @@ abstract class AppStrings {
   static const email = 'البريد الالكترونى';
   static const phoneNumber = 'رقم الهاتف';
   static const password = 'كلمة السر';
-  static const invalidNumberMessage= 'هذا الرقم غبر صحيح';
-  static const hintTextPhoneField= ' ابحث عن بلدك';
-  static const languageCode= 'ar';
-  static const initialCountryCode= 'EG';
-  static const isRequired= 'مطلوب';
+  static const invalidNumberMessage = 'هذا الرقم غبر صحيح';
+  static const hintTextPhoneField = ' ابحث عن بلدك';
+  static const languageCode = 'ar';
+  static const initialCountryCode = 'EG';
+  static const iHaveAgreedWith = 'أوافق على  ';
+  static const termsAndConditions = 'شروط التسجيل والاستخدام';
+
+  static const isRequired = 'مطلوب';
   static const welcome = 'أهلا بك';
   static const createNewAccountToInteract =
       'قم بتسجيل حساب جديد حتى تستطيع التفاعل معنا';

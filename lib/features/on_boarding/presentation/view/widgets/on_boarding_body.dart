@@ -13,7 +13,7 @@ class OnBoardingBody extends StatelessWidget {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: 0.79 * screenHeight,
+      height: 0.77 * screenHeight,
       child: PageView.builder(
         reverse: true,
         controller: controller,
@@ -26,17 +26,17 @@ class OnBoardingBody extends StatelessWidget {
                 imagePath: onBoardingList[index].imagePath,
               ),
               CustomSmoothPageIndicator(controller: controller),
-              SizedBox(height: 0.05 * screenHeight),
+              SizedBox(height: 0.03 * screenHeight),
               QuoteWidget(
                 text: onBoardingList[index].quoteOne,
                 fontSize: onBoardingList[index].isThird ? 0.04 : 0.055,
               ),
-              SizedBox(height: 0.05 * screenHeight),
+              SizedBox(height: 0.03 * screenHeight),
               QuoteWidget(
                 text: onBoardingList[index].quoteTwo,
                 fontSize: onBoardingList[index].isThird ? 0.04 : 0.2,
               ),
-              SizedBox(height: 0.05 * screenHeight),
+              SizedBox(height: 0.03 * screenHeight),
               QuoteWidget(
                 text: onBoardingList[index].quoteThree,
                 fontSize: onBoardingList[index].isThird ? 0.04 : 0.055,

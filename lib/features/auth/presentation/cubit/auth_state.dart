@@ -11,3 +11,4 @@ final class RegisterFailureState extends AuthState {
 
   RegisterFailureState({required this.errorMessege});
 }
+final class TermsAndConditionState extends AuthState {}

@@ -8,9 +8,14 @@ import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
   GlobalKey<FormState> registerFormKey = GlobalKey();
+  bool termsAndConditionCheckBox = false;
   final RegisterationUserModel registerationUserModel =
       RegisterationUserModel();
-      
+
+  void updateTermsAndConditionCheckBox(newValue) {
+    termsAndConditionCheckBox = newValue;
+    emit(TermsAndConditionState());
+  }
 
   Future<void> createUserWithEmailAndPassword() async {
     try {
@@ -28,7 +33,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void handlingFirebaseAuthException(FirebaseAuthException e) {
-     if (e.code == 'weak-password') {
+    if (e.code == 'weak-password') {
       emit(RegisterFailureState(errorMessege: AppStrings.weakPassword));
       print(AppStrings.weakPassword);
     } else if (e.code == 'email-already-in-use') {

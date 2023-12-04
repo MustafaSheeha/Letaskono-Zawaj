@@ -1,6 +1,10 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:letaskono_zawaj/core/database/cache/cache_helper.dart';
+import 'package:letaskono_zawaj/core/service/service_locator.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
+import 'package:letaskono_zawaj/core/utils/app_strings.dart';
+import 'package:letaskono_zawaj/features/auth/presentation/view/register/register_view.dart';
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/on_boarding.dart';
 import 'package:letaskono_zawaj/features/splash/presentation/view/widgets/splash_widget.dart';
 import 'package:page_transition/page_transition.dart';
@@ -13,6 +17,14 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+   bool isOnBoardingvisited=false;
+  @override
+  void initState() {
+    super.initState();
+    isOnBoardingvisited =
+        getIt<CacheHelper>().getData(key: AppStrings.isOnBoardingvisited) ??
+            false;
+  }
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -26,7 +38,7 @@ class _SplashViewState extends State<SplashView> {
           animationDuration: const Duration(seconds: 2),
           curve: Curves.bounceOut,
           splash: const SplashWidget(),
-          nextScreen: const OnBoardingView()),
+          nextScreen:!isOnBoardingvisited? const OnBoardingView():const RegisterView()),
     );
   }
 }

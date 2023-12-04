@@ -10,28 +10,37 @@ class AuthCubit extends Cubit<AuthState> {
   GlobalKey<FormState> registerFormKey = GlobalKey();
   final RegisterationUserModel registerationUserModel =
       RegisterationUserModel();
+      
 
   Future<void> createUserWithEmailAndPassword() async {
     try {
       emit(RegisterLoadingState());
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: registerationUserModel.email!,
-        password: registerationUserModel.password!,
-      );
+      await startCreateUserWithEmailAndPassword();
       emit(RegisterSuccessState());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        emit(RegisterFailureState(errorMessege: AppStrings.weakPassword));
-        print(AppStrings.weakPassword);
-      } else if (e.code == 'email-already-in-use') {
-        emit(RegisterFailureState(errorMessege: AppStrings.emailAlreadyInUse));
-        print(AppStrings.emailAlreadyInUse);
-      }
+      handlingFirebaseAuthException(e);
     } catch (e) {
       emit(RegisterFailureState(errorMessege: e.toString()));
       print('*********************************************');
       print(e);
       print('*********************************************');
     }
+  }
+
+  void handlingFirebaseAuthException(FirebaseAuthException e) {
+     if (e.code == 'weak-password') {
+      emit(RegisterFailureState(errorMessege: AppStrings.weakPassword));
+      print(AppStrings.weakPassword);
+    } else if (e.code == 'email-already-in-use') {
+      emit(RegisterFailureState(errorMessege: AppStrings.emailAlreadyInUse));
+      print(AppStrings.emailAlreadyInUse);
+    }
+  }
+
+  Future<void> startCreateUserWithEmailAndPassword() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: registerationUserModel.email!,
+      password: registerationUserModel.password!,
+    );
   }
 }

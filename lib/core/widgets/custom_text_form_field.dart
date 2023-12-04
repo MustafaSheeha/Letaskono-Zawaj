@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
+import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
+import 'package:letaskono_zawaj/core/utils/functions/outline_input_border.dart';
+import 'package:letaskono_zawaj/core/utils/functions/unfocus_on_tap_outside.dart';
+import 'package:letaskono_zawaj/core/utils/functions/validator.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
@@ -39,7 +43,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 focusedBorder: focusedBorder(),
                 focusedErrorBorder: focusedErrorBorder(),
                 hintText: widget.hintText,
-                hintStyle:  style(),
+                hintStyle:  AppTextStyles.cairoW300PrimaryColor,
                 prefixIcon: widget.prefixIcon,
                 prefixIconColor: AppColors.primaryColor,
                 suffixIcon: IconButton(
@@ -57,7 +61,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               obscureText: hidePassword,
               onChanged: widget.onChanged,
               onTapOutside: unfocusOnTapOutside,
-              style: style(),
+              style: AppTextStyles.cairoW800PrimaryColor,
               validator: validator,
             )
           : TextFormField(
@@ -70,7 +74,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 focusedBorder: focusedBorder(),
                 focusedErrorBorder: focusedErrorBorder(),
                 hintText: widget.hintText,
-                hintStyle:  style(),
+                hintStyle:  AppTextStyles.cairoW300PrimaryColor,
                 prefixIcon: widget.prefixIcon,
                 prefixIconColor: AppColors.primaryColor,
               ),
@@ -78,56 +82,19 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               obscureText: false,
               onChanged: widget.onChanged,
               onTapOutside: unfocusOnTapOutside,
-              style: style(),
+              style: AppTextStyles.cairoW800PrimaryColor,
               validator: validator,
             ),
     );
   }
 
-  OutlineInputBorder focusedErrorBorder() {
-    return const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        borderSide: BorderSide(color: AppColors.red));
-  }
+  
 
-  OutlineInputBorder focusedBorder() {
-    return const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        borderSide: BorderSide(color: AppColors.primaryColor));
-  }
+  
 
-  OutlineInputBorder errorBorder() {
-    return const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        borderSide: BorderSide(color: AppColors.red));
-  }
+  
 
-  OutlineInputBorder enabledBorder() {
-    return const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        borderSide: BorderSide(color: AppColors.primaryColor));
-  }
+  
 
-  OutlineInputBorder border() {
-    return const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        borderSide: BorderSide(color: AppColors.primaryColor));
-  }
-
-  TextStyle style() {
-    return AppTextStyles.cairoW800PrimaryColor
-        .copyWith(fontWeight: FontWeight.w300);
-  }
-
-  String? validator(value) {
-    if (value!.isEmpty) {
-      return 'مطلوب';
-    } else {
-      return null;
-    }
-  }
-
-  void unfocusOnTapOutside(event) {
-    FocusManager.instance.primaryFocus!.unfocus();
-  }
+  
 }

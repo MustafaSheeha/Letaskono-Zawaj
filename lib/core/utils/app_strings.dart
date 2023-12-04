@@ -28,12 +28,22 @@ abstract class AppStrings {
   static const isOnBoardingvisited = 'isOnBoardingvisited';
   static const isGender = 'isGender';
   static const register = 'تسجيل';
+  static const nameInArabic = 'الاسم باللغة العربية';
   static const email = 'البريد الالكترونى';
+  static const phoneNumber = 'رقم الهاتف';
   static const password = 'كلمة السر';
+  static const invalidNumberMessage= 'هذا الرقم غبر صحيح';
+  static const hintTextPhoneField= ' ابحث عن بلدك';
+  static const languageCode= 'ar';
+  static const initialCountryCode= 'EG';
+  static const isRequired= 'مطلوب';
   static const welcome = 'أهلا بك';
   static const createNewAccountToInteract =
       'قم بتسجيل حساب جديد حتى تستطيع التفاعل معنا';
   static const whoAreYou = 'من أنت ؟';
+  static const iamMale = 'أنا   رجل';
+  static const iamFemale = 'أنا امراة';
+
   static const gender = 'الجنس';
 
   static const createNewAccount = 'تسجيل حساب جديد';
@@ -85,7 +95,6 @@ abstract class AppStrings {
   static const findYourPartner = 'ابحث عن زوجك';
   static const code = 'الكود';
   static const name = 'الاسم';
-  static const phoneNumber = 'رقم الهاتف';
   static const accountStatus = 'حالة الحساب';
   static const homePage = 'الصفحة الرئيسية';
   static const personalProfilePage = 'الصفحة الشخصية';

@@ -7,6 +7,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w800,
     color: AppColors.primaryColor,
   );
+  static const cairoW300PrimaryColor = TextStyle(
+    fontFamily: 'Cairo',
+    fontWeight: FontWeight.w300,
+    color: AppColors.primaryColor,
+  );
   static const cairoW400Grey = TextStyle(
     fontFamily: 'Cairo',
     fontWeight: FontWeight.w400,

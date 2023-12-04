@@ -8,7 +8,7 @@ class RegisterationTerms extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Text.rich(TextSpan(children: [
@@ -17,7 +17,8 @@ class RegisterationTerms extends StatelessWidget {
               style: AppTextStyles.cairoW300PrimaryColor),
           TextSpan(
               text: AppStrings.termsAndConditions,
-              style: AppTextStyles.cairoW300PrimaryColor.copyWith(decoration: TextDecoration.underline)),
+              style: AppTextStyles.cairoW300PrimaryColor
+                  .copyWith(decoration: TextDecoration.underline)),
         ])),
         const CustomCheckBox()
       ],

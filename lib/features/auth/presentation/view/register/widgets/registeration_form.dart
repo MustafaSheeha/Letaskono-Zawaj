@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_phone_field.dart';
@@ -62,10 +63,13 @@ class RegisterationForm extends StatelessWidget {
               state is RegisterLoadingState
                   ? const Center(child: CircularProgressIndicator())
                   : CustomElevatedButton(
+                    backgroundColor: !authCubit.termsAndConditionCheckBox?AppColors.offWhite:AppColors.primaryColor,
                       onPressed: () {
-                        if (authCubit.registerFormKey.currentState!
-                            .validate()) {
-                          authCubit.createUserWithEmailAndPassword();
+                        if (authCubit.termsAndConditionCheckBox == true) {
+                          if (authCubit.registerFormKey.currentState!
+                              .validate()) {
+                            authCubit.createUserWithEmailAndPassword();
+                          }
                         }
                       },
                       text: AppStrings.register),

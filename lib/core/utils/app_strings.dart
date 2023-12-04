@@ -47,6 +47,8 @@ abstract class AppStrings {
   static const iamMale = 'أنا   رجل';
   static const iamFemale = 'أنا امراة';
 
+  static const weakPassword = 'كلمة السر ضعيفة';
+  static const emailAlreadyInUse = 'هذا البريد الالكترونى مسجل من قبل';
   static const gender = 'الجنس';
 
   static const createNewAccount = 'تسجيل حساب جديد';

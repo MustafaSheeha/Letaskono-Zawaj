@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
+import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 
 class WhoAreYouWidget extends StatefulWidget {
   const WhoAreYouWidget({
@@ -27,6 +29,7 @@ class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
       children: [
         CustomElevatedButton(
             onPressed: () {
+              BlocProvider.of<AuthCubit>(context).registerationUserModel.gender='Female';
               setState(() {
                 womanButtonColor = AppColors.primaryColor;
                 womanTextColor = AppColors.white;
@@ -40,6 +43,7 @@ class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
             backgroundColor: womanButtonColor),
         CustomElevatedButton(
             onPressed: () {
+              BlocProvider.of<AuthCubit>(context).registerationUserModel.gender='Male';
               setState(() {
                 manButtonColor = AppColors.primaryColor;
                 manTextColor = AppColors.white;

@@ -19,6 +19,7 @@ class CustomPhoneField extends StatelessWidget {
     // final screenWidth = MediaQuery.of(context).size.width;
     // final screenHeight = MediaQuery.of(context).size.height;
     return IntlPhoneField(
+      
       // autovalidateMode: AutovalidateMode.always,
 
       cursorColor: AppColors.primaryColor,
@@ -33,6 +34,7 @@ class CustomPhoneField extends StatelessWidget {
       initialCountryCode: AppStrings.initialCountryCode,
       languageCode: AppStrings.languageCode,
       decoration: InputDecoration(
+        counterStyle: AppTextStyles.cairoW300PrimaryColor,
         border: border(),
         enabledBorder: enabledBorder(),
         focusedBorder: focusedBorder(),

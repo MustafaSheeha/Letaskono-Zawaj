@@ -5,6 +5,8 @@ import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/on_boarding/data/on_boarding_list.dart';
+import 'package:letaskono_zawaj/features/on_boarding/presentation/view/functions/go_to_next_on_boarding.dart';
+import 'package:letaskono_zawaj/features/on_boarding/presentation/view/functions/set_is_on_boarding_visited.dart';
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/widgets/on_boarding_body.dart';
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/widgets/skip_text_widget.dart';
 
@@ -16,7 +18,7 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
-  final PageController controller = PageController(initialPage: 0);
+  final PageController _controller = PageController(initialPage: 0);
 
   int currentIndex = 0;
 
@@ -31,11 +33,14 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
-              SkipTextWidget(onPressed: () {
-                naviPushReplacementNamed(context, AppRoutes.register);
-              },),
+              SkipTextWidget(
+                onPressed: () {
+                  setIsOnBoardingvisited();
+                  naviPushReplacementNamed(context, AppRoutes.register);
+                },
+              ),
               OnBoardingBody(
-                controller: controller,
+                controller: _controller,
                 onPageChanged: (index) {
                   setState(() {
                     currentIndex = index;
@@ -46,21 +51,26 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   ? CustomElevatedButton(
                       text: AppStrings.next,
                       onPressed: () {
-                        goToNextOnBoarding();
+                        goToNextOnBoarding(_controller);
                       },
                     )
                   : Column(
                       children: [
                         CustomElevatedButton(
                           onPressed: () {
-                            naviPushReplacementNamed(context, AppRoutes.register);
+                            setIsOnBoardingvisited();
+
+                            naviPushReplacementNamed(
+                                context, AppRoutes.register);
                           },
                           text: AppStrings.createNewAccount,
                         ),
                         CustomTextButton(
                           text: AppStrings.login,
-                          fontSize: 0.04*screenWidth,
+                          fontSize: 0.04 * screenWidth,
                           onPressed: () {
+                            setIsOnBoardingvisited();
+
                             naviPushReplacementNamed(context, AppRoutes.login);
                           },
                         )
@@ -71,10 +81,5 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         ),
       ),
     );
-  }
-
-  void goToNextOnBoarding() {
-    controller.nextPage(
-        duration: const Duration(microseconds: 200), curve: Curves.bounceIn);
   }
 }

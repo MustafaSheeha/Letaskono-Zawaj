@@ -8,6 +8,7 @@ import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
   GlobalKey<FormState> registerFormKey = GlobalKey();
+  GlobalKey<FormState> loginFormKey = GlobalKey();
   bool termsAndConditionCheckBox = false;
   final RegisterationUserModel registerationUserModel =
       RegisterationUserModel();
@@ -23,7 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
       await startCreateUserWithEmailAndPassword();
       emit(RegisterSuccessState());
     } on FirebaseAuthException catch (e) {
-      handlingFirebaseAuthException(e);
+      handlingRegisterationFirebaseAuthException(e);
     } catch (e) {
       emit(RegisterFailureState(errorMessege: AppStrings.pleaseTryAgainLater));
       print('*********************************************');
@@ -32,13 +33,54 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void handlingFirebaseAuthException(FirebaseAuthException e) {
+  void handlingRegisterationFirebaseAuthException(FirebaseAuthException e) {
     if (e.code == 'weak-password') {
       emit(RegisterFailureState(errorMessege: AppStrings.weakPassword));
       print(AppStrings.weakPassword);
     } else if (e.code == 'email-already-in-use') {
       emit(RegisterFailureState(errorMessege: AppStrings.emailAlreadyInUse));
       print(AppStrings.emailAlreadyInUse);
+    }
+  }
+
+  Future<void> signInWithEmailAndPassword() async {
+    try {
+      emit(LoginLoadingState());
+      await startSignInWithEmailAndPassword();
+      emit(LoginSuccessState());
+    } on FirebaseAuthException catch (e) {
+      handlingLoginFirebaseAuthException(e);
+    } catch (e) {
+      emit(LoginFailureState(errorMessege: AppStrings.pleaseTryAgainLater));
+      print('*********************************************');
+      print(e.toString());
+      print('*********************************************');
+    }
+  }
+
+  Future<void> startSignInWithEmailAndPassword() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: registerationUserModel.email!,
+      password: registerationUserModel.password!,
+    );
+  }
+
+  void handlingLoginFirebaseAuthException(FirebaseAuthException e) {
+    if (e.code == 'user-not-found') {
+      emit(LoginFailureState(errorMessege: AppStrings.userNotFound));
+      print(AppStrings.userNotFound);
+    } else if (e.code == 'wrong-password') {
+      emit(LoginFailureState(errorMessege: AppStrings.wrongPassword));
+      print(AppStrings.wrongPassword);
+    } else if (e.code == 'invalid-email') {
+      emit(LoginFailureState(errorMessege: AppStrings.invalidEmail));
+      print(AppStrings.invalidEmail);
+    } else if (e.code == 'invalid-credential') {
+      emit(LoginFailureState(errorMessege: AppStrings.invalidCredential));
+      print(AppStrings.invalidCredential);
+    } else {
+      emit(LoginFailureState(errorMessege: e.toString()));
+      print(e.code.toString());
     }
   }
 

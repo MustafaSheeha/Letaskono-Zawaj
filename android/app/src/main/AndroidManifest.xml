@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="letaskono_zawaj"
+        android:label="لِتَسْكُنُوا"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

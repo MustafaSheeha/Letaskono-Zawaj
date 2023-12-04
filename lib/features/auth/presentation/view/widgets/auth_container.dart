@@ -17,7 +17,7 @@ class AuthContainer extends StatelessWidget {
           horizontal: 0.08 * screenWidth, vertical: 0.01 * screenHeight),
       decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(80)),
+        borderRadius: BorderRadius.all(Radius.circular(40)),
         boxShadow: [
           BoxShadow(
               color: Colors.grey,

@@ -39,6 +39,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 focusedBorder: focusedBorder(),
                 focusedErrorBorder: focusedErrorBorder(),
                 hintText: widget.hintText,
+                hintStyle:  style(),
                 prefixIcon: widget.prefixIcon,
                 prefixIconColor: AppColors.primaryColor,
                 suffixIcon: IconButton(
@@ -69,6 +70,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 focusedBorder: focusedBorder(),
                 focusedErrorBorder: focusedErrorBorder(),
                 hintText: widget.hintText,
+                hintStyle:  style(),
                 prefixIcon: widget.prefixIcon,
                 prefixIconColor: AppColors.primaryColor,
               ),

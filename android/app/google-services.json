@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "722145384288",
+    "project_id": "letaskono-zawaj",
+    "storage_bucket": "letaskono-zawaj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722145384288:android:c385f3925fed3a1f4d7005",
+        "android_client_info": {
+          "package_name": "com.example.letaskono_zawaj"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPBDj9CLg4NzEKdsywXqzKq4XOeom2iqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

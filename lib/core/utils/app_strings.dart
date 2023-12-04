@@ -39,6 +39,9 @@ abstract class AppStrings {
   static const iHaveAgreedWith = 'أوافق على  ';
   static const termsAndConditions = 'شروط التسجيل والاستخدام';
 
+  static const accountSuccessfullyCreated = 'تم انشاء الحساب بنجاح';
+
+  static const pleaseActivateYourAccountThroughLinkSentToEmail = 'برجاء تفعيل حسابك عبر الرابط المرسل الى بريدك الالكترونى';
   static const isRequired = 'مطلوب';
   static const welcome = 'أهلا بك';
   static const createNewAccountToInteract =
@@ -49,6 +52,8 @@ abstract class AppStrings {
 
   static const weakPassword = 'كلمة السر ضعيفة';
   static const emailAlreadyInUse = 'هذا البريد الالكترونى مسجل من قبل';
+  static const someThingWentWrong = 'حدث خطأ';
+  static const pleaseTryAgainLater = 'برجاء المحاولة فى وقت لاحق';
   static const gender = 'الجنس';
 
   static const createNewAccount = 'تسجيل حساب جديد';

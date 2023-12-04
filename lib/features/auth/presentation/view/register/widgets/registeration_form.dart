@@ -1,9 +1,11 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:letaskono_zawaj/core/routes/app_routes.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/functions/awesome_snackbar_content.dart';
+import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_phone_field.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_form_field.dart';
@@ -28,6 +30,7 @@ class RegisterationForm extends StatelessWidget {
               message:
                   AppStrings.pleaseActivateYourAccountThroughLinkSentToEmail,
               contentType: ContentType.success);
+              naviPushReplacementNamed(context, AppRoutes.login);
         } else if (state is RegisterFailureState) {
           showAwesomeSnackbar(
               context: context,

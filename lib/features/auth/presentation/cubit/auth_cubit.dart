@@ -25,9 +25,9 @@ class AuthCubit extends Cubit<AuthState> {
     } on FirebaseAuthException catch (e) {
       handlingFirebaseAuthException(e);
     } catch (e) {
-      emit(RegisterFailureState(errorMessege: e.toString()));
+      emit(RegisterFailureState(errorMessege: AppStrings.pleaseTryAgainLater));
       print('*********************************************');
-      print(e);
+      print(e.toString());
       print('*********************************************');
     }
   }

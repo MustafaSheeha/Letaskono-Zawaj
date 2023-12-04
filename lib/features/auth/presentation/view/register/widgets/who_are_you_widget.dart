@@ -14,9 +14,9 @@ class WhoAreYouWidget extends StatefulWidget {
 }
 
 class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
-  Color manButtonColor = AppColors.grey;
+  Color manButtonColor = AppColors.offWhite;
   Color manTextColor = AppColors.primaryColor;
-  Color womanButtonColor = AppColors.grey;
+  Color womanButtonColor = AppColors.offWhite;
   Color womanTextColor = AppColors.primaryColor;
   @override
   Widget build(BuildContext context) {
@@ -31,11 +31,12 @@ class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
                 womanButtonColor = AppColors.primaryColor;
                 womanTextColor = AppColors.white;
 
-                manButtonColor = AppColors.grey;
+                manButtonColor = AppColors.offWhite;
                 manTextColor = AppColors.primaryColor;
               });
             },
             text: AppStrings.iamFemale,
+            textColor: womanTextColor,
             backgroundColor: womanButtonColor),
         CustomElevatedButton(
             onPressed: () {
@@ -43,11 +44,12 @@ class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
                 manButtonColor = AppColors.primaryColor;
                 manTextColor = AppColors.white;
 
-                womanButtonColor = AppColors.grey;
+                womanButtonColor = AppColors.offWhite;
                 womanTextColor = AppColors.primaryColor;
               });
             },
             text: AppStrings.iamMale,
+            textColor: manTextColor,
             backgroundColor: manButtonColor),
         Text(AppStrings.whoAreYou,
             style: AppTextStyles.cairoW300PrimaryColor

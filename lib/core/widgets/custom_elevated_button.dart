@@ -6,11 +6,12 @@ class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
     required this.onPressed,
-    required this.text, this.backgroundColor,
+    required this.text, this.backgroundColor, this.textColor,
   });
   final String text;
   final void Function() onPressed;
   final Color? backgroundColor;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class CustomElevatedButton extends StatelessWidget {
       child: Text(
         text,
         style:
-            AppTextStyles.cairoW400White.copyWith(fontSize: 0.05 * screenWidth),
+            AppTextStyles.cairoW400White.copyWith(fontSize: 0.05 * screenWidth,color: textColor),
       ),
     );
   }

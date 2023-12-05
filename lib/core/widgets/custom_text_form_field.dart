@@ -56,7 +56,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 ),
                 suffixIconColor: AppColors.primaryColor,
               ),
-              keyboardType: widget.keyboardType,
+              keyboardType: widget.keyboardType??TextInputType.text,
               obscureText: hidePassword,
               onChanged: widget.onChanged,
               onTapOutside: unfocusOnTapOutside,
@@ -64,6 +64,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               validator: validator,
             )
           : TextFormField(
+            minLines: 1,
+            maxLines: 10,
               cursorColor: AppColors.primaryColor,
               decoration: InputDecoration(
                 border: border(),

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_male_profile_model.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/features/auth/data/registeration_user_model.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
@@ -13,6 +14,7 @@ class AuthCubit extends Cubit<AuthState> {
   bool termsAndConditionCheckBox = false;
   final RegisterationUserModel registerationUserModel =
       RegisterationUserModel();
+      final CreateMaleProfileModel createMaleProfileModel=CreateMaleProfileModel();
 
   void updateTermsAndConditionCheckBox(newValue) {
     termsAndConditionCheckBox = newValue;

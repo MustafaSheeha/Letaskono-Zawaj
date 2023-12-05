@@ -10,8 +10,8 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_form_field.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
+class ForgotPasswordForm extends StatelessWidget {
+  const ForgotPasswordForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +19,14 @@ class LoginForm extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is LoginSuccessState) {
+        if (state is PasswordResetSuccessState) {
           showAwesomeSnackbar(
               context: context,
-              title: AppStrings.accountLoggedSuccessfully,
-              message: AppStrings.redirectingToYourAccount,
+              title: AppStrings.redirectingToLogin,
+              message: AppStrings.passwordResetEmailSent,
               contentType: ContentType.success);
           customFutureDelayed(context);
-        } else if (state is LoginFailureState) {
+        } else if (state is PasswordResetFailureState) {
           showAwesomeSnackbar(
               context: context,
               title: AppStrings.someThingWentWrong,
@@ -36,8 +36,9 @@ class LoginForm extends StatelessWidget {
       },
       builder: (context, state) {
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
+
         return Form(
-          key: authCubit.loginFormKey,
+          key: authCubit.forgotPasswordFormKey,
           child: Column(
             children: [
               CustomTextFormField(
@@ -49,24 +50,15 @@ class LoginForm extends StatelessWidget {
                   prefixIcon: const Icon(Icons.alternate_email),
                   obscureText: false),
               SizedBox(height: 0.015 * screenHeight),
-              CustomTextFormField(
-                  hintText: AppStrings.password,
-                  keyboardType: TextInputType.text,
-                  onChanged: (password) {
-                    authCubit.registerationUserModel.password = password;
-                  },
-                  prefixIcon: const Icon(Icons.lock),
-                  obscureText: true),
-              SizedBox(height: 0.015 * screenHeight),
-              state is LoginLoadingState
+              state is PasswordResetLoadingState
                   ? const Center(child: CircularProgressIndicator())
                   : CustomElevatedButton(
                       onPressed: () {
-                        if (authCubit.loginFormKey.currentState!.validate()) {
-                          authCubit.signInWithEmailAndPassword();
+                        if (authCubit.forgotPasswordFormKey.currentState!.validate()) {
+                          authCubit.sendPasswordResetEmail();
                         }
                       },
-                      text: AppStrings.login),
+                      text: AppStrings.reset),
             ],
           ),
         );
@@ -77,8 +69,7 @@ class LoginForm extends StatelessWidget {
   Future<void> customFutureDelayed(BuildContext context) {
     return Future.delayed(
       const Duration(seconds: 2),
-      () => naviPushReplacementNamed(
-          context, AppRoutes.customPersistantBottomNavBar),
+      () => naviPushReplacementNamed(context, AppRoutes.login),
     );
   }
 }

@@ -20,7 +20,10 @@ class CreateNewAccountForgotPasswordWidget extends StatelessWidget {
               style: AppTextStyles.cairoW300PrimaryColor),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            naviPushReplacementNamed(context, AppRoutes.forgotPassword);
+
+          },
           child: const Text(AppStrings.forgotPassword,
               style: AppTextStyles.cairoW300PrimaryColor),
         ),

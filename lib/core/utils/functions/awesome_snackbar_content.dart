@@ -8,8 +8,10 @@ showAwesomeSnackbar({
   required ContentType contentType,
 }) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    /// need to set following properties for best effect of awesome_snackbar_content
-    elevation: 0,
+    margin: const EdgeInsets.all(4),
+    padding: const EdgeInsets.all(4),
+    clipBehavior: Clip.none,
+    // elevation: 0,
     behavior: SnackBarBehavior.floating,
     backgroundColor: Colors.transparent,
     content: AwesomeSnackbarContent(

@@ -7,5 +7,6 @@ class AppRoutes {
   static String customPersistantBottomNavBar='customPersistantBottomNavBar';
   static String login='login';
   static String register='register';
+  static String forgotPassword='forgotPassword';
 }
 

@@ -45,6 +45,7 @@ abstract class AppStrings {
       'برجاء تفعيل حسابك عبر الرابط المرسل الى بريدك الالكترونى';
   static const accountLoggedSuccessfully = 'تم تسجيل الدخول بنجاح';
   static const redirectingToYourAccount = 'جارى الانتقال الى حسابك';
+  static const redirectingToLogin = 'جارى الانتقال الى تسجيل الدخول';
   static const isRequired = 'مطلوب';
   static const welcome = 'أهلا بك';
   static const createNewAccountToInteract =
@@ -61,6 +62,7 @@ abstract class AppStrings {
   static const invalidCredential = 'البريد الالكترونى أو كلمة السر غير صحيحة';
   static const someThingWentWrong = 'حدث خطأ';
   static const pleaseTryAgainLater = 'برجاء المحاولة فى وقت لاحق';
+  static const passwordResetEmailSent = 'تم ارسال رابط استعادة كلمة السر الى بريدك الالكترونى';
   static const gender = 'الجنس';
 
   static const createNewAccount = 'تسجيل حساب جديد';

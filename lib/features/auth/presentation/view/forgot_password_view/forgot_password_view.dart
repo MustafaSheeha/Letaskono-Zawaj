@@ -3,13 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_app_bar.dart';
+import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
+import 'package:letaskono_zawaj/core/widgets/custom_text_form_field.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:letaskono_zawaj/features/auth/presentation/view/login/widgets/create_new_account_forgot_password_widget.dart';
-import 'package:letaskono_zawaj/features/auth/presentation/view/login/widgets/login_form.dart';
+import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
+import 'package:letaskono_zawaj/features/auth/presentation/view/forgot_password_view/widgets/forgot_password_form.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/widgets/auth_container.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class ForgotPasswordView extends StatelessWidget {
+  const ForgotPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +28,11 @@ class LoginView extends StatelessWidget {
               SizedBox(height: 0.15 * screenHeight),
               AuthContainer(
                 widget: Column(children: [
-                  Text(AppStrings.welcome,
-                      style: AppTextStyles.cairoW800PrimaryColor
-                          .copyWith(fontSize: 0.08 * screenWidth)),
-                  Text(AppStrings.loginIntoYourAccount,
-                      style: AppTextStyles.cairoW400Grey
-                          .copyWith(fontSize: 0.035 * screenWidth)),
+                  Text(AppStrings.resetPassword,
+                      style: AppTextStyles.cairoW300PrimaryColor
+                          .copyWith(fontSize: 0.06 * screenWidth)),
                   SizedBox(height: 0.015 * screenHeight),
-                  const LoginForm(),
-                  const CreateNewAccountForgotPasswordWidget(),
+                  const ForgotPasswordForm()
                 ]),
               ),
             ],

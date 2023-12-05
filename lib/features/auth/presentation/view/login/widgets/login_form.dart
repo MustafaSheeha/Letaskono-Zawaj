@@ -1,4 +1,5 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/routes/app_routes.dart';
@@ -20,12 +21,21 @@ class LoginForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is LoginSuccessState) {
-          showAwesomeSnackbar(
-              context: context,
-              title: AppStrings.accountLoggedSuccessfully,
-              message: AppStrings.redirectingToYourAccount,
-              contentType: ContentType.success);
-          customFutureDelayed(context);
+          if (!FirebaseAuth.instance.currentUser!.emailVerified) {
+            showAwesomeSnackbar(
+                context: context,
+                title: AppStrings.emailUnverfied,
+                message: AppStrings
+                    .pleaseActivateYourAccountThroughLinkSentToEmailToLogin,
+                contentType: ContentType.warning);
+          } else {
+            showAwesomeSnackbar(
+                context: context,
+                title: AppStrings.accountLoggedSuccessfully,
+                message: AppStrings.redirectingToYourAccount,
+                contentType: ContentType.success);
+            customFutureDelayed(context);
+          }
         } else if (state is LoginFailureState) {
           showAwesomeSnackbar(
               context: context,

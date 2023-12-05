@@ -45,6 +45,8 @@ abstract class AppStrings {
       'برجاء تفعيل حسابك عبر الرابط المرسل الى بريدك الالكترونى';
   static const accountLoggedSuccessfully = 'تم تسجيل الدخول بنجاح';
   static const redirectingToYourAccount = 'جارى الانتقال الى حسابك';
+  static const emailUnverfied='بريدك الالكترونى غير مفعل';
+  static const pleaseActivateYourAccountThroughLinkSentToEmailToLogin='برجاء تفعيل حسابك عبر الرابط المرسل الى بريدك الالكترونى لتتمكن من تسجيل الدخول';
   static const redirectingToLogin = 'جارى الانتقال الى تسجيل الدخول';
   static const isRequired = 'مطلوب';
   static const welcome = 'أهلا بك';

@@ -30,7 +30,7 @@ class RegisterationForm extends StatelessWidget {
               message:
                   AppStrings.pleaseActivateYourAccountThroughLinkSentToEmail,
               contentType: ContentType.success);
-              naviPushReplacementNamed(context, AppRoutes.login);
+          customFutureDelayed(context);
         } else if (state is RegisterFailureState) {
           showAwesomeSnackbar(
               context: context,
@@ -99,6 +99,13 @@ class RegisterationForm extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Future<void> customFutureDelayed(BuildContext context) {
+    return Future.delayed(
+      const Duration(seconds: 2),
+      () => naviPushReplacementNamed(context, AppRoutes.login),
     );
   }
 }

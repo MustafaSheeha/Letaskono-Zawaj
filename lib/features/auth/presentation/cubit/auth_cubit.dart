@@ -23,6 +23,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       emit(RegisterLoadingState());
       await startCreateUserWithEmailAndPassword();
+      await sendEmailVerification();
       emit(RegisterSuccessState());
     } on FirebaseAuthException catch (e) {
       handlingRegisterationFirebaseAuthException(e);
@@ -32,6 +33,13 @@ class AuthCubit extends Cubit<AuthState> {
       print(e.toString());
       print('*********************************************');
     }
+  }
+
+  Future<void> startCreateUserWithEmailAndPassword() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: registerationUserModel.email!,
+      password: registerationUserModel.password!,
+    );
   }
 
   void handlingRegisterationFirebaseAuthException(FirebaseAuthException e) {
@@ -44,10 +52,17 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  Future<void> sendEmailVerification() async {
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+  }
+
   Future<void> signInWithEmailAndPassword() async {
     try {
       emit(LoginLoadingState());
       await startSignInWithEmailAndPassword();
+      !FirebaseAuth.instance.currentUser!.emailVerified
+          ? await sendEmailVerification()
+          : null;
       emit(LoginSuccessState());
     } on FirebaseAuthException catch (e) {
       handlingLoginFirebaseAuthException(e);
@@ -83,13 +98,6 @@ class AuthCubit extends Cubit<AuthState> {
       emit(LoginFailureState(errorMessege: e.toString()));
       print(e.code.toString());
     }
-  }
-
-  Future<void> startCreateUserWithEmailAndPassword() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: registerationUserModel.email!,
-      password: registerationUserModel.password!,
-    );
   }
 
   Future<void> sendPasswordResetEmail() async {

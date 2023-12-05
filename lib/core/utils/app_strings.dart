@@ -44,6 +44,7 @@ abstract class AppStrings {
   static const pleaseActivateYourAccountThroughLinkSentToEmail =
       'برجاء تفعيل حسابك عبر الرابط المرسل الى بريدك الالكترونى';
   static const accountLoggedSuccessfully = 'تم تسجيل الدخول بنجاح';
+  static const redirectingToCreateProfile = 'يمكنك الان انشاء ملفك الشخصى';
   static const redirectingToYourAccount = 'جارى الانتقال الى حسابك';
   static const emailUnverfied='بريدك الالكترونى غير مفعل';
   static const pleaseActivateYourAccountThroughLinkSentToEmailToLogin='برجاء تفعيل حسابك عبر الرابط المرسل الى بريدك الالكترونى لتتمكن من تسجيل الدخول';
@@ -92,7 +93,7 @@ abstract class AppStrings {
   static const tellAboutYou = 'أخبرنا عن نفسك';
   static const tellAboutPartner = 'أخبرنا عن مواصفات زوجك';
   static const isParentKnowAboutLetaskono =
-      'هل ولى الأمر يعلم بتسجيلك فى هذا الموقع';
+      'هل ولى الأمر يعلم بتسجيلك فى هذا الموقع ؟';
   static const youAcceptToMarryWithoutQaamah =
       'هل تقبلين أن تتزوجى بدون قائمة منقولات على أن يتكفل الزوج بكل شئ حسب استطاعته ؟';
   static const parentAcceptToMarryWithoutQaamah =

@@ -32,7 +32,7 @@ class LoginForm extends StatelessWidget {
             showAwesomeSnackbar(
                 context: context,
                 title: AppStrings.accountLoggedSuccessfully,
-                message: AppStrings.redirectingToYourAccount,
+                message: AppStrings.redirectingToCreateProfile,
                 contentType: ContentType.success);
             customFutureDelayed(context);
           }
@@ -88,7 +88,7 @@ class LoginForm extends StatelessWidget {
     return Future.delayed(
       const Duration(seconds: 2),
       () => naviPushReplacementNamed(
-          context, AppRoutes.customPersistantBottomNavBar),
+          context, AppRoutes.createProfile),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:letaskono_zawaj/core/routes/app_routes.dart';
 import 'package:letaskono_zawaj/core/utils/app_theme_data.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_persistant_bottom_nav_bar.dart';
+import 'package:letaskono_zawaj/features/auth/presentation/view/create_profile_view/create_profile_view.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/forgot_password_view/forgot_password_view.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/register/register_view.dart';
@@ -23,6 +24,7 @@ class LetaskonoZawajApp extends StatelessWidget {
         AppRoutes.register: (context) => const RegisterView(),
         AppRoutes.login: (context) => const LoginView(),
         AppRoutes.forgotPassword: (context) => const ForgotPasswordView(),
+        AppRoutes.createProfile: (context) => const CreateProfileView(),
       },
       theme: AppThemeData().theme(),
     );

@@ -36,8 +36,31 @@ abstract class AppStrings {
   static const hintTextPhoneField = ' ابحث عن بلدك';
   static const languageCode = 'ar';
   static const initialCountryCode = 'EG';
-  static const iHaveAgreedWith = 'أوافق على  ';
-  static const termsAndConditions = 'شروط التسجيل والاستخدام';
+  static const iHaveAgreedWith = ' أوافق على';
+  static const termsAndConditions = 'شروط التسجيل وسياسة الاستخدام';
+  static const termsAndConditionsIntroduction1 =
+      'بسم الله الرحمن الرحيم والصلاة والسلام على أشرف المرسلين نبينا محمد وعلى أله وصحبه وسلم';
+  static const termsAndConditionsIntroduction2 =
+      'فقد انتشر الحرام الخبيث وقل الحلال الطيب بين الناس فكان هذا التطبيق دعوة للعفة وللرجوع الى ديننا الحنيف وشرعنا الكريم';
+  static const termsAndConditionsIntroduction3 =
+      'وهذه بعض الشروط التى يجب أن يلتزم بها كل مسلم';
+  static const termsAndConditions1 =
+      '1- الهدف من التطيبق هو تزويج شباب المسلمين وفتياتهم وليس العبث ويجب على الجميع البحث عن الزواج الشرعى فقط ';
+  static const termsAndConditions2 =
+      '2- يمنع منعا باتا التواصل مع الطرف الأخر قبل التواصل مع ولي الأمر أولا أو تعارف الأهل';
+  static const termsAndConditions3 =
+      '3- التنسيق للتواصل مع ولي الأمر أو الأهل يكون عن طريق التطبيق ولا يسمح بالتواصل مباشرة مع أى طرف اخر';
+  static const termsAndConditions4 =
+      '4- سيتم مراجعة استمارات المتقدمين من قبلنا ولنا الحق فى رفض أى استمارة لا تتناسب مع معايير مجتمعنا الاسلامى';
+  static const termsAndConditions5 =
+      '5- اذا صدر من أى طرف ما ينم عن سوء أدب فسيتم فصله من التطبيق دون سابق انذار';
+  static const termsAndConditions6 =
+      '6- كل من ليس مؤهلا شرعا للزواج سوف يتم استبعاده مؤقتا بعد اخباره بسبب الاستبعاد حتى يتوب ويقلع عن ذنبه فيجب على غير المحجبة أن تتحجب وعلى المقصر فى صلاته أن يلتزم بها قبل أن يحاول التسجيل لدنيا';
+  static const termsAndConditions7 =
+      '7- نخلى مسئوليتنا أمام الله عزوجل من أى شخص يكتب معلومات كاذبة عن نفسه أو يحاول خداع الطرف الاخرومهمتنا فقطهى محاولة التوفيق بين المتديين الراغبين فى الزواج';
+  static const termsAndConditions8 = '8- وجود أشخاص على قائمة هذا التطبيق لا يعنى بالضرورة أنهم مؤهلين للزواج ويجب على كل طرف أن يتأكد بنفسه من صلاح الطرف الاخر وأهليته للزواج';
+  static const termsAndConditions9 = '9- نبرأالى الله من كل شخص يريد أن يتزوج لدينا ليقوم بعمل أفراح مختلطة أو بتشغيل الموسيقى فى أفراحه والتى لن تجلب له سوى محق البركة وسوء العاقبة';
+  static const termsAndConditions10 = '10- ننصح جميع المسجلين باخلاص النية';
 
   static const accountCreatedSuccessfully = 'تم انشاء الحساب بنجاح';
 
@@ -46,8 +69,9 @@ abstract class AppStrings {
   static const accountLoggedSuccessfully = 'تم تسجيل الدخول بنجاح';
   static const redirectingToCreateProfile = 'يمكنك الان انشاء ملفك الشخصى';
   static const redirectingToYourAccount = 'جارى الانتقال الى حسابك';
-  static const emailUnverfied='بريدك الالكترونى غير مفعل';
-  static const pleaseActivateYourAccountThroughLinkSentToEmailToLogin='برجاء تفعيل حسابك عبر الرابط المرسل الى بريدك الالكترونى لتتمكن من تسجيل الدخول';
+  static const emailUnverfied = 'بريدك الالكترونى غير مفعل';
+  static const pleaseActivateYourAccountThroughLinkSentToEmailToLogin =
+      'برجاء تفعيل حسابك عبر الرابط المرسل الى بريدك الالكترونى لتتمكن من تسجيل الدخول';
   static const redirectingToLogin = 'جارى الانتقال الى تسجيل الدخول';
   static const isRequired = 'مطلوب';
   static const welcome = 'أهلا بك';
@@ -65,7 +89,8 @@ abstract class AppStrings {
   static const invalidCredential = 'البريد الالكترونى أو كلمة السر غير صحيحة';
   static const someThingWentWrong = 'حدث خطأ';
   static const pleaseTryAgainLater = 'برجاء المحاولة فى وقت لاحق';
-  static const passwordResetEmailSent = 'تم ارسال رابط استعادة كلمة السر الى بريدك الالكترونى';
+  static const passwordResetEmailSent =
+      'تم ارسال رابط استعادة كلمة السر الى بريدك الالكترونى';
   static const gender = 'الجنس';
 
   static const createNewAccount = 'تسجيل حساب جديد';

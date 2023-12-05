@@ -41,7 +41,7 @@ class RegisterView extends StatelessWidget {
                     onPressed: () {
                       naviPushReplacementNamed(context, AppRoutes.login);
                     },
-                  )
+                  ),
                 ]),
               ),
             ],

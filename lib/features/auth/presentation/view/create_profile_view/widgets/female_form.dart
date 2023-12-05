@@ -6,7 +6,6 @@ import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/create_profile_view/widgets/female_parent_info_form.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/create_profile_view/widgets/general_info_form.dart';
-import 'package:letaskono_zawaj/features/auth/presentation/view/create_profile_view/widgets/identity_confirmation_form.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/create_profile_view/widgets/marriage_info_form.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/create_profile_view/widgets/personal_info_form.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/create_profile_view/widgets/religious_info_form.dart';

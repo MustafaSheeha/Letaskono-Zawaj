@@ -17,9 +17,9 @@ class WhoAreYouWidget extends StatefulWidget {
 
 class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
   Color manButtonColor = AppColors.offWhite;
-  Color manTextColor = AppColors.primaryColor;
+  Color manTextColor = AppColors.white;
   Color womanButtonColor = AppColors.offWhite;
-  Color womanTextColor = AppColors.primaryColor;
+  Color womanTextColor = AppColors.white;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -35,7 +35,7 @@ class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
                 womanTextColor = AppColors.white;
 
                 manButtonColor = AppColors.offWhite;
-                manTextColor = AppColors.primaryColor;
+                manTextColor = AppColors.white;
               });
             },
             text: AppStrings.iamFemale,
@@ -49,7 +49,7 @@ class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
                 manTextColor = AppColors.white;
 
                 womanButtonColor = AppColors.offWhite;
-                womanTextColor = AppColors.primaryColor;
+                womanTextColor = AppColors.white;
               });
             },
             text: AppStrings.iamMale,

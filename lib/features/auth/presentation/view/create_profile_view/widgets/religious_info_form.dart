@@ -29,16 +29,27 @@ class ReligiousInfoForm extends StatelessWidget {
                 .prayerCommitment,
             dropdownButtonList: DropdownButtonList.prayerCommitmentList),
         SizedBox(height: 0.01 * screenHeight),
-        const Text(
-          AppStrings.faceStyle,
-          style: AppTextStyles.cairoW300PrimaryColor,
-        ),
+        BlocProvider.of<AuthCubit>(context).isGender
+            ? const Text(
+                AppStrings.faceStyle,
+                style: AppTextStyles.cairoW300PrimaryColor,
+              )
+            : const Text(
+                AppStrings.clothStyle,
+                style: AppTextStyles.cairoW300PrimaryColor,
+              ),
         SizedBox(height: 0.01 * screenHeight),
-        DropdownButtonWidget(
-            selectedValue: BlocProvider.of<AuthCubit>(context)
-                .createMaleProfileModel
-                .faceStyle,
-            dropdownButtonList: DropdownButtonList.faceStyleList),
+        BlocProvider.of<AuthCubit>(context).isGender
+            ? DropdownButtonWidget(
+                selectedValue: BlocProvider.of<AuthCubit>(context)
+                    .createMaleProfileModel
+                    .faceStyle,
+                dropdownButtonList: DropdownButtonList.faceStyleList)
+            : DropdownButtonWidget(
+                selectedValue: BlocProvider.of<AuthCubit>(context)
+                    .createFemaleProfileModel
+                    .clothStyle,
+                dropdownButtonList: DropdownButtonList.clothStyleList),
         SizedBox(height: 0.01 * screenHeight),
         const Text(
           AppStrings.quranMemorizing,
@@ -50,6 +61,21 @@ class ReligiousInfoForm extends StatelessWidget {
                 .createMaleProfileModel
                 .quranMemorizing,
             dropdownButtonList: DropdownButtonList.quranMemorizingList),
+        SizedBox(height: 0.01 * screenHeight),
+        !BlocProvider.of<AuthCubit>(context).isGender
+            ? const Text(
+                AppStrings.acceptToWearNiqab,
+                style: AppTextStyles.cairoW300PrimaryColor,
+              )
+            : const SizedBox(),
+        SizedBox(height: 0.01 * screenHeight),
+        !BlocProvider.of<AuthCubit>(context).isGender
+            ? DropdownButtonWidget(
+                selectedValue: BlocProvider.of<AuthCubit>(context)
+                    .createFemaleProfileModel
+                    .acceptToWearNiqab,
+                dropdownButtonList: DropdownButtonList.acceptToWearNiqabList)
+            : const SizedBox(),
         SizedBox(height: 0.01 * screenHeight),
       ]),
     );

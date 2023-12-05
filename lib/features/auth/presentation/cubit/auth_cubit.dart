@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_female_profile_model.dart';
 import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_male_profile_model.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/features/auth/data/registeration_user_model.dart';
@@ -12,9 +13,13 @@ class AuthCubit extends Cubit<AuthState> {
   GlobalKey<FormState> loginFormKey = GlobalKey();
   GlobalKey<FormState> forgotPasswordFormKey = GlobalKey();
   bool termsAndConditionCheckBox = false;
+  bool isGender = true;
   final RegisterationUserModel registerationUserModel =
       RegisterationUserModel();
-      final CreateMaleProfileModel createMaleProfileModel=CreateMaleProfileModel();
+  final CreateMaleProfileModel createMaleProfileModel =
+      CreateMaleProfileModel();
+  final CreateFemaleProfileModel createFemaleProfileModel =
+      CreateFemaleProfileModel();
 
   void updateTermsAndConditionCheckBox(newValue) {
     termsAndConditionCheckBox = newValue;

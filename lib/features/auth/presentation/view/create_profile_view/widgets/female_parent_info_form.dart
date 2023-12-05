@@ -20,7 +20,10 @@ class FemaleParentInfoForm extends StatelessWidget {
         widget: Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+          SizedBox(height: 0.02 * screenHeight),
+
         const CustomHeaderTitle(headerTitle: AppStrings.parentInfo),
+        SizedBox(height: 0.01 * screenHeight),
         const Text(
           AppStrings.isParentKnowAboutLetaskono,
           style: AppTextStyles.cairoW300PrimaryColor,
@@ -65,7 +68,7 @@ class FemaleParentInfoForm extends StatelessWidget {
           obscureText: false,
           onChanged: (p0) {},
         ),
-        SizedBox(height: 0.01 * screenHeight),
+        SizedBox(height: 0.02 * screenHeight),
       ],
     ));
   }

@@ -25,7 +25,7 @@ class CustomElevatedButton extends StatelessWidget {
       child: Text(
         text,
         style:
-            AppTextStyles.cairoW400White.copyWith(fontSize: 0.05 * screenWidth,color: textColor),
+            AppTextStyles.cairoW700White.copyWith(fontSize: 0.05 * screenWidth,color: textColor),
       ),
     );
   }

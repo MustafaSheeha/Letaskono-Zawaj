@@ -13,7 +13,7 @@ class OnBoardingBody extends StatelessWidget {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: 0.77 * screenHeight,
+      height: 0.76 * screenHeight,
       child: PageView.builder(
         reverse: true,
         controller: controller,

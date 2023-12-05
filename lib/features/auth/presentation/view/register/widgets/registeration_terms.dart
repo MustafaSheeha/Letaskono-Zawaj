@@ -12,7 +12,7 @@ class RegisterationTerms extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         GestureDetector(
           onTap: () {
@@ -124,7 +124,7 @@ class TermsAndConditionsWidget extends StatelessWidget {
     return Text(
       text,
       style:
-          AppTextStyles.cairoW700Grey.copyWith(fontSize: 0.035 * screenWidth),
+          AppTextStyles.cairoW800Black.copyWith(fontSize: 0.035 * screenWidth),
       textAlign: TextAlign.justify,
       textDirection: TextDirection.rtl,
     );

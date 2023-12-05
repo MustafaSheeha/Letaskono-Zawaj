@@ -17,51 +17,58 @@ class PersonalInfoForm extends StatelessWidget {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return AuthContainer(
-      widget: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-        const CustomHeaderTitle(headerTitle: AppStrings.personalInfo),
-        const Text(
-          AppStrings.age,
-          style: AppTextStyles.cairoW300PrimaryColor,
-        ),
-        SizedBox(height: 0.01 * screenHeight),
-        CustomTextFormField(
-          obscureText: false,
-          keyboardType: TextInputType.number,
-          onChanged: (p0) {},
-        ),
-        SizedBox(height: 0.01 * screenHeight),
-        const Text(
-          AppStrings.height,
-          style: AppTextStyles.cairoW300PrimaryColor,
-        ),
-        SizedBox(height: 0.01 * screenHeight),
-        CustomTextFormField(
-          obscureText: false,
-          keyboardType: TextInputType.number,
-          onChanged: (p0) {},
-        ),
-        SizedBox(height: 0.01 * screenHeight),
-        const Text(
-          AppStrings.weight,
-          style: AppTextStyles.cairoW300PrimaryColor,
-        ),
-        SizedBox(height: 0.01 * screenHeight),
-        CustomTextFormField(
-          obscureText: false,
-          keyboardType: TextInputType.number,
-          onChanged: (p0) {},
-        ),
-        SizedBox(height: 0.01 * screenHeight),
-        const Text(
-          AppStrings.skinColor,
-          style: AppTextStyles.cairoW300PrimaryColor,
-        ),
-        SizedBox(height: 0.01 * screenHeight),
-        DropdownButtonWidget(selectedValue: BlocProvider.of<AuthCubit>(context)
-              .createMaleProfileModel
-              .maritalStatus, dropdownButtonList:DropdownButtonList.skinColorList),
-        SizedBox(height: 0.01 * screenHeight),
-      ]),
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          SizedBox(height: 0.02 * screenHeight),
+          const CustomHeaderTitle(headerTitle: AppStrings.personalInfo),
+          SizedBox(height: 0.01 * screenHeight),
+          const Text(
+            AppStrings.age,
+            style: AppTextStyles.cairoW300PrimaryColor,
+          ),
+          SizedBox(height: 0.01 * screenHeight),
+          CustomTextFormField(
+            obscureText: false,
+            keyboardType: TextInputType.number,
+            onChanged: (p0) {},
+          ),
+          SizedBox(height: 0.01 * screenHeight),
+          const Text(
+            AppStrings.height,
+            style: AppTextStyles.cairoW300PrimaryColor,
+          ),
+          SizedBox(height: 0.01 * screenHeight),
+          CustomTextFormField(
+            obscureText: false,
+            keyboardType: TextInputType.number,
+            onChanged: (p0) {},
+          ),
+          SizedBox(height: 0.01 * screenHeight),
+          const Text(
+            AppStrings.weight,
+            style: AppTextStyles.cairoW300PrimaryColor,
+          ),
+          SizedBox(height: 0.01 * screenHeight),
+          CustomTextFormField(
+            obscureText: false,
+            keyboardType: TextInputType.number,
+            onChanged: (p0) {},
+          ),
+          SizedBox(height: 0.01 * screenHeight),
+          const Text(
+            AppStrings.skinColor,
+            style: AppTextStyles.cairoW300PrimaryColor,
+          ),
+          SizedBox(height: 0.01 * screenHeight),
+          DropdownButtonWidget(
+              selectedValue: BlocProvider.of<AuthCubit>(context)
+                  .createMaleProfileModel
+                  .maritalStatus,
+              dropdownButtonList: DropdownButtonList.skinColorList),
+          SizedBox(height: 0.02 * screenHeight),
+        ],
+      ),
     );
   }
 }

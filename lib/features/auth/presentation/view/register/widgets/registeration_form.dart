@@ -46,7 +46,7 @@ class RegisterationForm extends StatelessWidget {
           child: Column(
             children: [
               const WhoAreYouWidget(),
-              SizedBox(height: 0.015 * screenHeight),
+              SizedBox(height: 0.03* screenHeight),
               CustomTextFormField(
                   hintText: AppStrings.nameInArabic,
                   keyboardType: TextInputType.text,
@@ -84,7 +84,7 @@ class RegisterationForm extends StatelessWidget {
                   ? const Center(child: CircularProgressIndicator())
                   : CustomElevatedButton(
                       backgroundColor: !authCubit.termsAndConditionCheckBox
-                          ? AppColors.offWhite
+                          ? AppColors.grey
                           : AppColors.primaryColor,
                       onPressed: () {
                         if (authCubit.termsAndConditionCheckBox == true) {

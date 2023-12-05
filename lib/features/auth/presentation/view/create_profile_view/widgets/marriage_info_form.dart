@@ -14,7 +14,9 @@ class MarriageInfoForm extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return AuthContainer(
       widget: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+        SizedBox(height: 0.02 * screenHeight),
         const CustomHeaderTitle(headerTitle: AppStrings.marriageInfo),
+        SizedBox(height: 0.01 * screenHeight),
         const Text(
           AppStrings.tellAboutYou,
           style: AppTextStyles.cairoW300PrimaryColor,
@@ -28,12 +30,13 @@ class MarriageInfoForm extends StatelessWidget {
         const Text(
           AppStrings.tellAboutPartner,
           style: AppTextStyles.cairoW300PrimaryColor,
-        ),SizedBox(height: 0.01 * screenHeight),
+        ),
+        SizedBox(height: 0.01 * screenHeight),
         CustomTextFormField(
           obscureText: false,
           onChanged: (p0) {},
         ),
-        SizedBox(height: 0.01 * screenHeight),
+        SizedBox(height: 0.02 * screenHeight),
       ]),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,11 +10,13 @@ import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
+  DataConnectionChecker dataConnectionChecker = DataConnectionChecker();
+
   GlobalKey<FormState> registerFormKey = GlobalKey();
   GlobalKey<FormState> loginFormKey = GlobalKey();
   GlobalKey<FormState> forgotPasswordFormKey = GlobalKey();
   bool termsAndConditionCheckBox = false;
-  bool isGender = true;
+  bool isGender = false;
   final RegisterationUserModel registerationUserModel =
       RegisterationUserModel();
   final CreateMaleProfileModel createMaleProfileModel =
@@ -27,18 +30,22 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> createUserWithEmailAndPassword() async {
-    try {
-      emit(RegisterLoadingState());
-      await startCreateUserWithEmailAndPassword();
-      await sendEmailVerification();
-      emit(RegisterSuccessState());
-    } on FirebaseAuthException catch (e) {
-      handlingRegisterationFirebaseAuthException(e);
-    } catch (e) {
-      emit(RegisterFailureState(errorMessege: AppStrings.pleaseTryAgainLater));
-      print('*********************************************');
-      print(e.toString());
-      print('*********************************************');
+    if (await dataConnectionChecker.hasConnection) {
+      try {
+        emit(RegisterLoadingState());
+        await startCreateUserWithEmailAndPassword();
+        await sendEmailVerification();
+        emit(RegisterSuccessState());
+      } on FirebaseAuthException catch (e) {
+        handlingRegisterationFirebaseAuthException(e);
+      } catch (e) {
+        emit(RegisterFailureState(errorMessege: e.toString()));
+        print('*********************************************');
+        print(e.toString());
+        print('*********************************************');
+      }
+    } else {
+      emit(RegisterFailureState(errorMessege: 'لا يوجد لديك اتصال بالانترنت'));
     }
   }
 
@@ -64,20 +71,24 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signInWithEmailAndPassword() async {
-    try {
-      emit(LoginLoadingState());
-      await startSignInWithEmailAndPassword();
-      !FirebaseAuth.instance.currentUser!.emailVerified
-          ? await sendEmailVerification()
-          : null;
-      emit(LoginSuccessState());
-    } on FirebaseAuthException catch (e) {
-      handlingLoginFirebaseAuthException(e);
-    } catch (e) {
-      emit(LoginFailureState(errorMessege: AppStrings.pleaseTryAgainLater));
-      print('*********************************************');
-      print(e.toString());
-      print('*********************************************');
+    if (await dataConnectionChecker.hasConnection) {
+      try {
+        emit(LoginLoadingState());
+        await startSignInWithEmailAndPassword();
+        !FirebaseAuth.instance.currentUser!.emailVerified
+            ? await sendEmailVerification()
+            : null;
+        emit(LoginSuccessState());
+      } on FirebaseAuthException catch (e) {
+        handlingLoginFirebaseAuthException(e);
+      } catch (e) {
+        emit(LoginFailureState(errorMessege: e.toString()));
+        print('*********************************************');
+        print(e.toString());
+        print('*********************************************');
+      }
+    } else {
+      emit(LoginFailureState(errorMessege: 'لا يوجد لديك اتصال بالانترنت'));
     }
   }
 
@@ -108,14 +119,19 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> sendPasswordResetEmail() async {
-    try {
-      emit(PasswordResetLoadingState());
-      await startsendPasswordResetEmail();
-      emit(PasswordResetSuccessState());
-    } on Exception catch (e) {
-      emit(PasswordResetFailureState(errorMessege: e.toString()));
-      print('*********************************************');
-      print(e.toString());
+    if (await dataConnectionChecker.hasConnection) {
+      try {
+        emit(PasswordResetLoadingState());
+        await startsendPasswordResetEmail();
+        emit(PasswordResetSuccessState());
+      } on Exception catch (e) {
+        emit(PasswordResetFailureState(errorMessege: e.toString()));
+        print('*********************************************');
+        print(e.toString());
+      }
+    } else {
+      emit(PasswordResetFailureState(
+          errorMessege: 'لا يوجد لديك اتصال بالانترنت'));
     }
   }
 

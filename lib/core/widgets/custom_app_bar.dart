@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
             // SizedBox(height: 0.05*screenHeight),
             Text(
               AppStrings.quran2,
-              style: AppTextStyles.cairoW400White.copyWith(
+              style: AppTextStyles.cairoW700White.copyWith(
                 fontSize: 0.1 * screenWidth,
                 fontWeight: FontWeight.w800,
               ),

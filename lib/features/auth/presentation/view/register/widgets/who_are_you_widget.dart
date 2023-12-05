@@ -16,9 +16,9 @@ class WhoAreYouWidget extends StatefulWidget {
 }
 
 class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
-  Color manButtonColor = AppColors.offWhite;
+  Color manButtonColor = AppColors.grey;
   Color manTextColor = AppColors.white;
-  Color womanButtonColor = AppColors.offWhite;
+  Color womanButtonColor = AppColors.grey;
   Color womanTextColor = AppColors.white;
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         CustomElevatedButton(
+
             onPressed: () {
               BlocProvider.of<AuthCubit>(context).registerationUserModel.gender='Female';
               setState(() {

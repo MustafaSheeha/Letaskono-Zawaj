@@ -30,7 +30,7 @@ class LoginView extends StatelessWidget {
                       style: AppTextStyles.cairoW800PrimaryColor
                           .copyWith(fontSize: 0.08 * screenWidth)),
                   Text(AppStrings.loginIntoYourAccount,
-                      style: AppTextStyles.cairoW400Grey
+                      style: AppTextStyles.cairoW800Grey
                           .copyWith(fontSize: 0.035 * screenWidth)),
                   SizedBox(height: 0.015 * screenHeight),
                   const LoginForm(),

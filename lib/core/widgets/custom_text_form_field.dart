@@ -33,6 +33,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       textDirection: TextDirection.rtl,
       child: widget.obscureText
           ? TextFormField(
+            textInputAction: TextInputAction.next,
               cursorColor: AppColors.primaryColor,
               decoration: InputDecoration(
                 border: border(),
@@ -64,6 +65,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               validator: validator,
             )
           : TextFormField(
+            textInputAction: TextInputAction.next,
             minLines: 1,
             maxLines: 10,
               cursorColor: AppColors.primaryColor,

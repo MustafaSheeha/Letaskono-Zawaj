@@ -25,7 +25,9 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
       widget: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          SizedBox(height: 0.02 * screenHeight),
           const CustomHeaderTitle(headerTitle: AppStrings.generalInfo),
+          SizedBox(height: 0.01 * screenHeight),
           const Text(AppStrings.martialStatus,
               style: AppTextStyles.cairoW300PrimaryColor),
           SizedBox(height: 0.01 * screenHeight),
@@ -84,7 +86,7 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
                   selectedValue: BlocProvider.of<AuthCubit>(context)
                       .createMaleProfileModel
                       .educationalDegree,
-                  dropdownButtonList: DropdownButtonList.nationalityList,
+                  dropdownButtonList: DropdownButtonList.educationalDegreeList,
                 )
               : DropdownButtonWidget(
                   selectedValue: BlocProvider.of<AuthCubit>(context)
@@ -100,7 +102,7 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
             obscureText: false,
             onChanged: (p0) {},
           ),
-          SizedBox(height: 0.01 * screenHeight),
+          SizedBox(height: 0.02 * screenHeight),
         ],
       ),
     );

@@ -33,3 +33,15 @@ final class PasswordResetFailureState extends AuthState {
 }
 
 final class TermsAndConditionState extends AuthState {}
+
+
+final class SetGenderState extends AuthState {}
+
+final class ConnectionLoadingState extends AuthState {}
+final class ConnectionSuccessState extends AuthState {}
+final class ConnectionFailureState extends AuthState {
+  final String errorMessege;
+
+  ConnectionFailureState({required this.errorMessege});
+
+}

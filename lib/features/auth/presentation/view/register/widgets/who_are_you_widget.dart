@@ -28,10 +28,12 @@ class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         CustomElevatedButton(
-
             onPressed: () {
-              BlocProvider.of<AuthCubit>(context).registerationUserModel.gender='Female';
+              BlocProvider.of<AuthCubit>(context)
+                  .registerationUserModel
+                  .gender = 'Female';
               setState(() {
+                BlocProvider.of<AuthCubit>(context).setGender(true);
                 womanButtonColor = AppColors.primaryColor;
                 womanTextColor = AppColors.white;
 
@@ -44,8 +46,11 @@ class _WhoAreYouWidgetState extends State<WhoAreYouWidget> {
             backgroundColor: womanButtonColor),
         CustomElevatedButton(
             onPressed: () {
-              BlocProvider.of<AuthCubit>(context).registerationUserModel.gender='Male';
+              BlocProvider.of<AuthCubit>(context)
+                  .registerationUserModel
+                  .gender = 'Male';
               setState(() {
+                BlocProvider.of<AuthCubit>(context).setGender(true);
                 manButtonColor = AppColors.primaryColor;
                 manTextColor = AppColors.white;
 

@@ -14,10 +14,13 @@ showAwesomeSnackbar({
     // elevation: 0,
     behavior: SnackBarBehavior.floating,
     backgroundColor: Colors.transparent,
-    content: AwesomeSnackbarContent(
-      title: title,
-      message: message,
-      contentType: contentType,
+    content: Directionality(
+      textDirection: TextDirection.rtl,
+      child: AwesomeSnackbarContent(
+        title: title,
+        message: message,
+        contentType: contentType,
+      ),
     ),
   ));
 }

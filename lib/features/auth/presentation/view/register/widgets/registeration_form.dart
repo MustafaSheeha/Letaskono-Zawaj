@@ -37,6 +37,12 @@ class RegisterationForm extends StatelessWidget {
               title: AppStrings.someThingWentWrong,
               message: state.errorMessege,
               contentType: ContentType.failure);
+        } else if (state is ConnectionFailureState) {
+          showAwesomeSnackbar(
+              context: context,
+              title: AppStrings.someThingWentWrong,
+              message: state.errorMessege,
+              contentType: ContentType.failure);
         }
       },
       builder: (context, state) {
@@ -46,7 +52,7 @@ class RegisterationForm extends StatelessWidget {
           child: Column(
             children: [
               const WhoAreYouWidget(),
-              SizedBox(height: 0.03* screenHeight),
+              SizedBox(height: 0.03 * screenHeight),
               CustomTextFormField(
                   hintText: AppStrings.nameInArabic,
                   keyboardType: TextInputType.text,
@@ -80,21 +86,41 @@ class RegisterationForm extends StatelessWidget {
                   prefixIcon: const Icon(Icons.lock),
                   obscureText: true),
               const RegisterationTerms(),
-              state is RegisterLoadingState
+              state is ConnectionLoadingState
                   ? const Center(child: CircularProgressIndicator())
-                  : CustomElevatedButton(
-                      backgroundColor: !authCubit.termsAndConditionCheckBox
-                          ? AppColors.grey
-                          : AppColors.primaryColor,
-                      onPressed: () {
-                        if (authCubit.termsAndConditionCheckBox == true) {
-                          if (authCubit.registerFormKey.currentState!
-                              .validate()) {
-                            authCubit.createUserWithEmailAndPassword();
-                          }
-                        }
-                      },
-                      text: AppStrings.register),
+                  : state is RegisterLoadingState
+                      ? const Center(child: CircularProgressIndicator())
+                      : CustomElevatedButton(
+                          backgroundColor: !authCubit.termsAndConditionCheckBox
+                              ? AppColors.grey
+                              : AppColors.primaryColor,
+                          onPressed: () {
+                            if (authCubit.isGender == true) {
+                              if (authCubit.registerationUserModel.phone !=
+                                  null) {
+                                if (authCubit.termsAndConditionCheckBox ==
+                                    true) {
+                                  if (authCubit.registerFormKey.currentState!
+                                      .validate()) {
+                                    authCubit.createUserWithEmailAndPassword();
+                                  }
+                                }
+                              } else {
+                                showAwesomeSnackbar(
+                                    context: context,
+                                    title: AppStrings.warning,
+                                    message: AppStrings.shouldAssignPhone,
+                                    contentType: ContentType.warning);
+                              }
+                            } else {
+                              showAwesomeSnackbar(
+                                  context: context,
+                                  title: AppStrings.warning,
+                                  message: AppStrings.shouldAssignGender,
+                                  contentType: ContentType.warning);
+                            }
+                          },
+                          text: AppStrings.register),
             ],
           ),
         );

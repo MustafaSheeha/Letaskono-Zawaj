@@ -19,13 +19,18 @@ class CustomPhoneField extends StatelessWidget {
     // final screenWidth = MediaQuery.of(context).size.width;
     // final screenHeight = MediaQuery.of(context).size.height;
     return IntlPhoneField(
-      
       // autovalidateMode: AutovalidateMode.always,
 
       cursorColor: AppColors.primaryColor,
       dropdownTextStyle: AppTextStyles.cairoW800PrimaryColor,
       dropdownIcon: dropdownIcon(),
-      validator: validator,
+      validator: (value) {
+        if (value!.number.isEmpty) {
+          return AppStrings.isRequired;
+        } else {
+          return null;
+        }
+      },
       onChanged: onChanged,
       textAlign: TextAlign.end,
       textInputAction: TextInputAction.next,

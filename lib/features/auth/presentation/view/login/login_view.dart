@@ -26,11 +26,13 @@ class LoginView extends StatelessWidget {
               SizedBox(height: 0.15 * screenHeight),
               AuthContainer(
                 widget: Column(children: [
-                  Text(AppStrings.welcome,
+                  Text(AppStrings.welcomeBack,
                       style: AppTextStyles.cairoW800PrimaryColor
                           .copyWith(fontSize: 0.08 * screenWidth)),
+                  SizedBox(height: 0.015 * screenHeight),
+
                   Text(AppStrings.loginIntoYourAccount,
-                      style: AppTextStyles.cairoW800Grey
+                      style: AppTextStyles.cairoW400Black
                           .copyWith(fontSize: 0.035 * screenWidth)),
                   SizedBox(height: 0.015 * screenHeight),
                   const LoginForm(),

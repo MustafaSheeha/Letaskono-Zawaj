@@ -42,6 +42,12 @@ class LoginForm extends StatelessWidget {
               title: AppStrings.someThingWentWrong,
               message: state.errorMessege,
               contentType: ContentType.failure);
+        } else if (state is ConnectionFailureState) {
+          showAwesomeSnackbar(
+              context: context,
+              title: AppStrings.someThingWentWrong,
+              message: state.errorMessege,
+              contentType: ContentType.failure);
         }
       },
       builder: (context, state) {
@@ -68,15 +74,18 @@ class LoginForm extends StatelessWidget {
                   prefixIcon: const Icon(Icons.lock),
                   obscureText: true),
               SizedBox(height: 0.015 * screenHeight),
-              state is LoginLoadingState
+              state is ConnectionLoadingState
                   ? const Center(child: CircularProgressIndicator())
-                  : CustomElevatedButton(
-                      onPressed: () {
-                        if (authCubit.loginFormKey.currentState!.validate()) {
-                          authCubit.signInWithEmailAndPassword();
-                        }
-                      },
-                      text: AppStrings.login),
+                  : state is LoginLoadingState
+                      ? const Center(child: CircularProgressIndicator())
+                      : CustomElevatedButton(
+                          onPressed: () {
+                            if (authCubit.loginFormKey.currentState!
+                                .validate()) {
+                              authCubit.signInWithEmailAndPassword();
+                            }
+                          },
+                          text: AppStrings.login),
             ],
           ),
         );
@@ -87,8 +96,7 @@ class LoginForm extends StatelessWidget {
   Future<void> customFutureDelayed(BuildContext context) {
     return Future.delayed(
       const Duration(seconds: 2),
-      () => naviPushReplacementNamed(
-          context, AppRoutes.createProfile),
+      () => naviPushReplacementNamed(context, AppRoutes.createProfile),
     );
   }
 }

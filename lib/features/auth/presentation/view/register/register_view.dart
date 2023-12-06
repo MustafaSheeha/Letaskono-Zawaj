@@ -31,8 +31,10 @@ class RegisterView extends StatelessWidget {
                   Text(AppStrings.welcome,
                       style: AppTextStyles.cairoW800PrimaryColor
                           .copyWith(fontSize: 0.08 * screenWidth)),
+                  SizedBox(height: 0.015 * screenHeight),
+
                   Text(AppStrings.createNewAccountToInteract,
-                      style: AppTextStyles.cairoW800Grey
+                      style: AppTextStyles.cairoW400Black
                           .copyWith(fontSize: 0.035 * screenWidth)),
                   SizedBox(height: 0.015 * screenHeight),
                   const RegisterationForm(),

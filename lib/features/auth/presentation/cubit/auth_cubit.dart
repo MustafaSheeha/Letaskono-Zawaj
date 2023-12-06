@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +30,19 @@ class AuthCubit extends Cubit<AuthState> {
     emit(TermsAndConditionState());
   }
 
+  void setGender(newValue) {
+    isGender = newValue;
+    emit(SetGenderState());
+  }
+
   Future<void> createUserWithEmailAndPassword() async {
+    emit(ConnectionLoadingState());
     if (await dataConnectionChecker.hasConnection) {
       try {
         emit(RegisterLoadingState());
         await startCreateUserWithEmailAndPassword();
         await sendEmailVerification();
+        await saveregisterationUserModel();
         emit(RegisterSuccessState());
       } on FirebaseAuthException catch (e) {
         handlingRegisterationFirebaseAuthException(e);
@@ -44,8 +52,10 @@ class AuthCubit extends Cubit<AuthState> {
         print(e.toString());
         print('*********************************************');
       }
+      emit(ConnectionSuccessState());
     } else {
-      emit(RegisterFailureState(errorMessege: 'لا يوجد لديك اتصال بالانترنت'));
+      emit(ConnectionFailureState(
+          errorMessege: AppStrings.noInternetConnection));
     }
   }
 
@@ -71,6 +81,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signInWithEmailAndPassword() async {
+    emit(ConnectionLoadingState());
     if (await dataConnectionChecker.hasConnection) {
       try {
         emit(LoginLoadingState());
@@ -88,7 +99,8 @@ class AuthCubit extends Cubit<AuthState> {
         print('*********************************************');
       }
     } else {
-      emit(LoginFailureState(errorMessege: 'لا يوجد لديك اتصال بالانترنت'));
+      emit(ConnectionFailureState(
+          errorMessege: AppStrings.noInternetConnection));
     }
   }
 
@@ -111,6 +123,9 @@ class AuthCubit extends Cubit<AuthState> {
       print(AppStrings.invalidEmail);
     } else if (e.code == 'invalid-credential') {
       emit(LoginFailureState(errorMessege: AppStrings.invalidCredential));
+      print(AppStrings.invalidCredential);
+    } else if (e.code == 'too-many-requests') {
+      emit(LoginFailureState(errorMessege: AppStrings.tooManyRequests));
       print(AppStrings.invalidCredential);
     } else {
       emit(LoginFailureState(errorMessege: e.toString()));
@@ -139,5 +154,19 @@ class AuthCubit extends Cubit<AuthState> {
     await FirebaseAuth.instance.sendPasswordResetEmail(
       email: registerationUserModel.email!,
     );
+  }
+
+  Future<void> saveregisterationUserModel() async {
+    var db = FirebaseFirestore.instance;
+    final collectionRef = db.collection("users");
+    final docRef = collectionRef
+        .withConverter(
+          fromFirestore: RegisterationUserModel.fromFirestore,
+          toFirestore:
+              (RegisterationUserModel registerationUserModel, options) =>
+                  registerationUserModel.toFirestore(),
+        )
+        .doc("${registerationUserModel.email}");
+    await docRef.set(registerationUserModel);
   }
 }

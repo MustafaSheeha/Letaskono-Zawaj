@@ -88,6 +88,7 @@ abstract class AppStrings {
   static const wrongPassword = 'كلمة السر غير صحيحة';
   static const invalidEmail = 'البريد الالكترونى مكتوب بصيغة خاطئ';
   static const invalidCredential = 'البريد الالكترونى أو كلمة السر غير صحيحة';
+  static const tooManyRequests = 'تم حجب جميع الطلبات مؤقتا الصادرة من جهازك ,يمكنك المحاولة مرة أخرى بعد قليل';
   static const someThingWentWrong = 'حدث خطأ';
   static const pleaseTryAgainLater = 'برجاء المحاولة فى وقت لاحق';
   static const passwordResetEmailSent =
@@ -149,4 +150,8 @@ abstract class AppStrings {
   static const searchPage = 'ابحث عن زوجك';
   static const requestPage = 'طلبات القبول';
   static const favoritePage = 'قائمة الحفظ';
+  static const noInternetConnection =  'لا يوجد لديك اتصال بالانترنت';
+  static const warning =  'تنبيه';
+  static const shouldAssignGender =  'لابد من تحديد هويتك لتتمكن من متابعة التسجيل';
+  static const shouldAssignPhone =  'لابد من تحديد رقم الهاتف لتتمكن من متابعة التسجيل';
 }

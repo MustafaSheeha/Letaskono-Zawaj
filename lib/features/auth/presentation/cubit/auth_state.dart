@@ -73,4 +73,25 @@ final class CreateProfileFailureState extends AuthState {
 
   CreateProfileFailureState({required this.errorMessege});
 }
+
+// //////////////////////////////////////////////////////////////////////////////////////
+final class FrontSideImagePickerLoadingState extends AuthState {}
+
+final class FrontSideImagePickerSuccessState extends AuthState {}
+
+final class FrontSideImagePickerFailureState extends AuthState {
+  final String errorMessege;
+
+  FrontSideImagePickerFailureState({required this.errorMessege});
+}
+// //////////////////////////////////////////////////////////////////////////////////////
+final class BackSideImagePickerLoadingState extends AuthState {}
+
+final class BackSideImagePickerSuccessState extends AuthState {}
+
+final class BackSideImagePickerFailureState extends AuthState {
+  final String errorMessege;
+
+  BackSideImagePickerFailureState({required this.errorMessege});
+}
 // //////////////////////////////////////////////////////////////////////////////////////

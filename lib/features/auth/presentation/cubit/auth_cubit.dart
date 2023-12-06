@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_female_profile_model.dart';
 import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_male_profile_model.dart';
 import 'package:letaskono_zawaj/core/models/user_model.dart';
@@ -13,7 +16,8 @@ import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
   DataConnectionChecker dataConnectionChecker = DataConnectionChecker();
-  // final String? emailQuery = FirebaseAuth.instance.currentUser!.email;
+  File? frontSideImage;
+  File? backSideImage;
 
   GlobalKey<FormState> registerFormKey = GlobalKey();
   GlobalKey<FormState> loginFormKey = GlobalKey();
@@ -249,5 +253,28 @@ class AuthCubit extends Cubit<AuthState> {
       emit(GetGenderFailureState(errorMessege: e.toString()));
     }
     return userModel.gender;
+  }
+
+  Future frontSideImagePickFromGallery() async {
+    try {
+      emit(FrontSideImagePickerLoadingState());
+      final returnedImage =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+      frontSideImage = File(returnedImage!.path);
+      emit(FrontSideImagePickerSuccessState());
+    } on Exception catch (e) {
+      emit(FrontSideImagePickerFailureState(errorMessege: e.toString()));
+    }
+  }
+  Future backSideImagePickFromGallery() async {
+    try {
+      emit(BackSideImagePickerLoadingState());
+      final returnedImage =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+      backSideImage = File(returnedImage!.path);
+      emit(BackSideImagePickerSuccessState());
+    } on Exception catch (e) {
+      emit(BackSideImagePickerFailureState(errorMessege: e.toString()));
+    }
   }
 }

@@ -36,6 +36,7 @@ dependencies:
   data_connection_checker_tv: ^0.3.5-nullsafety
   firebase_auth: ^4.15.0
   firebase_core: ^2.24.0
+  firebase_storage: ^11.5.3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3

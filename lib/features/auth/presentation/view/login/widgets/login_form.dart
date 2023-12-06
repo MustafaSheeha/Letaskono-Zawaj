@@ -60,7 +60,7 @@ class LoginForm extends StatelessWidget {
                   hintText: AppStrings.email,
                   keyboardType: TextInputType.text,
                   onChanged: (email) {
-                    authCubit.registerationUserModel.email = email;
+                    authCubit.userModel.email = email;
                   },
                   prefixIcon: const Icon(Icons.alternate_email),
                   obscureText: false),
@@ -69,7 +69,7 @@ class LoginForm extends StatelessWidget {
                   hintText: AppStrings.password,
                   keyboardType: TextInputType.text,
                   onChanged: (password) {
-                    authCubit.registerationUserModel.password = password;
+                    authCubit.userModel.password = password;
                   },
                   prefixIcon: const Icon(Icons.lock),
                   obscureText: true),
@@ -79,10 +79,11 @@ class LoginForm extends StatelessWidget {
                   : state is LoginLoadingState
                       ? const Center(child: CircularProgressIndicator())
                       : CustomElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (authCubit.loginFormKey.currentState!
                                 .validate()) {
-                              authCubit.signInWithEmailAndPassword();
+                              await authCubit.signInWithEmailAndPassword();
+                              
                             }
                           },
                           text: AppStrings.login),

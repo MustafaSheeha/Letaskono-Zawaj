@@ -47,14 +47,19 @@ class MaleForm extends StatelessWidget {
               const ReligiousInfoForm(),
               const MarriageInfoForm(),
               const IdentityConfirmationForm(),
-              CustomElevatedButton(
-                  onPressed: () {
-                    if (authCubit.createMaleProfileFormKey.currentState!
-                        .validate()) {
-                      BlocProvider.of<AuthCubit>(context).saveUserModel();
-                    }
-                  },
-                  text: AppStrings.saveData),
+              state is ConnectionLoadingState
+                  ? const Center(child: CircularProgressIndicator())
+                  : state is CreateProfileLoadingState
+                      ? const Center(child: CircularProgressIndicator())
+                      : CustomElevatedButton(
+                          onPressed: () {
+                            if (authCubit.createMaleProfileFormKey.currentState!
+                                .validate()) {
+                              BlocProvider.of<AuthCubit>(context)
+                                  .saveUserModel();
+                            }
+                          },
+                          text: AppStrings.saveData),
               SizedBox(height: 0.03 * screenHeight),
             ],
           ),

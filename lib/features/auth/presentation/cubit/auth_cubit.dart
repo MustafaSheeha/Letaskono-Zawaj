@@ -21,15 +21,15 @@ class AuthCubit extends Cubit<AuthState> {
   GlobalKey<FormState> createMaleProfileFormKey = GlobalKey();
   GlobalKey<FormState> createFemaleProfileFormKey = GlobalKey();
   bool termsAndConditionCheckBox = false;
-  bool isGender = false;
+  bool isGender = true;
   final RegisterationUserModel registerationUserModel =
       RegisterationUserModel();
-  // final UserModel userModel = UserModel();
+  final UserModel userModel = UserModel();
   final CreateMaleProfileModel createMaleProfileModel =
       CreateMaleProfileModel();
   final CreateFemaleProfileModel createFemaleProfileModel =
       CreateFemaleProfileModel();
-
+  void maleOrFemalForm() {}
   void updateTermsAndConditionCheckBox(newValue) {
     termsAndConditionCheckBox = newValue;
     emit(TermsAndConditionState());
@@ -91,6 +91,7 @@ class AuthCubit extends Cubit<AuthState> {
       try {
         emit(LoginLoadingState());
         await startSignInWithEmailAndPassword();
+        // await getUserModelGender(userModel.email);
         !FirebaseAuth.instance.currentUser!.emailVerified
             ? await sendEmailVerification()
             : null;
@@ -111,8 +112,8 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> startSignInWithEmailAndPassword() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: registerationUserModel.email!,
-      password: registerationUserModel.password!,
+      email: userModel.email!,
+      password: userModel.password!,
     );
   }
 
@@ -195,25 +196,33 @@ class AuthCubit extends Cubit<AuthState> {
                   createMaleProfileModel.toFirestore(),
         )
         .doc(FirebaseAuth.instance.currentUser?.email);
-    try {
-      emit(CreateProfileLoadingState());
-      var gender = await getUserModelGender(FirebaseAuth.instance.currentUser?.email);
-      if (gender == "Male") {
-        await maleDocRef.set(
-            createMaleProfileModel,
-            SetOptions(
-              merge: true,
-            ));
-      } else {
-        await femaleDocRef.set(
-            createFemaleProfileModel,
-            SetOptions(
-              merge: true,
-            ));
+    emit(ConnectionLoadingState());
+
+    if (await dataConnectionChecker.hasConnection) {
+      try {
+        emit(CreateProfileLoadingState());
+
+        await getUserModelGender(FirebaseAuth.instance.currentUser?.email);
+        if (userModel.gender == "Male") {
+          await maleDocRef.set(
+              createMaleProfileModel,
+              SetOptions(
+                merge: true,
+              ));
+        } else {
+          await femaleDocRef.set(
+              createFemaleProfileModel,
+              SetOptions(
+                merge: true,
+              ));
+        }
+        emit(CreateProfileSuccessState());
+      } on Exception catch (e) {
+        emit(CreateProfileFailureState(errorMessege: e.toString()));
       }
-      emit(CreateProfileSuccessState());
-    } on Exception catch (e) {
-      emit(CreateProfileFailureState(errorMessege: e.toString()));
+    } else {
+      emit(ConnectionFailureState(
+          errorMessege: AppStrings.noInternetConnection));
     }
   }
 
@@ -221,16 +230,24 @@ class AuthCubit extends Cubit<AuthState> {
     var db = FirebaseFirestore.instance;
     String? gender;
     final emailDocRef = db.collection("users").doc(email);
-    emailDocRef.get().then(
-      (DocumentSnapshot doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        gender = data["gender"];
-        print('************************************************************');
-        print(gender);
-        print('************************************************************');
-      },
-      onError: (e) => print("Error getting document: $e"),
-    );
-    return gender;
+    try {
+      emit(GetGenderLoadingState());
+      await emailDocRef.get().then(
+        (DocumentSnapshot doc) {
+          final data = doc.data() as Map<String, dynamic>;
+          gender = data["gender"];
+          if (gender == "Male") {
+            userModel.gender = "Male";
+          } else {
+            userModel.gender = "Female";
+          }
+        },
+        onError: (e) => print("Error getting document: $e"),
+      );
+      emit(GetGenderSuccessState());
+    } on Exception catch (e) {
+      emit(GetGenderFailureState(errorMessege: e.toString()));
+    }
+    return userModel.gender;
   }
 }

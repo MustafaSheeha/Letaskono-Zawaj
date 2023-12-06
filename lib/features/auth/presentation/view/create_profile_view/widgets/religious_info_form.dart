@@ -8,13 +8,19 @@ import 'package:letaskono_zawaj/core/widgets/dropdown_button_widget.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/widgets/auth_container.dart';
 
-class ReligiousInfoForm extends StatelessWidget {
+class ReligiousInfoForm extends StatefulWidget {
   const ReligiousInfoForm({super.key});
 
+  @override
+  State<ReligiousInfoForm> createState() => _ReligiousInfoFormState();
+}
+
+class _ReligiousInfoFormState extends State<ReligiousInfoForm> {
   @override
   Widget build(BuildContext context) {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
     return AuthContainer(
       widget: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -27,13 +33,29 @@ class ReligiousInfoForm extends StatelessWidget {
             style: AppTextStyles.cairoW300PrimaryColor,
           ),
           SizedBox(height: 0.01 * screenHeight),
-          DropdownButtonWidget(
-              selectedValue: BlocProvider.of<AuthCubit>(context)
-                  .createMaleProfileModel
-                  .prayerCommitment,
-              dropdownButtonList: DropdownButtonList.prayerCommitmentList),
+          authCubit.isGender
+              ?DropdownButtonWidget(
+                  onChanged: (p0) {
+                    setState(() {
+                      authCubit.createMaleProfileModel.prayerCommitment = p0;
+                    });
+                  },
+                  selectedValue:
+                      authCubit.createMaleProfileModel.prayerCommitment,
+                  dropdownButtonList: DropdownButtonList.prayerCommitmentList,
+                )
+              : DropdownButtonWidget(
+                  onChanged: (p0) {
+                    setState(() {
+                      authCubit.createFemaleProfileModel.prayerCommitment = p0;
+                    });
+                  },
+                  selectedValue:
+                      authCubit.createFemaleProfileModel.prayerCommitment,
+                  dropdownButtonList: DropdownButtonList.prayerCommitmentList,
+                ),
           SizedBox(height: 0.01 * screenHeight),
-          BlocProvider.of<AuthCubit>(context).isGender
+          authCubit.isGender
               ? const Text(
                   AppStrings.faceStyle,
                   style: AppTextStyles.cairoW300PrimaryColor,
@@ -43,28 +65,54 @@ class ReligiousInfoForm extends StatelessWidget {
                   style: AppTextStyles.cairoW300PrimaryColor,
                 ),
           SizedBox(height: 0.01 * screenHeight),
-          BlocProvider.of<AuthCubit>(context).isGender
-              ? DropdownButtonWidget(
-                  selectedValue: BlocProvider.of<AuthCubit>(context)
-                      .createMaleProfileModel
-                      .faceStyle,
-                  dropdownButtonList: DropdownButtonList.faceStyleList)
+          authCubit.isGender
+              ?DropdownButtonWidget(
+                  onChanged: (p0) {
+                    setState(() {
+                      authCubit.createMaleProfileModel.faceStyle = p0;
+                    });
+                  },
+                  selectedValue:
+                      authCubit.createMaleProfileModel.faceStyle,
+                  dropdownButtonList: DropdownButtonList.faceStyleList,
+                )
               : DropdownButtonWidget(
-                  selectedValue: BlocProvider.of<AuthCubit>(context)
-                      .createFemaleProfileModel
-                      .clothStyle,
-                  dropdownButtonList: DropdownButtonList.clothStyleList),
+                  onChanged: (p0) {
+                    setState(() {
+                      authCubit.createFemaleProfileModel.clothStyle = p0;
+                    });
+                  },
+                  selectedValue:
+                      authCubit.createFemaleProfileModel.clothStyle,
+                  dropdownButtonList: DropdownButtonList.clothStyleList,
+                ),
           SizedBox(height: 0.01 * screenHeight),
           const Text(
             AppStrings.quranMemorizing,
             style: AppTextStyles.cairoW300PrimaryColor,
           ),
           SizedBox(height: 0.01 * screenHeight),
-          DropdownButtonWidget(
-              selectedValue: BlocProvider.of<AuthCubit>(context)
-                  .createMaleProfileModel
-                  .quranMemorizing,
-              dropdownButtonList: DropdownButtonList.quranMemorizingList),
+         authCubit.isGender
+              ?DropdownButtonWidget(
+                  onChanged: (p0) {
+                    setState(() {
+                      authCubit.createMaleProfileModel.quranMemorizing = p0;
+                    });
+                  },
+                  selectedValue:
+                      authCubit.createMaleProfileModel.quranMemorizing,
+                  dropdownButtonList: DropdownButtonList.quranMemorizingList,
+                )
+              : DropdownButtonWidget(
+                  onChanged: (p0) {
+                    setState(() {
+                      authCubit.createFemaleProfileModel.quranMemorizing = p0;
+                    });
+                  },
+                  selectedValue:
+                      authCubit.createFemaleProfileModel.quranMemorizing,
+                  dropdownButtonList: DropdownButtonList.quranMemorizingList,
+                ),
           SizedBox(height: 0.01 * screenHeight),
           !BlocProvider.of<AuthCubit>(context).isGender
               ? const Text(
@@ -73,12 +121,17 @@ class ReligiousInfoForm extends StatelessWidget {
                 )
               : const SizedBox(),
           SizedBox(height: 0.01 * screenHeight),
-          !BlocProvider.of<AuthCubit>(context).isGender
-              ? DropdownButtonWidget(
-                  selectedValue: BlocProvider.of<AuthCubit>(context)
-                      .createFemaleProfileModel
-                      .acceptToWearNiqab,
-                  dropdownButtonList: DropdownButtonList.acceptToWearNiqabList)
+          !authCubit.isGender
+              ?DropdownButtonWidget(
+                  onChanged: (p0) {
+                    setState(() {
+                      authCubit.createFemaleProfileModel.acceptToWearNiqab = p0;
+                    });
+                  },
+                  selectedValue:
+                      authCubit.createFemaleProfileModel.acceptToWearNiqab,
+                  dropdownButtonList: DropdownButtonList.acceptToWearNiqabList,
+                )
               : const SizedBox(),
           SizedBox(height: 0.02 * screenHeight),
         ],

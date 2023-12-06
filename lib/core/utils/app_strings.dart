@@ -154,4 +154,6 @@ abstract class AppStrings {
   static const warning =  'تنبيه';
   static const shouldAssignGender =  'لابد من تحديد هويتك لتتمكن من متابعة التسجيل';
   static const shouldAssignPhone =  'لابد من تحديد رقم الهاتف لتتمكن من متابعة التسجيل';
+  static const profileCreatedSuccessfully =  'تم انشاء ملفك الشخصى بنجاح';
+  static const youCanSendRecieveRequests =  'يمكنك الان ارسال واستقبال الطلبات';
 }

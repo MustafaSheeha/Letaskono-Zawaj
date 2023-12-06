@@ -9,19 +9,24 @@ import 'package:letaskono_zawaj/core/widgets/dropdown_button_widget.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/widgets/auth_container.dart';
 
-class FemaleParentInfoForm extends StatelessWidget {
+class FemaleParentInfoForm extends StatefulWidget {
   const FemaleParentInfoForm({super.key});
 
+  @override
+  State<FemaleParentInfoForm> createState() => _FemaleParentInfoFormState();
+}
+
+class _FemaleParentInfoFormState extends State<FemaleParentInfoForm> {
   @override
   Widget build(BuildContext context) {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
     return AuthContainer(
         widget: Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-          SizedBox(height: 0.02 * screenHeight),
-
+        SizedBox(height: 0.02 * screenHeight),
         const CustomHeaderTitle(headerTitle: AppStrings.parentInfo),
         SizedBox(height: 0.01 * screenHeight),
         const Text(
@@ -30,11 +35,16 @@ class FemaleParentInfoForm extends StatelessWidget {
         ),
         SizedBox(height: 0.01 * screenHeight),
         DropdownButtonWidget(
-            selectedValue: BlocProvider.of<AuthCubit>(context)
-                .createFemaleProfileModel
-                .isParentKnowAboutLetaskono,
-            dropdownButtonList:
-                DropdownButtonList.isParentKnowAboutLetaskonoList),
+          onChanged: (p0) {
+            setState(() {
+              authCubit.createFemaleProfileModel.isParentKnowAboutLetaskono =
+                  p0;
+            });
+          },
+          selectedValue:
+              authCubit.createFemaleProfileModel.isParentKnowAboutLetaskono,
+          dropdownButtonList: DropdownButtonList.isParentKnowAboutLetaskonoList,
+        ),
         SizedBox(height: 0.01 * screenHeight),
         const Text(
           AppStrings.youAcceptToMarryWithoutQaamah,
@@ -43,11 +53,17 @@ class FemaleParentInfoForm extends StatelessWidget {
         ),
         SizedBox(height: 0.01 * screenHeight),
         DropdownButtonWidget(
-            selectedValue: BlocProvider.of<AuthCubit>(context)
-                .createFemaleProfileModel
-                .youAcceptToMarryWithoutQaamah,
-            dropdownButtonList:
-                DropdownButtonList.youAcceptToMarryWithoutQaamahList),
+          onChanged: (p0) {
+            setState(() {
+              authCubit.createFemaleProfileModel.youAcceptToMarryWithoutQaamah =
+                  p0;
+            });
+          },
+          selectedValue:
+              authCubit.createFemaleProfileModel.youAcceptToMarryWithoutQaamah,
+          dropdownButtonList:
+              DropdownButtonList.youAcceptToMarryWithoutQaamahList,
+        ),
         SizedBox(height: 0.01 * screenHeight),
         const Text(
           AppStrings.parentAcceptToMarryWithoutQaamah,
@@ -56,17 +72,27 @@ class FemaleParentInfoForm extends StatelessWidget {
         ),
         SizedBox(height: 0.01 * screenHeight),
         DropdownButtonWidget(
-            selectedValue: BlocProvider.of<AuthCubit>(context)
-                .createFemaleProfileModel
-                .parentAcceptToMarryWithoutQaamah,
-            dropdownButtonList:
-                DropdownButtonList.parentAcceptToMarryWithoutQaamahhList),
+          onChanged: (p0) {
+            setState(() {
+              authCubit.createFemaleProfileModel
+                  .parentAcceptToMarryWithoutQaamah = p0;
+            });
+          },
+          selectedValue: authCubit
+              .createFemaleProfileModel.parentAcceptToMarryWithoutQaamah,
+          dropdownButtonList:
+              DropdownButtonList.parentAcceptToMarryWithoutQaamahhList,
+        ),
         SizedBox(height: 0.01 * screenHeight),
-        const Text(AppStrings.parentPhone, style: AppTextStyles.cairoW300PrimaryColor),
+        const Text(AppStrings.parentPhone,
+            style: AppTextStyles.cairoW300PrimaryColor),
         SizedBox(height: 0.01 * screenHeight),
         CustomTextFormField(
+          keyboardType: TextInputType.phone,
           obscureText: false,
-          onChanged: (p0) {},
+          onChanged: (p0) {
+            authCubit.createFemaleProfileModel.parentPhone = p0;
+          },
         ),
         SizedBox(height: 0.02 * screenHeight),
       ],

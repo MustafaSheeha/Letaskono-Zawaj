@@ -12,10 +12,13 @@ import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
   DataConnectionChecker dataConnectionChecker = DataConnectionChecker();
+  final String? email = FirebaseAuth.instance.currentUser!.email;
 
   GlobalKey<FormState> registerFormKey = GlobalKey();
   GlobalKey<FormState> loginFormKey = GlobalKey();
   GlobalKey<FormState> forgotPasswordFormKey = GlobalKey();
+  GlobalKey<FormState> createMaleProfileFormKey = GlobalKey();
+  GlobalKey<FormState> createFemaleProfileFormKey = GlobalKey();
   bool termsAndConditionCheckBox = false;
   bool isGender = false;
   final RegisterationUserModel registerationUserModel =
@@ -168,5 +171,64 @@ class AuthCubit extends Cubit<AuthState> {
         )
         .doc("${registerationUserModel.email}");
     await docRef.set(registerationUserModel);
+  }
+
+  Future<void> saveUserModel() async {
+    var db = FirebaseFirestore.instance;
+    final femaleDocRef = db
+        .collection("users")
+        .withConverter(
+          fromFirestore: CreateFemaleProfileModel.fromFirestore,
+          toFirestore:
+              (CreateFemaleProfileModel createFemaleProfileModel, options) =>
+                  createFemaleProfileModel.toFirestore(),
+        )
+        .doc("$email");
+    final maleDocRef = db
+        .collection("users")
+        .withConverter(
+          fromFirestore: CreateMaleProfileModel.fromFirestore,
+          toFirestore:
+              (CreateMaleProfileModel createMaleProfileModel, options) =>
+                  createMaleProfileModel.toFirestore(),
+        )
+        .doc("$email");
+    try {
+      emit(CreateProfileLoadingState());
+      var gender = await getUserModelGender(email);
+      if (gender == "Male") {
+        await maleDocRef.set(
+            createMaleProfileModel,
+            SetOptions(
+              merge: true,
+            ));
+      } else {
+        await femaleDocRef.set(
+            createFemaleProfileModel,
+            SetOptions(
+              merge: true,
+            ));
+      }
+      emit(CreateProfileSuccessState());
+    } on Exception catch (e) {
+      emit(CreateProfileFailureState(errorMessege: e.toString()));
+    }
+  }
+
+  Future<String?> getUserModelGender(String? email) async {
+    var db = FirebaseFirestore.instance;
+    String? gender;
+    final emailDocRef = db.collection("users").doc(email);
+    emailDocRef.get().then(
+      (DocumentSnapshot doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        gender = data["gender"];
+        print('************************************************************');
+        print(gender);
+        print('************************************************************');
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
+    return gender;
   }
 }

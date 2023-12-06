@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_female_profile_model.dart';
 import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_male_profile_model.dart';
+import 'package:letaskono_zawaj/core/models/user_model.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/features/auth/data/registeration_user_model.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
@@ -12,7 +13,7 @@ import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
   DataConnectionChecker dataConnectionChecker = DataConnectionChecker();
-  final String? email = FirebaseAuth.instance.currentUser!.email;
+  // final String? emailQuery = FirebaseAuth.instance.currentUser!.email;
 
   GlobalKey<FormState> registerFormKey = GlobalKey();
   GlobalKey<FormState> loginFormKey = GlobalKey();
@@ -23,6 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
   bool isGender = false;
   final RegisterationUserModel registerationUserModel =
       RegisterationUserModel();
+  // final UserModel userModel = UserModel();
   final CreateMaleProfileModel createMaleProfileModel =
       CreateMaleProfileModel();
   final CreateFemaleProfileModel createFemaleProfileModel =
@@ -183,7 +185,7 @@ class AuthCubit extends Cubit<AuthState> {
               (CreateFemaleProfileModel createFemaleProfileModel, options) =>
                   createFemaleProfileModel.toFirestore(),
         )
-        .doc("$email");
+        .doc(FirebaseAuth.instance.currentUser?.email);
     final maleDocRef = db
         .collection("users")
         .withConverter(
@@ -192,10 +194,10 @@ class AuthCubit extends Cubit<AuthState> {
               (CreateMaleProfileModel createMaleProfileModel, options) =>
                   createMaleProfileModel.toFirestore(),
         )
-        .doc("$email");
+        .doc(FirebaseAuth.instance.currentUser?.email);
     try {
       emit(CreateProfileLoadingState());
-      var gender = await getUserModelGender(email);
+      var gender = await getUserModelGender(FirebaseAuth.instance.currentUser?.email);
       if (gender == "Male") {
         await maleDocRef.set(
             createMaleProfileModel,

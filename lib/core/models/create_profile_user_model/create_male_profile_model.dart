@@ -15,6 +15,7 @@ class CreateMaleProfileModel extends UserModel{
   String? idNumber;
 
   CreateMaleProfileModel({
+    super.userId,
     super.maritalStatus,
     super.currentResidenceCountry,
     super.currentResidenceCity,
@@ -46,6 +47,7 @@ class CreateMaleProfileModel extends UserModel{
     final data = snapshot.data();
     return CreateMaleProfileModel(
       // General Info
+      userId: data?['userId'] as String?,
       maritalStatus: data?['maritalStatus'] as String?,
       currentResidenceCountry: data?['currentResidenceCountry'] as String?,
       currentResidenceCity: data?['currentResidenceCity'] as String?,
@@ -71,8 +73,10 @@ class CreateMaleProfileModel extends UserModel{
     );
   }
 
+  @override
   Map<String, dynamic> toFirestore() => {
         // General Info
+        if (userId != null) 'userId': userId,
         if (maritalStatus != null) 'maritalStatus': maritalStatus,
         if (currentResidenceCountry != null)
           'currentResidenceCountry': currentResidenceCountry,

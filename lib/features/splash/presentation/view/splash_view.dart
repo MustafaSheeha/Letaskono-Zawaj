@@ -6,7 +6,6 @@ import 'package:letaskono_zawaj/core/service/service_locator.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_persistant_bottom_nav_bar.dart';
-import 'package:letaskono_zawaj/features/auth/presentation/view/create_profile_view/create_profile_view.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/on_boarding.dart';
 import 'package:letaskono_zawaj/features/splash/presentation/view/widgets/splash_widget.dart';
@@ -47,7 +46,7 @@ class _SplashViewState extends State<SplashView> {
               : FirebaseAuth.instance.currentUser == null
                   ? const LoginView()
                   : FirebaseAuth.instance.currentUser!.emailVerified
-                      ? CreateProfileView()
+                      ? CustomPersistantBottomNavBar()
                       : const LoginView()),
     );
   }

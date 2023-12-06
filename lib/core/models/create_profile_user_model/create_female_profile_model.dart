@@ -1,13 +1,11 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:letaskono_zawaj/core/models/user_model.dart';
 
 class CreateFemaleProfileModel extends UserModel {
-  
   // Religious Info
   String? clothStyle;
   String? acceptToWearNiqab;
- 
+
   // Parent Info
   String? isParentKnowAboutLetaskono;
   String? youAcceptToMarryWithoutQaamah;
@@ -15,6 +13,7 @@ class CreateFemaleProfileModel extends UserModel {
   String? parentPhone;
 
   CreateFemaleProfileModel({
+    super.userId,
     // General Info
     super.maritalStatus,
     super.currentResidenceCountry,
@@ -49,6 +48,7 @@ class CreateFemaleProfileModel extends UserModel {
     final data = snapshot.data();
     return CreateFemaleProfileModel(
       // General Info
+      userId: data?['userId'] as String?,
       maritalStatus: data?['maritalStatus'] as String?,
       currentResidenceCountry: data?['currentResidenceCountry'] as String?,
       currentResidenceCity: data?['currentResidenceCity'] as String?,
@@ -82,6 +82,7 @@ class CreateFemaleProfileModel extends UserModel {
   @override
   Map<String, dynamic> toFirestore() => {
         // General Info
+        if (userId != null) 'userId': userId,
         if (maritalStatus != null) 'maritalStatus': maritalStatus,
         if (currentResidenceCountry != null)
           'currentResidenceCountry': currentResidenceCountry,

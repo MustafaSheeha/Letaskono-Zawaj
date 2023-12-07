@@ -63,6 +63,7 @@ class FrontSide extends StatelessWidget {
                               const BorderRadius.all(Radius.circular(20)),
                           child: Image.file(
                             authCubit.frontSideImage!,
+                            fit: BoxFit.cover,
                             // height: 0.2 * screenHeight,
                             // width: 0.9 * screenWidth,
                           ),

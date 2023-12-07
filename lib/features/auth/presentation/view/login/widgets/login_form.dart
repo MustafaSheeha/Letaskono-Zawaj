@@ -18,6 +18,8 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
+
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is LoginSuccessState) {
@@ -28,13 +30,23 @@ class LoginForm extends StatelessWidget {
                 message: AppStrings
                     .pleaseActivateYourAccountThroughLinkSentToEmailToLogin,
                 contentType: ContentType.warning);
+          } else if (authCubit.userModel.isCreateProfile == true) {
+            showAwesomeSnackbar(
+                context: context,
+                title: AppStrings.accountLoggedInSuccessfully,
+                message: AppStrings.redirectingToYourAccount,
+                contentType: ContentType.success);
+
+            customFutureDelayed(
+                context, AppRoutes.customPersistantBottomNavBar);
           } else {
             showAwesomeSnackbar(
                 context: context,
                 title: AppStrings.accountLoggedInSuccessfully,
                 message: AppStrings.redirectingToCreateProfile,
                 contentType: ContentType.success);
-            customFutureDelayed(context);
+
+            customFutureDelayed(context, AppRoutes.createProfile);
           }
         } else if (state is LoginFailureState) {
           showAwesomeSnackbar(
@@ -51,7 +63,6 @@ class LoginForm extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
           key: authCubit.loginFormKey,
           child: Column(
@@ -93,10 +104,10 @@ class LoginForm extends StatelessWidget {
     );
   }
 
-  Future<void> customFutureDelayed(BuildContext context) {
+  Future<void> customFutureDelayed(BuildContext context, String path) {
     return Future.delayed(
       const Duration(seconds: 2),
-      () => naviPushReplacementNamed(context, AppRoutes.createProfile),
+      () => naviPushReplacementNamed(context, path),
     );
   }
 }

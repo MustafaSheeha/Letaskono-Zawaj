@@ -1,8 +1,10 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:letaskono_zawaj/core/routes/app_routes.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/functions/awesome_snackbar_content.dart';
+import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
@@ -27,6 +29,7 @@ class MaleForm extends StatelessWidget {
               title: AppStrings.profileCreatedSuccessfully,
               message: AppStrings.youCanSendRecieveRequests,
               contentType: ContentType.success);
+          customFutureDelayed(context);
         }
         if (state is CreateProfileFailureState) {
           showAwesomeSnackbar(
@@ -64,6 +67,14 @@ class MaleForm extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Future<void> customFutureDelayed(BuildContext context) {
+    return Future.delayed(
+      const Duration(seconds: 2),
+      () => naviPushReplacementNamed(
+          context, AppRoutes.customPersistantBottomNavBar),
     );
   }
 }

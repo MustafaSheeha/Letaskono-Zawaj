@@ -5,8 +5,8 @@ import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/on_boarding/data/on_boarding_list.dart';
-import 'package:letaskono_zawaj/features/on_boarding/presentation/view/functions/go_to_next_on_boarding.dart';
-import 'package:letaskono_zawaj/features/on_boarding/presentation/view/functions/set_is_on_boarding_visited.dart';
+import 'package:letaskono_zawaj/features/on_boarding/presentation/functions/go_to_next_on_boarding.dart';
+import 'package:letaskono_zawaj/features/on_boarding/presentation/functions/set_is_on_boarding_visited.dart';
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/widgets/on_boarding_body.dart';
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/widgets/skip_text_widget.dart';
 

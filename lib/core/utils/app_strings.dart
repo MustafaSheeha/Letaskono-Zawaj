@@ -25,7 +25,8 @@ abstract class AppStrings {
   static const activatedFormCount = 'استمارة تم تفعيلها';
   static const intialAcceptCount = 'حالة توافق مبدئى';
   static const engagementCount = 'حالة خطوبة';
-  static const isOnBoardingvisited = 'isOnBoardingvisited';
+  static const isOnBoardingvisitedKey = 'isOnBoardingvisitedKey';
+  static const isCreateProfileKey = 'isCreateProfileKey';
   static const isGender = 'isGender';
   static const register = 'تسجيل';
   static const nameInArabic = 'الاسم باللغة العربية';
@@ -84,6 +85,7 @@ abstract class AppStrings {
   static const iamFemale = 'أنا امراة';
 
   static const weakPassword = 'كلمة السر ضعيفة';
+  static const passwordShouldAtLeastCharacters = 'كلمة السر لابد ألا تقل عن 6 أحرف أو أرقام';
   static const emailAlreadyInUse = 'هذا البريد الالكترونى مسجل من قبل';
   static const userNotFound = 'هذا البريد الالكترونى غير مسجل';
   static const wrongPassword = 'كلمة السر غير صحيحة';

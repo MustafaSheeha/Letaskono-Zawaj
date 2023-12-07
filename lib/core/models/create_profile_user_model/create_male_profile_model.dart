@@ -1,14 +1,13 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:letaskono_zawaj/core/models/user_model.dart';
 
-class CreateMaleProfileModel extends UserModel{
+class CreateMaleProfileModel extends UserModel {
   // General Info
-  
+
   // Religious Info
   String? faceStyle;
- 
+
   // Identity Confirmation
   Image? idFrontSide;
   String? idFrontSideUrl;
@@ -18,6 +17,7 @@ class CreateMaleProfileModel extends UserModel{
 
   CreateMaleProfileModel({
     super.userId,
+    super.isCreateProfile,
     super.maritalStatus,
     super.currentResidenceCountry,
     super.currentResidenceCity,
@@ -52,6 +52,7 @@ class CreateMaleProfileModel extends UserModel{
     return CreateMaleProfileModel(
       // General Info
       userId: data?['userId'] as String?,
+      isCreateProfile: data?['isCreateProfile'] as bool?,
       maritalStatus: data?['maritalStatus'] as String?,
       currentResidenceCountry: data?['currentResidenceCountry'] as String?,
       currentResidenceCity: data?['currentResidenceCity'] as String?,
@@ -83,6 +84,7 @@ class CreateMaleProfileModel extends UserModel{
   Map<String, dynamic> toFirestore() => {
         // General Info
         if (userId != null) 'userId': userId,
+        if (isCreateProfile != null) 'isCreateProfile': isCreateProfile,
         if (maritalStatus != null) 'maritalStatus': maritalStatus,
         if (currentResidenceCountry != null)
           'currentResidenceCountry': currentResidenceCountry,

@@ -14,6 +14,7 @@ class CreateFemaleProfileModel extends UserModel {
 
   CreateFemaleProfileModel({
     super.userId,
+    super.isCreateProfile,
     // General Info
     super.maritalStatus,
     super.currentResidenceCountry,
@@ -49,6 +50,7 @@ class CreateFemaleProfileModel extends UserModel {
     return CreateFemaleProfileModel(
       // General Info
       userId: data?['userId'] as String?,
+      isCreateProfile: data?['isCreateProfile'] as bool?,
       maritalStatus: data?['maritalStatus'] as String?,
       currentResidenceCountry: data?['currentResidenceCountry'] as String?,
       currentResidenceCity: data?['currentResidenceCity'] as String?,
@@ -83,6 +85,7 @@ class CreateFemaleProfileModel extends UserModel {
   Map<String, dynamic> toFirestore() => {
         // General Info
         if (userId != null) 'userId': userId,
+        if (isCreateProfile != null) 'isCreateProfile': isCreateProfile,
         if (maritalStatus != null) 'maritalStatus': maritalStatus,
         if (currentResidenceCountry != null)
           'currentResidenceCountry': currentResidenceCountry,

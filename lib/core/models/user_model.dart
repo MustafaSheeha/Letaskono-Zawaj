@@ -7,6 +7,7 @@ class UserModel {
   String? email;
   String? phone;
   String? password;
+  bool? isCreateProfile;
   // General Info
   String? maritalStatus;
   String? currentResidenceCountry;
@@ -33,6 +34,7 @@ class UserModel {
     this.email,
     this.phone,
     this.password,
+    this.isCreateProfile,
     // General Info
     this.maritalStatus,
     this.currentResidenceCountry,
@@ -66,6 +68,7 @@ class UserModel {
       email: data?['email'] as String?,
       phone: data?['phone'] as String?,
       password: data?['password'] as String?,
+      isCreateProfile: data?['isCreateProfile'] as bool?,
       // General Info
       maritalStatus: data?['maritalStatus'] as String?,
       currentResidenceCountry: data?['currentResidenceCountry'] as String?,
@@ -94,6 +97,7 @@ class UserModel {
         if (email != null) 'email': email,
         if (phone != null) 'phone': phone,
         if (password != null) 'password': password,
+        if (isCreateProfile != null) 'isCreateProfile': isCreateProfile,
         // General Info
         if (maritalStatus != null) 'maritalStatus': maritalStatus,
         if (currentResidenceCountry != null)

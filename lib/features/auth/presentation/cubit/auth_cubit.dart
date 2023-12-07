@@ -27,6 +27,7 @@ class AuthCubit extends Cubit<AuthState> {
   String? backSideImageUrl;
   bool termsAndConditionCheckBox = false;
   bool isGender = true;
+  // bool? isCreateProfile;
 
 // ############################################################################### GlobalKeys
   GlobalKey<FormState> registerFormKey = GlobalKey();
@@ -90,7 +91,8 @@ class AuthCubit extends Cubit<AuthState> {
 
   void handlingRegisterationFirebaseAuthException(FirebaseAuthException e) {
     if (e.code == 'weak-password') {
-      emit(RegisterFailureState(errorMessege: AppStrings.weakPassword));
+      emit(RegisterFailureState(
+          errorMessege: AppStrings.passwordShouldAtLeastCharacters));
       print(AppStrings.weakPassword);
     } else if (e.code == 'email-already-in-use') {
       emit(RegisterFailureState(errorMessege: AppStrings.emailAlreadyInUse));
@@ -115,6 +117,7 @@ class AuthCubit extends Cubit<AuthState> {
         !FirebaseAuth.instance.currentUser!.emailVerified
             ? await sendEmailVerification()
             : null;
+        await getIsCreateProfile(userModel.email);
         emit(LoginSuccessState());
       } on FirebaseAuthException catch (e) {
         handlingLoginFirebaseAuthException(e);
@@ -227,12 +230,14 @@ class AuthCubit extends Cubit<AuthState> {
 
         await getUserModelGender(FirebaseAuth.instance.currentUser?.email);
         if (userModel.gender == "Male") {
+          createMaleProfileModel.isCreateProfile = true;
           await maleDocRef.set(
               createMaleProfileModel,
               SetOptions(
                 merge: true,
               ));
         } else {
+          createFemaleProfileModel.isCreateProfile = true;
           await femaleDocRef.set(
               createFemaleProfileModel,
               SetOptions(
@@ -273,6 +278,42 @@ class AuthCubit extends Cubit<AuthState> {
       emit(GetGenderFailureState(errorMessege: e.toString()));
     }
     return userModel.gender;
+  }
+
+// ############################################################################### getUserModelGender
+  Future<void> getIsCreateProfile(String? email) async {
+    var db = FirebaseFirestore.instance;
+    final emailDocRef = db.collection("users").doc(email);
+    bool? isCreateProfile;
+    try {
+      // emit(GetIsCreateProfileLoadingState());
+      await emailDocRef.get().then(
+        (DocumentSnapshot doc) {
+          final data = doc.data() as Map<String, dynamic>;
+          isCreateProfile = data["isCreateProfile"];
+          if (isCreateProfile == true) {
+            userModel.isCreateProfile = true;
+          } else {
+            userModel.isCreateProfile = false;
+          }
+        },
+        onError: (e) => print("Error getting document: $e"),
+      );
+      // emit(GetIsCreateProfileSuccessState());
+    } on Exception catch (e) {
+      // emit(GetIsCreateProfileFailureState(errorMessege: e.toString()));
+      print(
+          '33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333');
+      print(e.toString());
+      print(
+          '33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333');
+    }
+    print(
+        '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+    print(userModel.isCreateProfile);
+    print(
+        '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+    // return userModel.isCreateProfile;
   }
 
 // ############################################################################### frontSideImagePickFromGallery

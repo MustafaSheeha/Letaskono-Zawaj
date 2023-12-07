@@ -53,6 +53,17 @@ final class GetGenderFailureState extends AuthState {
 }
 
 // //////////////////////////////////////////////////////////////////////////////////////
+final class GetIsCreateProfileLoadingState extends AuthState {}
+
+final class GetIsCreateProfileSuccessState extends AuthState {}
+
+final class GetIsCreateProfileFailureState extends AuthState {
+  final String errorMessege;
+
+  GetIsCreateProfileFailureState({required this.errorMessege});
+}
+
+// //////////////////////////////////////////////////////////////////////////////////////
 final class ConnectionLoadingState extends AuthState {}
 
 final class ConnectionSuccessState extends AuthState {}

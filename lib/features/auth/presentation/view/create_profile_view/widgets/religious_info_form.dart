@@ -33,7 +33,7 @@ class _ReligiousInfoFormState extends State<ReligiousInfoForm> {
             style: AppTextStyles.cairoW300PrimaryColor,
           ),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ?DropdownButtonWidget(
                   onChanged: (p0) {
                     setState(() {
@@ -55,7 +55,7 @@ class _ReligiousInfoFormState extends State<ReligiousInfoForm> {
                   dropdownButtonList: DropdownButtonList.prayerCommitmentList,
                 ),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? const Text(
                   AppStrings.faceStyle,
                   style: AppTextStyles.cairoW300PrimaryColor,
@@ -65,7 +65,7 @@ class _ReligiousInfoFormState extends State<ReligiousInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor,
                 ),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ?DropdownButtonWidget(
                   onChanged: (p0) {
                     setState(() {
@@ -92,7 +92,7 @@ class _ReligiousInfoFormState extends State<ReligiousInfoForm> {
             style: AppTextStyles.cairoW300PrimaryColor,
           ),
           SizedBox(height: 0.01 * screenHeight),
-         authCubit.isGender
+         authCubit.userModel.gender=="Male" 
               ?DropdownButtonWidget(
                   onChanged: (p0) {
                     setState(() {
@@ -114,14 +114,14 @@ class _ReligiousInfoFormState extends State<ReligiousInfoForm> {
                   dropdownButtonList: DropdownButtonList.quranMemorizingList,
                 ),
           SizedBox(height: 0.01 * screenHeight),
-          !BlocProvider.of<AuthCubit>(context).isGender
+          authCubit.userModel.gender!="Male" 
               ? const Text(
                   AppStrings.acceptToWearNiqab,
                   style: AppTextStyles.cairoW300PrimaryColor,
                 )
               : const SizedBox(),
           SizedBox(height: 0.01 * screenHeight),
-          !authCubit.isGender
+          authCubit.userModel.gender!="Male" 
               ?DropdownButtonWidget(
                   onChanged: (p0) {
                     setState(() {

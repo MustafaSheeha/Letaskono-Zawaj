@@ -32,7 +32,7 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
           const Text(AppStrings.martialStatus,
               style: AppTextStyles.cairoW300PrimaryColor),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? DropdownButtonWidget(
                   onChanged: (p0) {
                     setState(() {
@@ -41,7 +41,7 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
                   },
                   selectedValue:
                       authCubit.createMaleProfileModel.maritalStatus,
-                  dropdownButtonList: DropdownButtonList.martialStatusList,
+                  dropdownButtonList: DropdownButtonList.martialStatusMaleList,
                 )
               : DropdownButtonWidget(
                   onChanged: (p0) {
@@ -51,13 +51,13 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
                   },
                   selectedValue:
                       authCubit.createFemaleProfileModel.maritalStatus,
-                  dropdownButtonList: DropdownButtonList.martialStatusList,
+                  dropdownButtonList: DropdownButtonList.martialStatusFemaleList,
                 ),
           SizedBox(height: 0.01 * screenHeight),
           const Text(AppStrings.nationality,
               style: AppTextStyles.cairoW300PrimaryColor),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? DropdownButtonWidget(
                   onChanged: (p0) {
                     setState(() {
@@ -66,7 +66,7 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
                   },
                   selectedValue:
                       authCubit.createMaleProfileModel.nationality,
-                  dropdownButtonList: DropdownButtonList.nationalityList,
+                  dropdownButtonList: DropdownButtonList.nationalityMaleList,
                 )
               : DropdownButtonWidget(
                   onChanged: (p0) {
@@ -76,13 +76,13 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
                   },
                   selectedValue:
                       authCubit.createFemaleProfileModel.nationality,
-                  dropdownButtonList: DropdownButtonList.nationalityList,
+                  dropdownButtonList: DropdownButtonList.nationalityFemaleList,
                 ),
           SizedBox(height: 0.01 * screenHeight),
           const Text(AppStrings.currentResidenceCountry,
               style: AppTextStyles.cairoW300PrimaryColor),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? CustomTextFormField(
                   obscureText: false,
                   onChanged: (p0) {
@@ -101,7 +101,7 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
           const Text(AppStrings.currentResidenceCity,
               style: AppTextStyles.cairoW300PrimaryColor),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? CustomTextFormField(
                   obscureText: false,
                   onChanged: (p0) {
@@ -120,7 +120,7 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
           const Text(AppStrings.educationalDegree,
               style: AppTextStyles.cairoW300PrimaryColor),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? DropdownButtonWidget(
                   onChanged: (p0) {
                     setState(() {
@@ -149,7 +149,7 @@ class _GeneralInfoFormState extends State<GeneralInfoForm> {
           const Text(AppStrings.job,
               style: AppTextStyles.cairoW300PrimaryColor),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? CustomTextFormField(
                   obscureText: false,
                   onChanged: (p0) {

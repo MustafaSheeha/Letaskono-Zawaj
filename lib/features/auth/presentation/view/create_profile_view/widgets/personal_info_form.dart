@@ -34,7 +34,7 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
             style: AppTextStyles.cairoW300PrimaryColor,
           ),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? CustomTextFormField(
                   obscureText: false,
                   keyboardType: TextInputType.number,
@@ -55,7 +55,7 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
             style: AppTextStyles.cairoW300PrimaryColor,
           ),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? CustomTextFormField(
                   obscureText: false,
                   keyboardType: TextInputType.number,
@@ -76,7 +76,7 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
             style: AppTextStyles.cairoW300PrimaryColor,
           ),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? CustomTextFormField(
                   obscureText: false,
                   keyboardType: TextInputType.number,
@@ -97,7 +97,7 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
             style: AppTextStyles.cairoW300PrimaryColor,
           ),
           SizedBox(height: 0.01 * screenHeight),
-          authCubit.isGender
+          authCubit.userModel.gender=="Male" 
               ? DropdownButtonWidget(
                   onChanged: (p0) {
                     setState(() {

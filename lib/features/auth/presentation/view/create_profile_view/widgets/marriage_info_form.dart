@@ -25,7 +25,7 @@ class MarriageInfoForm extends StatelessWidget {
           style: AppTextStyles.cairoW300PrimaryColor,
         ),
         SizedBox(height: 0.01 * screenHeight),
-        authCubit.isGender?
+        authCubit.userModel.gender=="Male" ?
         CustomTextFormField(
           obscureText: false,
           onChanged: (p0) {
@@ -43,7 +43,7 @@ class MarriageInfoForm extends StatelessWidget {
           style: AppTextStyles.cairoW300PrimaryColor,
         ),
         SizedBox(height: 0.01 * screenHeight),
-        authCubit.isGender?
+        authCubit.userModel.gender=="Male" ?
         CustomTextFormField(
           obscureText: false,
           onChanged: (p0) {

@@ -31,7 +31,7 @@ class LoginForm extends StatelessWidget {
           } else {
             showAwesomeSnackbar(
                 context: context,
-                title: AppStrings.accountLoggedSuccessfully,
+                title: AppStrings.accountLoggedInSuccessfully,
                 message: AppStrings.redirectingToCreateProfile,
                 contentType: ContentType.success);
             customFutureDelayed(context);
@@ -83,7 +83,6 @@ class LoginForm extends StatelessWidget {
                             if (authCubit.loginFormKey.currentState!
                                 .validate()) {
                               await authCubit.signInWithEmailAndPassword();
-                              
                             }
                           },
                           text: AppStrings.login),

@@ -266,6 +266,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(FrontSideImagePickerFailureState(errorMessege: e.toString()));
     }
   }
+
   Future backSideImagePickFromGallery() async {
     try {
       emit(BackSideImagePickerLoadingState());
@@ -275,6 +276,16 @@ class AuthCubit extends Cubit<AuthState> {
       emit(BackSideImagePickerSuccessState());
     } on Exception catch (e) {
       emit(BackSideImagePickerFailureState(errorMessege: e.toString()));
+    }
+  }
+
+  Future<void> signOut() async {
+    try {
+      emit(SignOutLoadingState());
+      await FirebaseAuth.instance.signOut();
+      emit(SignOutLoadingState());
+    } on Exception catch (e) {
+      emit(SignOutFailureState(errorMessege: e.toString()));
     }
   }
 }

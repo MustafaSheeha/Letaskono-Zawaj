@@ -95,3 +95,13 @@ final class BackSideImagePickerFailureState extends AuthState {
   BackSideImagePickerFailureState({required this.errorMessege});
 }
 // //////////////////////////////////////////////////////////////////////////////////////
+final class SignOutLoadingState extends AuthState {}
+
+final class SignOutSuccessState extends AuthState {}
+
+final class SignOutFailureState extends AuthState {
+  final String errorMessege;
+
+  SignOutFailureState({required this.errorMessege});
+}
+// //////////////////////////////////////////////////////////////////////////////////////

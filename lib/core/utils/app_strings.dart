@@ -66,7 +66,8 @@ abstract class AppStrings {
 
   static const pleaseActivateYourAccountThroughLinkSentToEmail =
       'برجاء تفعيل حسابك عبر الرابط المرسل الى بريدك الالكترونى';
-  static const accountLoggedSuccessfully = 'تم تسجيل الدخول بنجاح';
+  static const accountLoggedInSuccessfully = 'تم تسجيل الدخول بنجاح';
+  static const accountLoggedOutSuccessfully = 'تم تسجيل الخروج بنجاح';
   static const redirectingToCreateProfile = 'يمكنك الان انشاء ملفك الشخصى';
   static const redirectingToYourAccount = 'جارى الانتقال الى حسابك';
   static const emailUnverfied = 'بريدك الالكترونى غير مفعل';

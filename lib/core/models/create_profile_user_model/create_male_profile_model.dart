@@ -11,7 +11,9 @@ class CreateMaleProfileModel extends UserModel{
  
   // Identity Confirmation
   Image? idFrontSide;
+  String? idFrontSideUrl;
   Image? idBackSide;
+  String? idBackSideUrl;
   String? idNumber;
 
   CreateMaleProfileModel({
@@ -36,7 +38,9 @@ class CreateMaleProfileModel extends UserModel{
     super.tellAboutPartner,
     // Identity Confirmation
     this.idFrontSide,
+    this.idFrontSideUrl,
     this.idBackSide,
+    this.idBackSideUrl,
     this.idNumber,
   });
 
@@ -68,7 +72,9 @@ class CreateMaleProfileModel extends UserModel{
       tellAboutPartner: data?['tellAboutPartner'] as String?,
       // Identity Confirmation
       idFrontSide: data?['idFrontSide'] as Image?,
+      idFrontSideUrl: data?['idFrontSideUrl'] as String?,
       idBackSide: data?['idBackSide'] as Image?,
+      idBackSideUrl: data?['idFrontSideUrl'] as String?,
       idNumber: data?['idNumber'] as String?,
     );
   }
@@ -99,7 +105,9 @@ class CreateMaleProfileModel extends UserModel{
         if (tellAboutPartner != null) 'tellAboutPartner': tellAboutPartner,
         // Identity Confirmation
         if (idFrontSide != null) 'idFrontSide': idFrontSide,
+        if (idFrontSideUrl != null) 'idFrontSideUrl': idFrontSideUrl,
         if (idBackSide != null) 'idBackSide': idBackSide,
+        if (idBackSideUrl != null) 'idBackSideUrl': idBackSideUrl,
         if (idNumber != null) 'idNumber': idNumber,
       };
 }

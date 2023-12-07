@@ -47,7 +47,7 @@ class _SplashViewState extends State<SplashView> {
               : FirebaseAuth.instance.currentUser == null
                   ? const LoginView()
                   : FirebaseAuth.instance.currentUser!.emailVerified
-                      ? CreateProfileView()
+                      ? CustomPersistantBottomNavBar()
                       : const LoginView()),
     );
   }

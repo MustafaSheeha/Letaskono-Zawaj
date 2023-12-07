@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -15,17 +16,25 @@ import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
+// ############################################################################### DataConnectionChecker
   DataConnectionChecker dataConnectionChecker = DataConnectionChecker();
+// ############################################################################### Picked Images
   File? frontSideImage;
+  String? frontSideImageName;
+  String? frontSideImageUrl;
   File? backSideImage;
+  String? backSideImageName;
+  String? backSideImageUrl;
+  bool termsAndConditionCheckBox = false;
+  bool isGender = true;
 
+// ############################################################################### GlobalKeys
   GlobalKey<FormState> registerFormKey = GlobalKey();
   GlobalKey<FormState> loginFormKey = GlobalKey();
   GlobalKey<FormState> forgotPasswordFormKey = GlobalKey();
   GlobalKey<FormState> createMaleProfileFormKey = GlobalKey();
   GlobalKey<FormState> createFemaleProfileFormKey = GlobalKey();
-  bool termsAndConditionCheckBox = false;
-  bool isGender = true;
+// ############################################################################### Models
   final RegisterationUserModel registerationUserModel =
       RegisterationUserModel();
   final UserModel userModel = UserModel();
@@ -33,17 +42,21 @@ class AuthCubit extends Cubit<AuthState> {
       CreateMaleProfileModel();
   final CreateFemaleProfileModel createFemaleProfileModel =
       CreateFemaleProfileModel();
+// ############################################################################### maleOrFemalForm
   void maleOrFemalForm() {}
+// ############################################################################### updateTermsAndConditionCheckBox
   void updateTermsAndConditionCheckBox(newValue) {
     termsAndConditionCheckBox = newValue;
     emit(TermsAndConditionState());
   }
 
+// ############################################################################### setGender
   void setGender(newValue) {
     isGender = newValue;
     emit(SetGenderState());
   }
 
+// ############################################################################### createUserWithEmailAndPassword
   Future<void> createUserWithEmailAndPassword() async {
     emit(ConnectionLoadingState());
     if (await dataConnectionChecker.hasConnection) {
@@ -85,9 +98,12 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+// ############################################################################### sendEmailVerification
   Future<void> sendEmailVerification() async {
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
+
+// ############################################################################### signInWithEmailAndPassword
 
   Future<void> signInWithEmailAndPassword() async {
     emit(ConnectionLoadingState());
@@ -143,6 +159,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+// ############################################################################### sendPasswordResetEmail
   Future<void> sendPasswordResetEmail() async {
     if (await dataConnectionChecker.hasConnection) {
       try {
@@ -166,6 +183,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+// ############################################################################### saveregisterationUserModel
   Future<void> saveregisterationUserModel() async {
     var db = FirebaseFirestore.instance;
     final collectionRef = db.collection("users");
@@ -180,6 +198,7 @@ class AuthCubit extends Cubit<AuthState> {
     await docRef.set(registerationUserModel);
   }
 
+// ############################################################################### saveUserModel
   Future<void> saveUserModel() async {
     var db = FirebaseFirestore.instance;
     final femaleDocRef = db
@@ -230,6 +249,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+// ############################################################################### getUserModelGender
   Future<String?> getUserModelGender(String? email) async {
     var db = FirebaseFirestore.instance;
     String? gender;
@@ -255,29 +275,90 @@ class AuthCubit extends Cubit<AuthState> {
     return userModel.gender;
   }
 
-  Future frontSideImagePickFromGallery() async {
+// ############################################################################### frontSideImagePickFromGallery
+
+  Future<void> frontSideImagePickFromGallery() async {
     try {
       emit(FrontSideImagePickerLoadingState());
-      final returnedImage =
+      final pickedImage =
           await ImagePicker().pickImage(source: ImageSource.gallery);
-      frontSideImage = File(returnedImage!.path);
-      emit(FrontSideImagePickerSuccessState());
+
+      if (pickedImage != null) {
+        frontSideImage = File(pickedImage.path);
+        frontSideImageName = pickedImage.name;
+        emit(FrontSideImagePickerSuccessState());
+      } else {
+        emit(FrontSideImagePickerFailureState(
+            errorMessege:
+                '############### returnedImage is Null ###############'));
+      }
     } on Exception catch (e) {
       emit(FrontSideImagePickerFailureState(errorMessege: e.toString()));
     }
   }
 
-  Future backSideImagePickFromGallery() async {
+// ############################################################################### backSideImagePickFromGallery
+
+  Future<void> backSideImagePickFromGallery() async {
     try {
       emit(BackSideImagePickerLoadingState());
-      final returnedImage =
+      final pickedImage =
           await ImagePicker().pickImage(source: ImageSource.gallery);
-      backSideImage = File(returnedImage!.path);
-      emit(BackSideImagePickerSuccessState());
+      if (pickedImage != null) {
+        backSideImage = File(pickedImage.path);
+        backSideImageName = pickedImage.name;
+        emit(BackSideImagePickerSuccessState());
+      } else {
+        emit(FrontSideImagePickerFailureState(
+            errorMessege:
+                '############### returnedImage is Null ###############'));
+      }
     } on Exception catch (e) {
       emit(BackSideImagePickerFailureState(errorMessege: e.toString()));
     }
   }
+
+// ############################################################################### UploadImage
+  Future<void> uploadFrontSideImage() async {
+    try {
+      // emit(UploadLoadingState());
+      final ref = FirebaseStorage.instance.ref().child(
+          '${FirebaseAuth.instance.currentUser!.email}/$frontSideImageName');
+      final uploadTask = ref.putFile(frontSideImage!);
+      final snapshot = await uploadTask.whenComplete(
+        () {},
+      );
+      final url = await snapshot.ref.getDownloadURL();
+      createMaleProfileModel.idFrontSideUrl = url;
+      print(createMaleProfileModel.idFrontSideUrl);
+      // emit(UploadtSuccessState());
+    } on Exception catch (e) {
+      // emit(UploadFailureState(errorMessege: e.toString()));
+    }
+  }
+
+  Future<void> uploadBackSideImage() async {
+    try {
+      // emit(UploadLoadingState());
+      final ref = FirebaseStorage.instance.ref().child(
+          '${FirebaseAuth.instance.currentUser!.email}/$backSideImageName');
+      final uploadTask = ref.putFile(backSideImage!);
+      final snapshot = await uploadTask.whenComplete(
+        () {},
+      );
+      final url = await snapshot.ref.getDownloadURL();
+      createMaleProfileModel.idBackSideUrl = url;
+      print(
+          '33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333');
+      print(createMaleProfileModel.idBackSideUrl);
+      print(
+          '33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333');
+      // emit(UploadtSuccessState());
+    } on Exception catch (e) {
+      // emit(UploadFailureState(errorMessege: e.toString()));
+    }
+  }
+// ############################################################################### signOut
 
   Future<void> signOut() async {
     try {

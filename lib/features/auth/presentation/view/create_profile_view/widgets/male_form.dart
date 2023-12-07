@@ -55,8 +55,7 @@ class MaleForm extends StatelessWidget {
                           onPressed: () {
                             if (authCubit.createMaleProfileFormKey.currentState!
                                 .validate()) {
-                              BlocProvider.of<AuthCubit>(context)
-                                  .saveUserModel();
+                              authCubit.saveUserModel();
                             }
                           },
                           text: AppStrings.saveData),

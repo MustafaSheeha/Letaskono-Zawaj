@@ -18,7 +18,7 @@ class CustomTextButton extends StatelessWidget {
         child: Text(
           text,
           style:
-              AppTextStyles.cairoW800PrimaryColor.copyWith(fontSize: fontSize),
+              AppTextStyles.cairoW700White.copyWith(fontSize: fontSize),
         ));
   }
 }

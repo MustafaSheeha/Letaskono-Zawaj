@@ -8,7 +8,7 @@ showAwesomeSnackbar({
   required ContentType contentType,
 }) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    margin: const EdgeInsets.all(4),
+    margin: const EdgeInsets.only(bottom: 55),
     padding: const EdgeInsets.all(4),
     clipBehavior: Clip.none,
     // elevation: 0,

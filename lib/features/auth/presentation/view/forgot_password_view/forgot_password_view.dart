@@ -8,7 +8,7 @@ import 'package:letaskono_zawaj/core/widgets/custom_app_bar.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/forgot_password_view/widgets/forgot_password_form.dart';
-import 'package:letaskono_zawaj/features/auth/presentation/view/widgets/auth_container.dart';
+import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 
 class ForgotPasswordView extends StatelessWidget {
   const ForgotPasswordView({super.key});
@@ -26,7 +26,7 @@ class ForgotPasswordView extends StatelessWidget {
             children: [
               const CustomAppBar(),
               SizedBox(height: 0.15 * screenHeight),
-              AuthContainer(
+              CardContainer(
                 widget: Column(children: [
                   Text(AppStrings.resetPassword,
                       style: AppTextStyles.cairoW300PrimaryColor

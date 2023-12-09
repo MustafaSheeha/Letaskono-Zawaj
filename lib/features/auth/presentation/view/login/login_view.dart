@@ -6,7 +6,7 @@ import 'package:letaskono_zawaj/core/widgets/custom_app_bar.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/login/widgets/create_new_account_forgot_password_widget.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/login/widgets/login_form.dart';
-import 'package:letaskono_zawaj/features/auth/presentation/view/widgets/auth_container.dart';
+import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -24,7 +24,7 @@ class LoginView extends StatelessWidget {
             children: [
               const CustomAppBar(),
               SizedBox(height: 0.15 * screenHeight),
-              AuthContainer(
+              CardContainer(
                 widget: Column(children: [
                   Text(AppStrings.welcomeBack,
                       style: AppTextStyles.cairoW800PrimaryColor

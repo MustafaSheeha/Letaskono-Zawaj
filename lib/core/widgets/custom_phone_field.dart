@@ -6,6 +6,7 @@ import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/utils/functions/outline_input_border.dart';
+import 'package:letaskono_zawaj/core/widgets/custom_horizontal_divider.dart';
 
 class CustomPhoneField extends StatelessWidget {
   const CustomPhoneField({
@@ -61,11 +62,7 @@ class CustomPhoneField extends StatelessWidget {
 
   PickerDialogStyle pickerDialogStyle() {
     return PickerDialogStyle(
-        listTileDivider: const Divider(
-          color: AppColors.primaryColor,
-          endIndent: 50,
-          indent: 50,
-        ),
+        listTileDivider: const CustomHorizontalDivider(),
         countryNameStyle: AppTextStyles.cairoW800PrimaryColor,
         countryCodeStyle: AppTextStyles.cairoW800PrimaryColor,
         searchFieldCursorColor: AppColors.primaryColor,

@@ -7,7 +7,7 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_form_field.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/create_profile_view/widgets/id_image_picker.dart';
-import 'package:letaskono_zawaj/features/auth/presentation/view/widgets/auth_container.dart';
+import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 
 class IdentityConfirmationForm extends StatefulWidget {
   const IdentityConfirmationForm({super.key});
@@ -26,7 +26,7 @@ class _IdentityConfirmationFormState extends State<IdentityConfirmationForm> {
       listener: (context, state) {},
       builder: (context, state) {
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
-        return AuthContainer(
+        return CardContainer(
           widget: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
             const CustomHeaderTitle(
                 headerTitle: AppStrings.identityConfirmation),

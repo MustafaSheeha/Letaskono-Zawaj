@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-class AuthContainer extends StatelessWidget {
-  const AuthContainer({super.key, required this.widget});
+class CardContainer extends StatelessWidget {
+  const CardContainer({super.key, required this.widget});
   final Widget widget;
   @override
   Widget build(BuildContext context) {

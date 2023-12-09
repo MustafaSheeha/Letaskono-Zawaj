@@ -8,7 +8,7 @@ import 'package:letaskono_zawaj/core/widgets/custom_app_bar.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/register/widgets/registeration_form.dart';
-import 'package:letaskono_zawaj/features/auth/presentation/view/widgets/auth_container.dart';
+import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
@@ -26,7 +26,7 @@ class RegisterView extends StatelessWidget {
             children: [
               const CustomAppBar(),
               SizedBox(height: 0.05 * screenHeight),
-              AuthContainer(
+              CardContainer(
                 widget: Column(children: [
                   Text(AppStrings.welcome,
                       style: AppTextStyles.cairoW800PrimaryColor

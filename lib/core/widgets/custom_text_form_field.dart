@@ -13,19 +13,21 @@ class CustomTextFormField extends StatefulWidget {
     this.keyboardType,
     required this.obscureText,
     this.onChanged,
+    this.initialValue,
   });
   final String? hintText;
   final Widget? prefixIcon;
   final TextInputType? keyboardType;
   final bool obscureText;
   final void Function(String)? onChanged;
+  final String? initialValue;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
-   bool hidePassword=true;
+  bool hidePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       textDirection: TextDirection.rtl,
       child: widget.obscureText
           ? TextFormField(
-            textInputAction: TextInputAction.next,
+              textInputAction: TextInputAction.next,
               cursorColor: AppColors.primaryColor,
               decoration: InputDecoration(
                 border: border(),
@@ -43,7 +45,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 focusedBorder: focusedBorder(),
                 focusedErrorBorder: focusedErrorBorder(),
                 hintText: widget.hintText,
-                hintStyle:  AppTextStyles.cairoW300PrimaryColor,
+                hintStyle: AppTextStyles.cairoW300PrimaryColor,
                 prefixIcon: widget.prefixIcon,
                 prefixIconColor: AppColors.primaryColor,
                 suffixIcon: IconButton(
@@ -51,13 +53,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       hidePassword ? Icons.visibility : Icons.visibility_off),
                   onPressed: () {
                     setState(() {
-                      hidePassword=!hidePassword;
+                      hidePassword = !hidePassword;
                     });
                   },
                 ),
                 suffixIconColor: AppColors.primaryColor,
               ),
-              keyboardType: widget.keyboardType??TextInputType.text,
+              keyboardType: widget.keyboardType ?? TextInputType.text,
               obscureText: hidePassword,
               onChanged: widget.onChanged,
               onTapOutside: unfocusOnTapOutside,
@@ -65,9 +67,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               validator: validator,
             )
           : TextFormField(
-            textInputAction: TextInputAction.next,
-            minLines: 1,
-            maxLines: 10,
+            
+              initialValue: widget.initialValue,
+              textInputAction: TextInputAction.next,
+              minLines: 1,
+              maxLines: 10,
               cursorColor: AppColors.primaryColor,
               decoration: InputDecoration(
                 border: border(),
@@ -77,7 +81,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 focusedBorder: focusedBorder(),
                 focusedErrorBorder: focusedErrorBorder(),
                 hintText: widget.hintText,
-                hintStyle:  AppTextStyles.cairoW300PrimaryColor,
+                hintStyle: AppTextStyles.cairoW300PrimaryColor,
                 prefixIcon: widget.prefixIcon,
                 prefixIconColor: AppColors.primaryColor,
               ),
@@ -85,19 +89,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               obscureText: false,
               onChanged: widget.onChanged,
               onTapOutside: unfocusOnTapOutside,
-              style: AppTextStyles.cairoW800PrimaryColor,
+              style: AppTextStyles.cairoW400Black,
               validator: validator,
             ),
     );
   }
-
-  
-
-  
-
-  
-
-  
-
-  
 }

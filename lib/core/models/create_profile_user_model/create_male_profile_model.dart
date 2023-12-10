@@ -18,6 +18,10 @@ class CreateMaleProfileModel extends UserModel {
   CreateMaleProfileModel({
     super.userId,
     super.isCreateProfile,
+    super.gender,
+    super.name,
+    super.email,
+    super.phone,
     super.maritalStatus,
     super.currentResidenceCountry,
     super.currentResidenceCity,
@@ -52,6 +56,10 @@ class CreateMaleProfileModel extends UserModel {
     return CreateMaleProfileModel(
       // General Info
       userId: data?['userId'] as String?,
+      gender: data?['gender'] as String?,
+      name: data?['name'] as String?,
+      email: data?['email'] as String?,
+      phone: data?['phone'] as String?,
       isCreateProfile: data?['isCreateProfile'] as bool?,
       maritalStatus: data?['maritalStatus'] as String?,
       currentResidenceCountry: data?['currentResidenceCountry'] as String?,
@@ -84,6 +92,10 @@ class CreateMaleProfileModel extends UserModel {
   Map<String, dynamic> toFirestore() => {
         // General Info
         if (userId != null) 'userId': userId,
+        if (gender != null) 'gender': gender,
+        if (name != null) 'name': name,
+        if (email != null) 'email': email,
+        if (phone != null) 'phone': phone,
         if (isCreateProfile != null) 'isCreateProfile': isCreateProfile,
         if (maritalStatus != null) 'maritalStatus': maritalStatus,
         if (currentResidenceCountry != null)

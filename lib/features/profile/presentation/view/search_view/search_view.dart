@@ -33,9 +33,11 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
         extendBody: true,
         appBar: flutterAppBar(),
         endDrawer: const CustomDrawer(),
-        body: Column(
+        body: ListView(
+          physics: const BouncingScrollPhysics(),
           children: [
-            SizedBox(height: 0.23 * screenHeight),
+            SizedBox(height: 0.01*screenHeight),
+            const SearchFilterWidget(),
             SizedBox(
               width: double.maxFinite,
               child: TabBar(
@@ -556,5 +558,51 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
             )
           ],
         ));
+  }
+}
+
+class SearchFilterWidget extends StatelessWidget {
+  const SearchFilterWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        showDialog(context: context, builder: (context) {
+          return const Dialog(
+            backgroundColor: AppColors.white,
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CustomHeaderTitle(headerTitle: AppStrings.searchFilter),
+                  Text(AppStrings.martialStatus,
+                style: AppTextStyles.cairoW300PrimaryColor),
+                  Text(AppStrings.nationality,
+                style: AppTextStyles.cairoW300PrimaryColor),
+                  Text(AppStrings.currentResidenceCountry,
+                style: AppTextStyles.cairoW300PrimaryColor),
+                  Text(AppStrings.currentResidenceCity,
+                style: AppTextStyles.cairoW300PrimaryColor),
+                
+                ],
+              ),
+            ),
+          );
+        },);
+      },
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(AppStrings.searchFilter,style: AppTextStyles.cairoW800PrimaryColor,),
+          Icon(Icons.filter_list)
+        ],
+      ),
+    );
   }
 }

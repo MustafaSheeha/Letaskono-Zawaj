@@ -7,6 +7,7 @@ import 'package:letaskono_zawaj/features/auth/presentation/view/forgot_password_
 import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/register/register_view.dart';
 import 'package:letaskono_zawaj/features/on_boarding/presentation/view/on_boarding.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/view/home_view/widgets/edit_profile_view.dart';
 import 'package:letaskono_zawaj/features/splash/presentation/view/splash_view.dart';
 
 class LetaskonoZawajApp extends StatelessWidget {
@@ -25,6 +26,7 @@ class LetaskonoZawajApp extends StatelessWidget {
         AppRoutes.register: (context) => const RegisterView(),
         AppRoutes.login: (context) => const LoginView(),
         AppRoutes.forgotPassword: (context) => const ForgotPasswordView(),
+        AppRoutes.editProfile:(context) => const EditProfileView(),
         AppRoutes.createProfile: (context) => const CreateProfileView(),
       },
       theme: AppThemeData().theme(),

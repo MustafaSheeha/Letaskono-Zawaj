@@ -3,7 +3,9 @@ import 'package:letaskono_zawaj/core/models/user_model.dart';
 
 class CreateFemaleProfileModel extends UserModel {
   // Religious Info
+  @override
   String? clothStyle;
+  @override
   String? acceptToWearNiqab;
 
   // Parent Info

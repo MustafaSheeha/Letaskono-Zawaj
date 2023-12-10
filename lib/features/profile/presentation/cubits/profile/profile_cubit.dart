@@ -1,14 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_female_profile_model.dart';
 import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_male_profile_model.dart';
 import 'package:letaskono_zawaj/core/models/user_model.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
+  GlobalKey<FormState> editMaleProfileFormKey = GlobalKey();
   List usersList = [];
+  UserModel userModel = UserModel();
   CreateMaleProfileModel createMaleProfileModel = CreateMaleProfileModel();
+  CreateFemaleProfileModel createFemaleProfileModel =
+      CreateFemaleProfileModel();
   var db = FirebaseFirestore.instance;
   // Future<void> getAllUsers() async {
   //   var usersRef = db.collection("users");
@@ -39,9 +45,8 @@ class ProfileCubit extends Cubit<ProfileState> {
 
     final myUserRef =
         usersRef.doc(FirebaseAuth.instance.currentUser!.email).withConverter(
-              fromFirestore: CreateMaleProfileModel.fromFirestore,
-              toFirestore: (CreateMaleProfileModel createMaleProfileModel, _) =>
-                  createMaleProfileModel.toFirestore(),
+              fromFirestore: UserModel.fromFirestore,
+              toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
             );
     try {
       emit(GetMyUsersLoadingInitial());
@@ -51,8 +56,10 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(GetMyUsersSuccessInitial());
       print('>>>>>>>>>>>>>>>>>>>>>>>>>> got data'); // Convert to City object
       if (user != null) {
-        print(user.maritalStatus);
-        createMaleProfileModel = user;
+        userModel = user;
+
+        // createMaleProfileModel.faceStyle=user.faceStyle;
+        // createFemaleProfileModel.clothStyle=user.clothStyle;
       } else {
         print("No such document.");
         emit(GetMyUsersFailureInitial(errorMessege: "No such document."));
@@ -62,9 +69,27 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  UserModel? userModelFromFirestore() {
-    createMaleProfileModel =
-        CreateMaleProfileModel.fromFirestore(usersList[1], SnapshotOptions());
-    return createMaleProfileModel;
+  Future<void> editMyUser() async {
+    var usersRef = db.collection("users");
+
+    final myUserRef =
+        usersRef.doc(FirebaseAuth.instance.currentUser!.email).withConverter(
+              fromFirestore: UserModel.fromFirestore,
+              toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
+            );
+    try {
+      emit(EditMyUsersLoadingInitial());
+      await myUserRef.set(userModel, SetOptions(merge: true));
+
+      emit(EditMyUsersSuccessInitial());
+      print('>>>>>>>>>>>>>>>>>>>>>>>>>> edit data successfully'); // Convert to City object
+    } on Exception catch (e) {
+      emit(GetMyUsersFailureInitial(errorMessege: e.toString()));
+    }
   }
+  // UserModel? userModelFromFirestore() {
+  //   createMaleProfileModel =
+  //       CreateMaleProfileModel.fromFirestore(usersList[1], SnapshotOptions());
+  //   return createMaleProfileModel;
+  // }
 }

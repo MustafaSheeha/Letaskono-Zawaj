@@ -15,46 +15,46 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
       PersistentTabController(initialIndex: 0);
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ProfileCubit()..getMyUser(),
-      child: PersistentTabView(
-        bottomScreenMargin: 11,
-        context,
-        controller: _persistentTabController,
-        screens: _buildScreens(),
-        items: _navBarsItems(),
-        confineInSafeArea: true,
-        backgroundColor: AppColors.primaryColor,
-        handleAndroidBackButtonPress: true,
-        resizeToAvoidBottomInset: true,
-        stateManagement: true,
-        hideNavigationBarWhenKeyboardShows: true,
-        decoration: const NavBarDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(110),
-            topRight: Radius.circular(110),
-          ),
-          colorBehindNavBar: Colors.white,
+    return PersistentTabView(
+      bottomScreenMargin: 11,
+      context,
+      controller: _persistentTabController,
+      screens: _buildScreens(),
+      items: _navBarsItems(),
+      confineInSafeArea: true,
+      backgroundColor: AppColors.primaryColor,
+      handleAndroidBackButtonPress: true,
+      resizeToAvoidBottomInset: true,
+      stateManagement: true,
+      hideNavigationBarWhenKeyboardShows: true,
+      decoration: const NavBarDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(110),
+          topRight: Radius.circular(110),
         ),
-        popAllScreensOnTapOfSelectedTab: true,
-        popActionScreens: PopActionScreensType.all,
-        itemAnimationProperties: const ItemAnimationProperties(
-          duration: Duration(milliseconds: 200),
-          curve: Curves.easeInOut,
-        ),
-        screenTransitionAnimation: const ScreenTransitionAnimation(
-          animateTabTransition: true,
-          curve: Curves.easeOut,
-          duration: Duration(milliseconds: 200),
-        ),
-        navBarStyle: NavBarStyle.style7,
+        colorBehindNavBar: Colors.white,
       ),
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: const ItemAnimationProperties(
+        duration: Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+      ),
+      screenTransitionAnimation: const ScreenTransitionAnimation(
+        animateTabTransition: true,
+        curve: Curves.easeOut,
+        duration: Duration(milliseconds: 200),
+      ),
+      navBarStyle: NavBarStyle.style7,
     );
   }
 
   List<Widget> _buildScreens() {
     return [
-      const HomeView(),
+       BlocProvider(
+        create: (context) => ProfileCubit()..getMyUser(),
+        child:const HomeView(),
+      ),
       const SearchView(),
       const ChatView(),
       const RequestView(),

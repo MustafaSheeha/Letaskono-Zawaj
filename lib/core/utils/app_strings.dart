@@ -94,8 +94,7 @@ abstract class AppStrings {
   static const wrongPassword = 'كلمة السر غير صحيحة';
   static const invalidEmail = 'البريد الالكترونى مكتوب بصيغة خاطئ';
   static const invalidCredential = 'البريد الالكترونى أو كلمة السر غير صحيحة';
-  static const tooManyRequests =
-      'يمكنك المحاولة مرة أخرى بعد قليل';
+  static const tooManyRequests = 'يمكنك المحاولة مرة أخرى بعد قليل';
   static const someThingWentWrong = 'حدث خطأ';
   static const pleaseTryAgainLater = 'برجاء المحاولة فى وقت لاحق';
   static const passwordResetEmailSent =
@@ -117,6 +116,7 @@ abstract class AppStrings {
   static const marriageInfo = 'معلومات تخص الزواج';
   static const parentInfo = 'معلومات عن ولى الأمر';
   static const familyInfo = 'معلومات عن الاسرة / السكن ';
+  static const additionalInfo = 'معلومات اضافية ';
   static const thoughtsInfo = 'معلومات عن الافكار والمفاهيم ';
   static const martialStatus = 'الحالة الاجتماعية';
   static const nationality = 'الجنسية';
@@ -134,6 +134,7 @@ abstract class AppStrings {
       'هل يقبل ولى أمرك أن تتزوجى بدون قائمة منقولات على أن يتكفل الزوج بكل شئ حسب استطاعته ؟';
   static const parentPhone = 'رقم ولى أمرك';
   static const saveData = 'حفظ البيانات';
+  static const saveEditings = 'حفظ التعديلات';
   static const editData = 'تعديل البيانات';
   static const age = 'العمر';
   static const height = 'الطول';
@@ -176,5 +177,32 @@ abstract class AppStrings {
   static const receivedRequest = 'الطلبات المرسلة لك';
   static const men = 'رجال';
   static const women = 'نساء';
-
+  static const fatherJob = 'عمل الوالد';
+  static const motherJob = 'عمل الوالدة';
+  static const boysNumber = 'عدد أولادك الذكور';
+  static const girlsNumber = 'عدد أولادك الاناث';
+  static const howOldYourChildren = 'ما هي أعمار أولادك';
+  static const yourRelationWithFamily = 'هل علاقتك بأهلك جيدة ؟';
+  static const yourSheikhs = 'من هم شيوخك الذين تأخذ العلم عنهم';
+  static const morningEveningAzkar = 'هل تحافظ على أذكار الصباح والمساء ؟';
+  static const yourThoughtAboutGuardianship = 'ما مفهومك عن القوامة';
+  static const jobDetails = 'أين تعمل تحديدا؟';
+  static const phobia = 'هل تعاني من الخوف المفرط من بعض الأشياء ؟';
+  static const isYourJobHalal = 'هل العمل الذي تعمل فيه حلال؟';
+  static const engagementEthics =
+      'هل أنت على دراية بضوابط الخطبة الشرعية ومستعد للالتزام بها؟';
+  static const yourLifeGoals = 'ما هو هدفك في الحياة';
+  static const learningReligiousKnowledge = 'هل لك نصيب من طلب العلم الشرعي ؟';
+  static const yourThoughtAboutLifeSuccess = 'ما مفهومك عن النجاح في الحياة ؟';
+  static const diseasesAndDisability = 'هل تعاني من أي أمراض أو إعاقات ؟';
+  static const isSmoking = 'هل أنت مدخن ؟';
+  static const detailedAddress =
+      'هل يمكنك تحديد مكانك بالضبط (قرية - مركز - منطقة)؟';
+  static const listenMusicWatchMovies = 'هل تسمع الموسيقى أو تشاهد الأفلام ؟';
+  static const broomParty =
+      'هل تنوي إقامة حفل زفاف يغضب الله ؟ (اختلاط - موسيقى - فوتوسيشن)';
+  static const howSpendSparetime = 'كيف تقضي وقت فراغك ؟';
+  static const yourThoughtsAlmostTime =
+      'ما هو أكثر ما يشغل تفكيرك معظم الوقت ؟';
+  static const travelingAbroad = 'هل لديك الرغبة في السفر للخارج ؟';
 }

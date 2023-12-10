@@ -9,6 +9,7 @@ import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/view/home_view/widgets/edit_profile_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -41,19 +42,21 @@ class HomeView extends StatelessWidget {
                         SizedBox(height: screenHeight * 0.005),
                         const Text(AppStrings.name,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.name
-                                .toString(),
+                        Text(
+                            profileCubit.userModel.name.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: screenHeight * 0.018),
                         const Text(AppStrings.email,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.email
+                        Text(
+                            profileCubit.userModel.email
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: screenHeight * 0.018),
                         const Text(AppStrings.phoneNumber,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.phone
+                        Text(
+                            profileCubit.userModel.phone
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: screenHeight * 0.018),
@@ -63,7 +66,9 @@ class HomeView extends StatelessWidget {
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: screenHeight * 0.018),
                         CustomElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfileView(),));
+                          },
                           text: AppStrings.editData,
                         ),
                       ],
@@ -77,43 +82,44 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.martialStatus,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                            profileCubit.createMaleProfileModel.maritalStatus
+                            profileCubit.userModel.maritalStatus
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.nationality,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(
-                            profileCubit.createMaleProfileModel.nationality
+                        Text(
+                            profileCubit.userModel.nationality
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.currentResidenceCountry,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(
-                            profileCubit.createMaleProfileModel.currentResidenceCountry
+                        Text(
+                            profileCubit
+                                .userModel.currentResidenceCountry
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.currentResidenceCity,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(
-                            profileCubit.createMaleProfileModel.currentResidenceCity
+                        Text(
+                            profileCubit
+                                .userModel.currentResidenceCity
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.educationalDegree,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(
-                            profileCubit.createMaleProfileModel.educationalDegree
+                        Text(
+                            profileCubit
+                                .userModel.educationalDegree
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.job,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(
-                            profileCubit.createMaleProfileModel.job
-                                .toString(),
+                        Text(profileCubit.userModel.job.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                       ],
@@ -126,20 +132,28 @@ class HomeView extends StatelessWidget {
                             headerTitle: AppStrings.personalInfo),
                         const Text(AppStrings.age,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.age.toString(), style: AppTextStyles.cairoW800Black),
+                        Text(profileCubit.userModel.age.toString(),
+                            style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.height,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.height.toString(),
+                        Text(
+                            profileCubit.userModel.height
+                                .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.weight,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.weight.toString(), style: AppTextStyles.cairoW800Black),
+                        Text(
+                            profileCubit.userModel.weight
+                                .toString(),
+                            style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.skinColor,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.skinColor.toString(),
+                        Text(
+                            profileCubit.userModel.skinColor
+                                .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                       ],
@@ -152,19 +166,24 @@ class HomeView extends StatelessWidget {
                             headerTitle: AppStrings.religiousInfo),
                         const Text(AppStrings.prayerCommitment,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.prayerCommitment
-                                .toString(),
-                            style: AppTextStyles.cairoW800Black,textAlign: TextAlign.center,),
+                        Text(
+                          profileCubit.userModel.prayerCommitment
+                              .toString(),
+                          style: AppTextStyles.cairoW800Black,
+                          textAlign: TextAlign.center,
+                        ),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.faceStyle,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.faceStyle
+                        Text(
+                            profileCubit.createMaleProfileModel.faceStyle
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.quranMemorizing,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(profileCubit.createMaleProfileModel.quranMemorizing
+                        Text(
+                            profileCubit.userModel.quranMemorizing
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
@@ -181,18 +200,18 @@ class HomeView extends StatelessWidget {
                           AppStrings.tellAboutYou,
                           style: AppTextStyles.cairoW800PrimaryColor,
                         ),
-                         Text(
-                         profileCubit.createMaleProfileModel.tellAboutYou
-                                .toString(),
+                        Text(
+                          profileCubit.userModel.tellAboutYou
+                              .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.tellAboutPartner,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                         Text(
-                          profileCubit.createMaleProfileModel.tellAboutPartner
-                                .toString(),
+                        Text(
+                          profileCubit.userModel.tellAboutPartner
+                              .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),

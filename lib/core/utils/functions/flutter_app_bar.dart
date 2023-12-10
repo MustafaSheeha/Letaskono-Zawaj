@@ -16,7 +16,7 @@ AppBar flutterAppBar() {
         color: AppColors.red,
         size: 30,
       ),
-      toolbarHeight: 160,
+      toolbarHeight: 140,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(80),

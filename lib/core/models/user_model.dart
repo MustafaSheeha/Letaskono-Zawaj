@@ -38,6 +38,10 @@ class UserModel {
   String? fatherJob;
   String? motherJob;
   String? yourRelationWithFamily;
+  String? isParentKnowAboutLetaskono;
+  String? youAcceptToMarryWithoutQaamah;
+  String? parentAcceptToMarryWithoutQaamah;
+  String? parentPhone;
   // additional  Info
   String? yourThoughtAboutGuardianship;
   String? jobDetails;
@@ -53,6 +57,7 @@ class UserModel {
   String? listenMusicWatchMovies;
   String? broomParty;
   String? howSpendSparetime;
+  String? canCook;
   String? yourThoughtsAlmostTime;
   String? travelingAbroad;
 
@@ -92,6 +97,10 @@ class UserModel {
     this.howOldYourChildren,
     this.fatherJob,
     this.motherJob,
+    this.isParentKnowAboutLetaskono,
+    this.youAcceptToMarryWithoutQaamah,
+    this.parentAcceptToMarryWithoutQaamah,
+    this.parentPhone,
     // additional  Info
     this.yourThoughtAboutGuardianship,
     this.jobDetails,
@@ -109,8 +118,9 @@ class UserModel {
     this.broomParty,
     this.yourRelationWithFamily,
     this.howSpendSparetime,
+    this.canCook,
     this.yourThoughtsAlmostTime,
-    this.travelingAbroad,
+    this.travelingAbroad ,
   });
 
   // Map<String, dynamic> toFirestore();
@@ -155,6 +165,13 @@ class UserModel {
       howOldYourChildren: data?['howOldYourChildren'] as String?,
       fatherJob: data?['fatherJob'] as String?,
       motherJob: data?['motherJob'] as String?,
+      isParentKnowAboutLetaskono:
+          data?['isParentKnowAboutLetaskono'] as String?,
+      youAcceptToMarryWithoutQaamah:
+          data?['youAcceptToMarryWithoutQaamah'] as String?,
+      parentAcceptToMarryWithoutQaamah:
+          data?['parentAcceptToMarryWithoutQaamah'] as String?,
+      parentPhone: data?['parentPhone'] as String?,
       // additional  Info
       yourThoughtAboutGuardianship:
           data?['yourThoughtAboutGuardianship'] as String?,
@@ -175,6 +192,7 @@ class UserModel {
       broomParty: data?['broomParty'] as String?,
       yourRelationWithFamily: data?['yourRelationWithFamily'] as String?,
       howSpendSparetime: data?['howSpendSparetime'] as String?,
+      canCook: data?['canCook'] as String?,
       yourThoughtsAlmostTime: data?['yourThoughtsAlmostTime'] as String?,
       travelingAbroad: data?['travelingAbroad'] as String?,
     );
@@ -219,6 +237,13 @@ class UserModel {
           'howOldYourChildren': howOldYourChildren,
         if (fatherJob != null) 'fatherJob': fatherJob,
         if (motherJob != null) 'motherJob': motherJob,
+        if (isParentKnowAboutLetaskono != null)
+          'isParentKnowAboutLetaskono': isParentKnowAboutLetaskono,
+        if (youAcceptToMarryWithoutQaamah != null)
+          'youAcceptToMarryWithoutQaamah': youAcceptToMarryWithoutQaamah,
+        if (parentAcceptToMarryWithoutQaamah != null)
+          'parentAcceptToMarryWithoutQaamah': parentAcceptToMarryWithoutQaamah,
+        if (parentPhone != null) 'parentPhone': parentPhone,
         // additional  Info
         if (yourThoughtAboutGuardianship != null)
           'yourThoughtAboutGuardianship': yourThoughtAboutGuardianship,
@@ -242,6 +267,7 @@ class UserModel {
         if (yourRelationWithFamily != null)
           'yourRelationWithFamily': yourRelationWithFamily,
         if (howSpendSparetime != null) 'howSpendSparetime': howSpendSparetime,
+        if (canCook != null) 'canCook': canCook,
         if (yourThoughtsAlmostTime != null)
           'yourThoughtsAlmostTime': yourThoughtsAlmostTime,
         if (travelingAbroad != null) 'travelingAbroad': travelingAbroad,

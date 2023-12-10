@@ -117,7 +117,8 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                     ),
                     SizedBox(height: 0.01 * screenHeight),
                     CustomTextFormField(
-                      initialValue: profileCubit.userModel.learningReligiousKnowledge,
+                      initialValue:
+                          profileCubit.userModel.learningReligiousKnowledge,
                       obscureText: false,
                       onChanged: (p0) {
                         profileCubit.userModel.learningReligiousKnowledge = p0;
@@ -131,7 +132,8 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                     ),
                     SizedBox(height: 0.01 * screenHeight),
                     CustomTextFormField(
-                      initialValue: profileCubit.userModel.yourThoughtAboutLifeSuccess,
+                      initialValue:
+                          profileCubit.userModel.yourThoughtAboutLifeSuccess,
                       obscureText: false,
                       onChanged: (p0) {
                         profileCubit.userModel.yourThoughtAboutLifeSuccess = p0;
@@ -145,7 +147,8 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                     ),
                     SizedBox(height: 0.01 * screenHeight),
                     CustomTextFormField(
-                      initialValue: profileCubit.userModel.diseasesAndDisability,
+                      initialValue:
+                          profileCubit.userModel.diseasesAndDisability,
                       obscureText: false,
                       onChanged: (p0) {
                         profileCubit.userModel.diseasesAndDisability = p0;
@@ -187,7 +190,8 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                     ),
                     SizedBox(height: 0.01 * screenHeight),
                     CustomTextFormField(
-                      initialValue: profileCubit.userModel.listenMusicWatchMovies,
+                      initialValue:
+                          profileCubit.userModel.listenMusicWatchMovies,
                       obscureText: false,
                       onChanged: (p0) {
                         profileCubit.userModel.listenMusicWatchMovies = p0;
@@ -222,6 +226,26 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                       },
                     ),
                     SizedBox(height: 0.01 * screenHeight),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : const Text(
+                            AppStrings.canCook,
+                            style: AppTextStyles.cairoW300PrimaryColor,
+                            textAlign: TextAlign.end,
+                          ),
+                    SizedBox(height: 0.01 * screenHeight),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : CustomTextFormField(
+                            initialValue: profileCubit.userModel.canCook,
+                            obscureText: false,
+                            onChanged: (p0) {
+                              profileCubit.userModel.canCook = p0;
+                            },
+                          ),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : SizedBox(height: 0.01 * screenHeight),
                     const Text(
                       AppStrings.yourThoughtsAlmostTime,
                       style: AppTextStyles.cairoW300PrimaryColor,
@@ -229,7 +253,8 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                     ),
                     SizedBox(height: 0.01 * screenHeight),
                     CustomTextFormField(
-                      initialValue: profileCubit.userModel.yourThoughtsAlmostTime,
+                      initialValue:
+                          profileCubit.userModel.yourThoughtsAlmostTime,
                       obscureText: false,
                       onChanged: (p0) {
                         profileCubit.userModel.yourThoughtsAlmostTime = p0;

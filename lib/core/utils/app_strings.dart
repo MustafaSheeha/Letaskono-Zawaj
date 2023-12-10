@@ -115,7 +115,7 @@ abstract class AppStrings {
   static const religiousInfo = 'معلومات عن تدينك';
   static const marriageInfo = 'معلومات تخص الزواج';
   static const parentInfo = 'معلومات عن ولى الأمر';
-  static const familyInfo = 'معلومات عن الاسرة / السكن ';
+  static const familyInfo = 'معلومات عن الاسرة';
   static const additionalInfo = 'معلومات اضافية ';
   static const thoughtsInfo = 'معلومات عن الافكار والمفاهيم ';
   static const martialStatus = 'الحالة الاجتماعية';
@@ -144,7 +144,7 @@ abstract class AppStrings {
   static const quranMemorizing = 'حفظ القران';
   static const clothStyle = 'نوع الحجاب';
   static const faceStyle = 'هل أنت ملتحى ؟';
-  static const acceptToWearNiqab = 'ارتداء النقاب';
+  static const acceptToWearNiqab = 'هل لديك استعداد أو رغبة في لبس النقاب؟';
   static const identityConfirmation = 'تأكيد الهوية';
   static const idFrontSide = 'صورة بطاقة الهوية - أمام';
   static const idBackSide = 'صورة بطاقة الهوية - خلف';
@@ -202,6 +202,7 @@ abstract class AppStrings {
   static const broomParty =
       'هل تنوي إقامة حفل زفاف يغضب الله ؟ (اختلاط - موسيقى - فوتوسيشن)';
   static const howSpendSparetime = 'كيف تقضي وقت فراغك ؟';
+  static const canCook = 'هل تجيدين الطبخ ؟';
   static const yourThoughtsAlmostTime =
       'ما هو أكثر ما يشغل تفكيرك معظم الوقت ؟';
   static const travelingAbroad = 'هل لديك الرغبة في السفر للخارج ؟';

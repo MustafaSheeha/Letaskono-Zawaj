@@ -14,3 +14,6 @@ abstract class AppColors {
   static const black = Colors.black;
   static const blue = Colors.blue;
 }
+  // static const primaryColor = Color(0xff406882);
+
+  // static const facebookColor = Color(0xff0966fe);

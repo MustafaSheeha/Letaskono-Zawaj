@@ -374,7 +374,7 @@ class AuthCubit extends Cubit<AuthState> {
       print(createMaleProfileModel.idFrontSideUrl);
       // emit(UploadtSuccessState());
     } on Exception catch (e) {
-      // emit(UploadFailureState(errorMessege: e.toString()));
+      emit(UploadFailureState(errorMessege: e.toString()));
     }
   }
 
@@ -396,7 +396,7 @@ class AuthCubit extends Cubit<AuthState> {
           '33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333');
       // emit(UploadtSuccessState());
     } on Exception catch (e) {
-      // emit(UploadFailureState(errorMessege: e.toString()));
+      emit(UploadFailureState(errorMessege: e.toString()));
     }
   }
 // ############################################################################### signOut

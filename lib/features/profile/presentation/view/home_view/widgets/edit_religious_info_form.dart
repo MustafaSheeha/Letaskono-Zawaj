@@ -105,12 +105,12 @@ class _EditReligiousInfoFormState extends State<EditReligiousInfoForm> {
                         : DropdownButtonWidget(
                             onChanged: (p0) {
                               setState(() {
-                                profileCubit.userModel.clothStyle = p0;
+                                profileCubit.userModel.acceptToWearNiqab = p0;
                               });
                             },
-                            selectedValue: profileCubit.userModel.clothStyle,
+                            selectedValue: profileCubit.userModel.acceptToWearNiqab,
                             dropdownButtonList:
-                                DropdownButtonList.clothStyleList,
+                                DropdownButtonList.acceptToWearNiqabList,
                           ),
                     profileCubit.userModel.gender == "Male"
                         ? const SizedBox.shrink()

@@ -7,9 +7,7 @@ import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/utils/functions/flutter_app_bar.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_drawer.dart';
-import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
-import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/widgets/card_user.dart';
 
 class SearchView extends StatefulWidget {

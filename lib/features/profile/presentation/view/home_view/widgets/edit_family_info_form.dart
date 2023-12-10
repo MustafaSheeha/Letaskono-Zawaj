@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:letaskono_zawaj/core/database/drop_down_buttom_list.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_form_field.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
+import 'package:letaskono_zawaj/core/widgets/dropdown_button_widget.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 
@@ -35,6 +37,99 @@ class _EditFamilyInfoFormState extends State<EditFamilyInfoForm> {
                   children: [
                     SizedBox(height: 0.02 * screenHeight),
                     const CustomHeaderTitle(headerTitle: AppStrings.familyInfo),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : const Text(AppStrings.isParentKnowAboutLetaskono,
+                            style: AppTextStyles.cairoW300PrimaryColor),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : SizedBox(height: 0.01 * screenHeight),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : DropdownButtonWidget(
+                            onChanged: (p0) {
+                              setState(() {
+                                profileCubit
+                                    .userModel.isParentKnowAboutLetaskono = p0;
+                              });
+                            },
+                            selectedValue: profileCubit
+                                .userModel.isParentKnowAboutLetaskono,
+                            dropdownButtonList: DropdownButtonList
+                                .isParentKnowAboutLetaskonoList,
+                          ),
+                    SizedBox(height: 0.01 * screenHeight),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : const Text(
+                            AppStrings.youAcceptToMarryWithoutQaamah,
+                            style: AppTextStyles.cairoW300PrimaryColor,
+                            textAlign: TextAlign.end,
+                          ),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : SizedBox(height: 0.01 * screenHeight),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : DropdownButtonWidget(
+                            onChanged: (p0) {
+                              setState(() {
+                                profileCubit.userModel
+                                    .youAcceptToMarryWithoutQaamah = p0;
+                              });
+                            },
+                            selectedValue: profileCubit
+                                .userModel.youAcceptToMarryWithoutQaamah,
+                            dropdownButtonList: DropdownButtonList
+                                .youAcceptToMarryWithoutQaamahList,
+                          ),
+                    SizedBox(height: 0.01 * screenHeight),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : const Text(
+                            AppStrings.parentAcceptToMarryWithoutQaamah,
+                            style: AppTextStyles.cairoW300PrimaryColor,
+                            textAlign: TextAlign.end,
+                          ),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : SizedBox(height: 0.01 * screenHeight),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : DropdownButtonWidget(
+                            onChanged: (p0) {
+                              setState(() {
+                                profileCubit.userModel
+                                    .parentAcceptToMarryWithoutQaamah = p0;
+                              });
+                            },
+                            selectedValue: profileCubit
+                                .userModel.parentAcceptToMarryWithoutQaamah,
+                            dropdownButtonList: DropdownButtonList
+                                .parentAcceptToMarryWithoutQaamahhList,
+                          ),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : SizedBox(height: 0.01 * screenHeight),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : const Text(
+                            AppStrings.parentPhone,
+                            style: AppTextStyles.cairoW300PrimaryColor,
+                            textAlign: TextAlign.end,
+                          ),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : SizedBox(height: 0.01 * screenHeight),
+                    profileCubit.userModel.gender == 'Male'
+                        ? const SizedBox.shrink()
+                        : CustomTextFormField(
+                            initialValue: profileCubit.userModel.parentPhone,
+                            obscureText: false,
+                            onChanged: (p0) {
+                              profileCubit.userModel.parentPhone = p0;
+                            },
+                          ),
                     SizedBox(height: 0.01 * screenHeight),
                     const Text(AppStrings.fatherJob,
                         style: AppTextStyles.cairoW300PrimaryColor),

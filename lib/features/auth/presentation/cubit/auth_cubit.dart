@@ -10,9 +10,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_female_profile_model.dart';
 import 'package:letaskono_zawaj/core/models/create_profile_user_model/create_male_profile_model.dart';
 import 'package:letaskono_zawaj/core/models/user_model.dart';
+import 'package:letaskono_zawaj/core/routes/app_routes.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
+import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/features/auth/data/registeration_user_model.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
+import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
@@ -401,13 +404,24 @@ class AuthCubit extends Cubit<AuthState> {
   }
 // ############################################################################### signOut
 
-  Future<void> signOut() async {
+  Future<void> signOut(BuildContext context) async {
     try {
       emit(SignOutLoadingState());
-      await FirebaseAuth.instance.signOut();
+      print('1111111111111111111111111111');
+      await FirebaseAuth.instance
+          .signOut()
+          .then((value) => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LoginView(),
+              )));
+      print('222222222222222222222222222');
       emit(SignOutLoadingState());
+      print('333333333333333333333333333333');
     } on Exception catch (e) {
+      print('444444444444444444444444444');
       emit(SignOutFailureState(errorMessege: e.toString()));
+      print('5555555555555555555555555555');
     }
   }
 }

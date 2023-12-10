@@ -29,65 +29,62 @@ class _EditPersonalInfoFormState extends State<EditPersonalInfoForm> {
         if (state is GetAllUsersFailureInitial) {}
       },
       builder: (context, state) {
-        return state is GetMyUsersLoadingInitial
-            ? const Center(child: CircularProgressIndicator())
-            : CardContainer(
-                widget: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SizedBox(height: 0.02 * screenHeight),
-                    const CustomHeaderTitle(
-                        headerTitle: AppStrings.personalInfo),
-                    SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.age,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    CustomTextFormField(
-                      initialValue: profileCubit.userModel.age,
-                      obscureText: false,
-                      onChanged: (p0) {
-                        profileCubit.userModel.age = p0;
-                      },
-                    ),
-                    SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.height,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    CustomTextFormField(
-                      initialValue: profileCubit.userModel.height,
-                      obscureText: false,
-                      onChanged: (p0) {
-                        profileCubit.userModel.height = p0;
-                      },
-                    ),
-                    SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.weight,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    CustomTextFormField(
-                      initialValue: profileCubit.userModel.weight,
-                      obscureText: false,
-                      onChanged: (p0) {
-                        profileCubit.userModel.weight = p0;
-                      },
-                    ),
-                    SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.skinColor,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    DropdownButtonWidget(
-                      onChanged: (p0) {
-                        setState(() {
-                          profileCubit.userModel.skinColor = p0;
-                        });
-                      },
-                      selectedValue: profileCubit.userModel.skinColor,
-                      dropdownButtonList: DropdownButtonList.skinColorList,
-                    ),
-                    SizedBox(height: 0.02 * screenHeight),
-                  ],
-                ),
-              );
+        return CardContainer(
+          widget: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(height: 0.02 * screenHeight),
+              const CustomHeaderTitle(headerTitle: AppStrings.personalInfo),
+              SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.age,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              CustomTextFormField(
+                initialValue: profileCubit.userModel.age,
+                obscureText: false,
+                onChanged: (p0) {
+                  profileCubit.userModel.age = p0;
+                },
+              ),
+              SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.height,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              CustomTextFormField(
+                initialValue: profileCubit.userModel.height,
+                obscureText: false,
+                onChanged: (p0) {
+                  profileCubit.userModel.height = p0;
+                },
+              ),
+              SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.weight,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              CustomTextFormField(
+                initialValue: profileCubit.userModel.weight,
+                obscureText: false,
+                onChanged: (p0) {
+                  profileCubit.userModel.weight = p0;
+                },
+              ),
+              SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.skinColor,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              DropdownButtonWidget(
+                onChanged: (p0) {
+                  setState(() {
+                    profileCubit.userModel.skinColor = p0;
+                  });
+                },
+                selectedValue: profileCubit.userModel.skinColor,
+                dropdownButtonList: DropdownButtonList.skinColorList,
+              ),
+              SizedBox(height: 0.02 * screenHeight),
+            ],
+          ),
+        );
       },
     );
   }

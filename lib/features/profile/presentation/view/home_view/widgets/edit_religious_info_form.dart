@@ -29,117 +29,110 @@ class _EditReligiousInfoFormState extends State<EditReligiousInfoForm> {
         if (state is GetAllUsersFailureInitial) {}
       },
       builder: (context, state) {
-        return state is GetMyUsersLoadingInitial
-            ? const Center(child: CircularProgressIndicator())
-            : CardContainer(
-                widget: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SizedBox(height: 0.02 * screenHeight),
-                    const CustomHeaderTitle(
-                        headerTitle: AppStrings.religiousInfo),
-                    SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.prayerCommitment,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    DropdownButtonWidget(
+        return CardContainer(
+          widget: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(height: 0.02 * screenHeight),
+              const CustomHeaderTitle(headerTitle: AppStrings.religiousInfo),
+              SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.prayerCommitment,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              DropdownButtonWidget(
+                onChanged: (p0) {
+                  setState(() {
+                    profileCubit.userModel.prayerCommitment = p0;
+                  });
+                },
+                selectedValue: profileCubit.userModel.prayerCommitment,
+                dropdownButtonList: DropdownButtonList.prayerCommitmentList,
+              ),
+              SizedBox(height: 0.01 * screenHeight),
+              profileCubit.userModel.gender == "Male"
+                  ? const Text(AppStrings.faceStyle,
+                      style: AppTextStyles.cairoW300PrimaryColor)
+                  : const Text(AppStrings.clothStyle,
+                      style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              profileCubit.userModel.gender == "Male"
+                  ? DropdownButtonWidget(
                       onChanged: (p0) {
                         setState(() {
-                          profileCubit.userModel.prayerCommitment = p0;
+                          profileCubit.userModel.faceStyle = p0;
                         });
                       },
-                      selectedValue: profileCubit.userModel.prayerCommitment,
-                      dropdownButtonList:
-                          DropdownButtonList.prayerCommitmentList,
-                    ),
-                    SizedBox(height: 0.01 * screenHeight),
-                    profileCubit.userModel.gender == "Male"
-                        ? const Text(AppStrings.faceStyle,
-                            style: AppTextStyles.cairoW300PrimaryColor)
-                        : const Text(AppStrings.clothStyle,
-                            style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    profileCubit.userModel.gender == "Male"
-                        ? DropdownButtonWidget(
-                            onChanged: (p0) {
-                              setState(() {
-                                profileCubit.userModel.faceStyle = p0;
-                              });
-                            },
-                            selectedValue: profileCubit.userModel.faceStyle,
-                            dropdownButtonList:
-                                DropdownButtonList.faceStyleList,
-                          )
-                        : DropdownButtonWidget(
-                            onChanged: (p0) {
-                              setState(() {
-                                profileCubit.userModel.clothStyle = p0;
-                              });
-                            },
-                            selectedValue: profileCubit.userModel.clothStyle,
-                            dropdownButtonList:
-                                DropdownButtonList.clothStyleList,
-                          ),
-                    SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.quranMemorizing,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    DropdownButtonWidget(
+                      selectedValue: profileCubit.userModel.faceStyle,
+                      dropdownButtonList: DropdownButtonList.faceStyleList,
+                    )
+                  : DropdownButtonWidget(
                       onChanged: (p0) {
                         setState(() {
-                          profileCubit.userModel.quranMemorizing = p0;
+                          profileCubit.userModel.clothStyle = p0;
                         });
                       },
-                      selectedValue: profileCubit.userModel.quranMemorizing,
+                      selectedValue: profileCubit.userModel.clothStyle,
+                      dropdownButtonList: DropdownButtonList.clothStyleList,
+                    ),
+              SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.quranMemorizing,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              DropdownButtonWidget(
+                onChanged: (p0) {
+                  setState(() {
+                    profileCubit.userModel.quranMemorizing = p0;
+                  });
+                },
+                selectedValue: profileCubit.userModel.quranMemorizing,
+                dropdownButtonList: DropdownButtonList.quranMemorizingList,
+              ),
+              SizedBox(height: 0.01 * screenHeight),
+              profileCubit.userModel.gender == "Male"
+                  ? const SizedBox.shrink()
+                  : const Text(AppStrings.acceptToWearNiqab,
+                      style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              profileCubit.userModel.gender == "Male"
+                  ? const SizedBox.shrink()
+                  : DropdownButtonWidget(
+                      onChanged: (p0) {
+                        setState(() {
+                          profileCubit.userModel.acceptToWearNiqab = p0;
+                        });
+                      },
+                      selectedValue: profileCubit.userModel.acceptToWearNiqab,
                       dropdownButtonList:
-                          DropdownButtonList.quranMemorizingList,
+                          DropdownButtonList.acceptToWearNiqabList,
                     ),
-                    SizedBox(height: 0.01 * screenHeight),
-                    profileCubit.userModel.gender == "Male"
-                        ? const SizedBox.shrink()
-                        : const Text(AppStrings.acceptToWearNiqab,
-                            style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    profileCubit.userModel.gender == "Male"
-                        ? const SizedBox.shrink()
-                        : DropdownButtonWidget(
-                            onChanged: (p0) {
-                              setState(() {
-                                profileCubit.userModel.acceptToWearNiqab = p0;
-                              });
-                            },
-                            selectedValue: profileCubit.userModel.acceptToWearNiqab,
-                            dropdownButtonList:
-                                DropdownButtonList.acceptToWearNiqabList,
-                          ),
-                    profileCubit.userModel.gender == "Male"
-                        ? const SizedBox.shrink()
-                        : SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.yourSheikhs,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    CustomTextFormField(
-                      initialValue: profileCubit.userModel.yourSheikhs,
-                      obscureText: false,
-                      onChanged: (p0) {
-                        profileCubit.userModel.yourSheikhs = p0;
-                      },
-                    ),
-                    SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.morningEveningAzkar,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    CustomTextFormField(
-                      initialValue: profileCubit.userModel.morningEveningAzkar,
-                      obscureText: false,
-                      onChanged: (p0) {
-                        profileCubit.userModel.morningEveningAzkar = p0;
-                      },
-                    ),
-                    SizedBox(height: 0.02 * screenHeight),
-                  ],
-                ),
-              );
+              profileCubit.userModel.gender == "Male"
+                  ? const SizedBox.shrink()
+                  : SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.yourSheikhs,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              CustomTextFormField(
+                initialValue: profileCubit.userModel.yourSheikhs,
+                obscureText: false,
+                onChanged: (p0) {
+                  profileCubit.userModel.yourSheikhs = p0;
+                },
+              ),
+              SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.morningEveningAzkar,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              CustomTextFormField(
+                initialValue: profileCubit.userModel.morningEveningAzkar,
+                obscureText: false,
+                onChanged: (p0) {
+                  profileCubit.userModel.morningEveningAzkar = p0;
+                },
+              ),
+              SizedBox(height: 0.02 * screenHeight),
+            ],
+          ),
+        );
       },
     );
   }

@@ -27,41 +27,38 @@ class _EditMarriageInfoFormState extends State<EditMarriageInfoForm> {
         if (state is GetAllUsersFailureInitial) {}
       },
       builder: (context, state) {
-        return state is GetMyUsersLoadingInitial
-            ? const Center(child: CircularProgressIndicator())
-            : CardContainer(
-                widget: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SizedBox(height: 0.02 * screenHeight),
-                    const CustomHeaderTitle(
-                        headerTitle: AppStrings.marriageInfo),
-                    SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.tellAboutYou,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    CustomTextFormField(
-                      initialValue: profileCubit.userModel.tellAboutYou,
-                      obscureText: false,
-                      onChanged: (p0) {
-                        profileCubit.userModel.tellAboutYou = p0;
-                      },
-                    ),
-                    SizedBox(height: 0.01 * screenHeight),
-                    const Text(AppStrings.tellAboutPartner,
-                        style: AppTextStyles.cairoW300PrimaryColor),
-                    SizedBox(height: 0.01 * screenHeight),
-                    CustomTextFormField(
-                      initialValue: profileCubit.userModel.tellAboutPartner,
-                      obscureText: false,
-                      onChanged: (p0) {
-                        profileCubit.userModel.tellAboutPartner = p0;
-                      },
-                    ),
-                    SizedBox(height: 0.02 * screenHeight),
-                  ],
-                ),
-              );
+        return CardContainer(
+          widget: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(height: 0.02 * screenHeight),
+              const CustomHeaderTitle(headerTitle: AppStrings.marriageInfo),
+              SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.tellAboutYou,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              CustomTextFormField(
+                initialValue: profileCubit.userModel.tellAboutYou,
+                obscureText: false,
+                onChanged: (p0) {
+                  profileCubit.userModel.tellAboutYou = p0;
+                },
+              ),
+              SizedBox(height: 0.01 * screenHeight),
+              const Text(AppStrings.tellAboutPartner,
+                  style: AppTextStyles.cairoW300PrimaryColor),
+              SizedBox(height: 0.01 * screenHeight),
+              CustomTextFormField(
+                initialValue: profileCubit.userModel.tellAboutPartner,
+                obscureText: false,
+                onChanged: (p0) {
+                  profileCubit.userModel.tellAboutPartner = p0;
+                },
+              ),
+              SizedBox(height: 0.02 * screenHeight),
+            ],
+          ),
+        );
       },
     );
   }

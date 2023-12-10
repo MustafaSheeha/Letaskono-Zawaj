@@ -27,34 +27,38 @@ class EditUserForm extends StatelessWidget {
       },
       builder: (context, state) {
         ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
-        return Form(
-          key: profileCubit.editMaleProfileFormKey,
-          child: SingleChildScrollView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              children: [
-                const EditGeneralInfoForm(),
-                const EditPersonalInfoForm(),
-                const EditReligiousInfoForm(),
-                const EditMarriageInfoForm(),
-                const EditFamilyInfoForm(),
-                const EditAddittionalInfoForm(),
-                state is EditMyUsersLoadingInitial
-                    ? const Center(child: CircularProgressIndicator())
-                    : CustomElevatedButton(
-                        onPressed: () async {
-                          if (profileCubit.editMaleProfileFormKey.currentState!
-                              .validate()) {
-                            await profileCubit.editMyUser();
-                          }
-                        },
-                        text: AppStrings.saveEditings),
-                SizedBox(height: 0.09 * screenHeight),
-              ],
-            ),
-          ),
-        );
+        return state is GetMyUsersLoadingInitial
+            ? const Center(child: CircularProgressIndicator())
+            : Form(
+                key: profileCubit.editMaleProfileFormKey,
+                child: SingleChildScrollView(
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      const EditGeneralInfoForm(),
+                      const EditPersonalInfoForm(),
+                      const EditReligiousInfoForm(),
+                      const EditMarriageInfoForm(),
+                      const EditFamilyInfoForm(),
+                      const EditAddittionalInfoForm(),
+                      state is EditMyUsersLoadingInitial
+                          ? const Center(child: CircularProgressIndicator())
+                          : CustomElevatedButton(
+                              onPressed: () async {
+                                if (profileCubit
+                                    .editMaleProfileFormKey.currentState!
+                                    .validate()) {
+                                  await profileCubit.editMyUser();
+                                }
+                              },
+                              text: AppStrings.saveEditings),
+                      SizedBox(height: 0.09 * screenHeight),
+                    ],
+                  ),
+                ),
+              );
       },
     );
   }

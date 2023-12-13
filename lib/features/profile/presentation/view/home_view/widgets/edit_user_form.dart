@@ -1,7 +1,9 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/routes/app_routes.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
+import 'package:letaskono_zawaj/core/utils/functions/awesome_snackbar_content.dart';
 import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
@@ -22,15 +24,27 @@ class EditUserForm extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
-        if (state is EditMyUsersSuccessInitial) {}
-        if (state is EditMyUsersFailureInitial) {}
+        if (state is EditMyUsersSuccessState) {
+          showAwesomeSnackbar(
+              context: context,
+              title: 'تم حفظ التعديلات',
+              message: 'تم حفظ التعديلات',
+              contentType: ContentType.success);
+        }
+        if (state is EditMyUsersFailureState) {
+          showAwesomeSnackbar(
+              context: context,
+              title: AppStrings.someThingWentWrong,
+              message: state.errorMessege,
+              contentType: ContentType.failure);
+        }
       },
       builder: (context, state) {
         ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
-        return state is GetMyUsersLoadingInitial
+        return state is GetMyUsersLoadingState
             ? const Center(child: CircularProgressIndicator())
             : Form(
-                key: profileCubit.editMaleProfileFormKey,
+                key: profileCubit.editProfileFormKey,
                 child: SingleChildScrollView(
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
@@ -43,15 +57,15 @@ class EditUserForm extends StatelessWidget {
                       const EditMarriageInfoForm(),
                       const EditFamilyInfoForm(),
                       const EditAddittionalInfoForm(),
-                      state is EditMyUsersLoadingInitial
+                      state is EditMyUsersLoadingState
                           ? const Center(child: CircularProgressIndicator())
                           : CustomElevatedButton(
                               onPressed: () async {
-                                if (profileCubit
-                                    .editMaleProfileFormKey.currentState!
-                                    .validate()) {
-                                  await profileCubit.editMyUser();
-                                }
+                                print('beforeeeeeeeeeeeeeeee edit');
+
+                                await profileCubit.editMyUser();
+
+                                print('afterrrrrrrrrrrrrrr edit');
                               },
                               text: AppStrings.saveEditings),
                       SizedBox(height: 0.09 * screenHeight),

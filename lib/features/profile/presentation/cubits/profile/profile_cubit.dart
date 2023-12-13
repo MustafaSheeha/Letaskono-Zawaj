@@ -7,9 +7,9 @@ import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/pro
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
-  GlobalKey<FormState> editMaleProfileFormKey = GlobalKey();
+  GlobalKey<FormState> editProfileFormKey = GlobalKey();
   UserModel userModel = UserModel();
-  
+
   var db = FirebaseFirestore.instance;
 
   Future<void> getMyUser() async {
@@ -21,23 +21,20 @@ class ProfileCubit extends Cubit<ProfileState> {
               toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
             );
     try {
-      emit(GetMyUsersLoadingInitial());
+      emit(GetMyUsersLoadingState());
       final docSnap = await myUserRef.get();
 
       final user = docSnap.data();
-      emit(GetMyUsersSuccessInitial());
+      emit(GetMyUsersSuccessState());
       print('>>>>>>>>>>>>>>>>>>>>>>>>>> got data'); // Convert to City object
       if (user != null) {
         userModel = user;
-
-        // createMaleProfileModel.faceStyle=user.faceStyle;
-        // createFemaleProfileModel.clothStyle=user.clothStyle;
       } else {
         print("No such document.");
-        emit(GetMyUsersFailureInitial(errorMessege: "No such document."));
+        emit(GetMyUsersFailureState(errorMessege: "No such document."));
       }
     } on Exception catch (e) {
-      emit(GetMyUsersFailureInitial(errorMessege: e.toString()));
+      emit(GetMyUsersFailureState(errorMessege: e.toString()));
     }
   }
 
@@ -49,15 +46,17 @@ class ProfileCubit extends Cubit<ProfileState> {
               fromFirestore: UserModel.fromFirestore,
               toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
             );
+      print('EEEEEEEEEEEEEEEEEEEEEEEE start edit');
     try {
-      emit(EditMyUsersLoadingInitial());
+      emit(EditMyUsersLoadingState());
       await myUserRef.set(userModel, SetOptions(merge: true));
+      print('EEEEEEEEEEEEEEEEEEEEEEEE do edit');
 
-      emit(EditMyUsersSuccessInitial());
-      print('>>>>>>>>>>>>>>>>>>>>>>>>>> edit data successfully'); // Convert to City object
+      emit(EditMyUsersSuccessState());
+      print(
+          '>>>>>>>>>>>>>>>>>>>>>>>>>> edit data successfully'); // Convert to City object
     } on Exception catch (e) {
-      emit(GetMyUsersFailureInitial(errorMessege: e.toString()));
+      emit(GetMyUsersFailureState(errorMessege: e.toString()));
     }
   }
- 
 }

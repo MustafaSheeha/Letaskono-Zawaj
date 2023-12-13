@@ -23,8 +23,8 @@ class _EditMarriageInfoFormState extends State<EditMarriageInfoForm> {
     ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
-        if (state is GetMyUsersSuccessInitial) {}
-        if (state is GetMyUsersFailureInitial) {}
+        if (state is GetMyUsersSuccessState) {}
+        if (state is GetMyUsersFailureState) {}
       },
       builder: (context, state) {
         return CardContainer(

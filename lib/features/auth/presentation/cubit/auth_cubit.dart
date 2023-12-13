@@ -311,7 +311,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
     print(
         '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-    print(userModel.isCreateProfile);
+    print('isCreateProfile : ${userModel.isCreateProfile}');
     print(
         '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
     // return userModel.isCreateProfile;
@@ -408,13 +408,9 @@ class AuthCubit extends Cubit<AuthState> {
       print('1111111111111111111111111111');
       await FirebaseAuth.instance
           .signOut()
-          .then((value) => Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginView(),
-              )));
-      print('222222222222222222222222222');
-      emit(SignOutLoadingState());
+          ;
+      print('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTtt');
+      emit(SignOutSuccessState());
       print('333333333333333333333333333333');
     } on Exception catch (e) {
       print('444444444444444444444444444');

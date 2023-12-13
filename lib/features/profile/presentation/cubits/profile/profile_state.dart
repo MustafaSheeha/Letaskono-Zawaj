@@ -2,24 +2,24 @@ abstract class ProfileState {}
 
 final class ProfileInitial extends ProfileState {}
 
-final class EditMyUsersLoadingInitial extends ProfileState {}
+final class EditMyUsersLoadingState extends ProfileState {}
 
-final class EditMyUsersSuccessInitial extends ProfileState {}
+final class EditMyUsersSuccessState extends ProfileState {}
 
-final class EditMyUsersFailureInitial extends ProfileState {
+final class EditMyUsersFailureState extends ProfileState {
   final String errorMessege;
 
-  EditMyUsersFailureInitial({required this.errorMessege});
+  EditMyUsersFailureState({required this.errorMessege});
 }
 
-final class GetMyUsersLoadingInitial extends ProfileState {}
+final class GetMyUsersLoadingState extends ProfileState {}
 
-final class GetMyUsersSuccessInitial extends ProfileState {}
+final class GetMyUsersSuccessState extends ProfileState {}
 
-final class GetMyUsersFailureInitial extends ProfileState {
+final class GetMyUsersFailureState extends ProfileState {
   final String errorMessege;
 
-  GetMyUsersFailureInitial({required this.errorMessege});
+  GetMyUsersFailureState({required this.errorMessege});
 }
 
 

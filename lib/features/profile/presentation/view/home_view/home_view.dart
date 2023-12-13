@@ -20,8 +20,8 @@ class HomeView extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
-        if (state is GetMyUsersSuccessInitial) {
-        } else if (state is GetMyUsersFailureInitial) {}
+        if (state is GetMyUsersSuccessState) {
+        } else if (state is GetMyUsersFailureState) {}
       },
       builder: (context, state) {
         ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
@@ -31,7 +31,7 @@ class HomeView extends StatelessWidget {
           extendBody: true,
           appBar: flutterAppBar(),
           endDrawer: const CustomDrawer(),
-          body: state is GetMyUsersLoadingInitial
+          body: state is GetMyUsersLoadingState
               ? const Center(child: CircularProgressIndicator())
               : ListView(
                   physics: const BouncingScrollPhysics(),

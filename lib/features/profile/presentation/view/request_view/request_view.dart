@@ -26,13 +26,13 @@ class _RequestViewState extends State<RequestView>
     TabController tabcontroller = TabController(length: 2, vsync: this);
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
-        if (state is GetMyUsersSuccessInitial) {
+        if (state is GetMyUsersSuccessState) {
           showAwesomeSnackbar(
               context: context,
               title: '',
               message: '',
               contentType: ContentType.success);
-        } else if (state is GetMyUsersFailureInitial) {
+        } else if (state is GetMyUsersFailureState) {
           showAwesomeSnackbar(
               context: context,
               title: 'failure',
@@ -76,7 +76,7 @@ class _RequestViewState extends State<RequestView>
                     children: [
                       Column(
                         children: [
-                          state is GetMyUsersLoadingInitial
+                          state is GetMyUsersLoadingState
                               ? const Center(
                                   child: CircularProgressIndicator())
                               : Center(

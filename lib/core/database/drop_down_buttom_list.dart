@@ -7,7 +7,6 @@ abstract class DropdownButtonList {
   ];
   static List<String> martialStatusFemaleList = [
     'عزباء',
-    'متزوجة',
     'مطلقة',
     'أرملة',
   ];

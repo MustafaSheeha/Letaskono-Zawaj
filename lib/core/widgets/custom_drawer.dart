@@ -9,6 +9,7 @@ import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
+import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -22,11 +23,11 @@ class CustomDrawer extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is SignOutSuccessState) {
-            showAwesomeSnackbar(
-                context: context,
-                title: AppStrings.accountLoggedOutSuccessfully,
-                message: AppStrings.redirectingToLogin,
-                contentType: ContentType.success);
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LoginView(),
+              ));
           }
           if (state is SignOutFailureState) {
             showAwesomeSnackbar(

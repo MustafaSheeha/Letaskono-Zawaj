@@ -16,7 +16,9 @@ class UserCard extends StatelessWidget {
     required this.isProfileOpen,
     this.onTapExpandLess,
     required this.favoriteSaveOrDelete,
+    required this.index,
   });
+  final int index;
   final Function()? onTapExpandMore;
   final Function()? onTapExpandLess;
   final bool isProfileOpen;
@@ -88,12 +90,12 @@ class UserCard extends StatelessWidget {
               )),
               CustomHeaderTitle(
                   headerTitle:
-                      'عروسة ${searchCubit.userModelList[0].clothStyle} ${searchCubit.userModelList[0].age} سنة'),
+                      'عروسة ${searchCubit.userModelList[index].clothStyle} ${searchCubit.userModelList[index].age} سنة'),
               Text(
-                  'تعيش فى ${searchCubit.userModelList[0].currentResidenceCountry} - ${searchCubit.userModelList[0].currentResidenceCity}',
+                  'تعيش فى ${searchCubit.userModelList[index].currentResidenceCountry} - ${searchCubit.userModelList[index].currentResidenceCity}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               Text(
-                  'الحالة الاجتماعية : ${searchCubit.userModelList[0].maritalStatus}',
+                  'الحالة الاجتماعية : ${searchCubit.userModelList[index].maritalStatus}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               isProfileOpen
                   ? InkWell(

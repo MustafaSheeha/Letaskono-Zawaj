@@ -75,22 +75,19 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
                           children: [
                             SizedBox(height: 0.02 * screenHeight),
                             CarouselSlider(
-                                items: [
-                                  UserCard(
-                                    favoriteSaveOrDelete: true,
-                                    isProfileOpen: isProfileOpen,
-                                    onTapExpandLess: () {
-                                      setState(() {
-                                        isProfileOpen = false;
-                                      });
-                                    },
-                                    onTapExpandMore: () {
-                                      setState(() {
-                                        isProfileOpen = true;
-                                      });
-                                    },
-                                  ),
-                                ],
+                                items: buildCardList(
+                                  searchCubit.userModelList.length,
+                                  () {
+                                    setState(() {
+                                      isProfileOpen = false;
+                                    });
+                                  },
+                                  () {
+                                    setState(() {
+                                      isProfileOpen = true;
+                                    });
+                                  },
+                                ),
                                 options: CarouselOptions(
                                   onPageChanged: (index, reason) {
                                     setState(() {
@@ -109,7 +106,7 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
                                   pauseAutoPlayOnTouch: true,
                                 )),
                             !isProfileOpen
-                                ? const SizedBox()
+                                ? const SizedBox.shrink()
                                 : Column(
                                     children: [
                                       // SizedBox(height: 0.04 * screenHeight),
@@ -283,78 +280,19 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
                           children: [
                             SizedBox(height: 0.02 * screenHeight),
                             CarouselSlider(
-                                items: [
-                                  UserCard(
-                                    favoriteSaveOrDelete: true,
-                                    isProfileOpen: isProfileOpen,
-                                    onTapExpandLess: () {
-                                      setState(() {
-                                        isProfileOpen = false;
-                                      });
-                                    },
-                                    onTapExpandMore: () {
-                                      setState(() {
-                                        isProfileOpen = true;
-                                      });
-                                    },
-                                  ),
-                                  UserCard(
-                                    favoriteSaveOrDelete: true,
-                                    isProfileOpen: isProfileOpen,
-                                    onTapExpandLess: () {
-                                      setState(() {
-                                        isProfileOpen = false;
-                                      });
-                                    },
-                                    onTapExpandMore: () {
-                                      setState(() {
-                                        isProfileOpen = true;
-                                      });
-                                    },
-                                  ),
-                                  UserCard(
-                                    favoriteSaveOrDelete: true,
-                                    isProfileOpen: isProfileOpen,
-                                    onTapExpandLess: () {
-                                      setState(() {
-                                        isProfileOpen = false;
-                                      });
-                                    },
-                                    onTapExpandMore: () {
-                                      setState(() {
-                                        isProfileOpen = true;
-                                      });
-                                    },
-                                  ),
-                                  UserCard(
-                                    favoriteSaveOrDelete: true,
-                                    isProfileOpen: isProfileOpen,
-                                    onTapExpandLess: () {
-                                      setState(() {
-                                        isProfileOpen = false;
-                                      });
-                                    },
-                                    onTapExpandMore: () {
-                                      setState(() {
-                                        isProfileOpen = true;
-                                      });
-                                    },
-                                  ),
-                                  UserCard(
-                                    favoriteSaveOrDelete: true,
-                                    isProfileOpen: isProfileOpen,
-                                    onTapExpandLess: () {
-                                      setState(() {
-                                        isProfileOpen = false;
-                                      });
-                                    },
-                                    onTapExpandMore: () {
-                                      setState(() {
-                                        isProfileOpen = true;
-                                      });
-                                    },
-                                  ),
-                                ],
+                                items:buildCardList(
+                                  searchCubit.userModelList.length,
+                                  () {
+                                    setState(() {
+                                      isProfileOpen = false;
+                                    });
+                                  },
+                                  () {
+                                    setState(() {
+                                      isProfileOpen = true;
+                                    });
+                                  },
+                                ),
                                 options: CarouselOptions(
                                   onPageChanged: (index, reason) {
                                     setState(() {
@@ -373,7 +311,7 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
                                   pauseAutoPlayOnTouch: true,
                                 )),
                             !isProfileOpen
-                                ? const SizedBox()
+                                ? const SizedBox.shrink()
                                 : Column(
                                     children: [
                                       // SizedBox(height: 0.04 * screenHeight),
@@ -549,5 +487,20 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
             ));
       },
     );
+  }
+
+  List<Widget> buildCardList(int listLength, Function()? onTapExpandLess,
+      Function()? onTapExpandMore) {
+    List<Widget> cardList = [];
+    for (int index = 0; index < listLength; index++) {
+      cardList.add(UserCard(
+        isProfileOpen: isProfileOpen,
+        favoriteSaveOrDelete: true,
+        index: index,
+        onTapExpandLess: onTapExpandLess,
+        onTapExpandMore: onTapExpandMore,
+      ));
+    }
+    return cardList;
   }
 }

@@ -34,7 +34,9 @@ class _FavoriteViewState extends State<FavoriteView> {
           SizedBox(height: 0.02 * screenHeight),
           CarouselSlider(
               items: [
-                UserCard(favoriteSaveOrDelete: false,
+                UserCard(
+                  index: 1,
+                  favoriteSaveOrDelete: false,
                   isProfileOpen: isProfileOpen,
                   onTapExpandLess: () {
                     setState(() {
@@ -47,59 +49,7 @@ class _FavoriteViewState extends State<FavoriteView> {
                     });
                   },
                 ),
-                UserCard(favoriteSaveOrDelete: false,
-                  isProfileOpen: isProfileOpen,
-                  onTapExpandLess: () {
-                    setState(() {
-                      isProfileOpen = false;
-                    });
-                  },
-                  onTapExpandMore: () {
-                    setState(() {
-                      isProfileOpen = true;
-                    });
-                  },
-                ),
-                UserCard(favoriteSaveOrDelete: false,
-                  isProfileOpen: isProfileOpen,
-                  onTapExpandLess: () {
-                    setState(() {
-                      isProfileOpen = false;
-                    });
-                  },
-                  onTapExpandMore: () {
-                    setState(() {
-                      isProfileOpen = true;
-                    });
-                  },
-                ),
-                UserCard(favoriteSaveOrDelete: false,
-                  isProfileOpen: isProfileOpen,
-                  onTapExpandLess: () {
-                    setState(() {
-                      isProfileOpen = false;
-                    });
-                  },
-                  onTapExpandMore: () {
-                    setState(() {
-                      isProfileOpen = true;
-                    });
-                  },
-                ),
-                UserCard(favoriteSaveOrDelete: false,
-                  isProfileOpen: isProfileOpen,
-                  onTapExpandLess: () {
-                    setState(() {
-                      isProfileOpen = false;
-                    });
-                  },
-                  onTapExpandMore: () {
-                    setState(() {
-                      isProfileOpen = true;
-                    });
-                  },
-                ),
-              ],
+                 ],
               options: CarouselOptions(
                 onPageChanged: (index, reason) {
                   setState(() {

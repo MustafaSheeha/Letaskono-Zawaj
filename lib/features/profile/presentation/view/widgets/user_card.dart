@@ -10,17 +10,18 @@ import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/sear
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
 
 class UserCard extends StatelessWidget {
-  const UserCard(
-      {super.key,
-      this.onTapExpandMore,
-      required this.isProfileOpen,
-      this.onTapExpandLess,
-      required this.favoriteSaveOrDelete, required this.index});
+  const UserCard({
+    super.key,
+    this.onTapExpandMore,
+    required this.isProfileOpen,
+    this.onTapExpandLess,
+    required this.favoriteSaveOrDelete,
+  });
   final Function()? onTapExpandMore;
   final Function()? onTapExpandLess;
   final bool isProfileOpen;
   final bool favoriteSaveOrDelete;
-  final int index;
+  // final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class UserCard extends StatelessWidget {
     return BlocConsumer<SearchCubit, SearchState>(
       listener: (context, state) {},
       builder: (context, state) {
-        SearchCubit searchCubit=BlocProvider.of<SearchCubit>(context);
+        SearchCubit searchCubit = BlocProvider.of<SearchCubit>(context);
         return CardContainer(
           widget: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -85,12 +86,15 @@ class UserCard extends StatelessWidget {
                 height: 130,
                 width: 130,
               )),
-               CustomHeaderTitle(headerTitle: 'عروسة ${searchCubit.usersList[index].clothStyle} ${searchCubit.usersList[index].age} سنة'),
-               Text('تعيش فى ${searchCubit.usersList[index].currentResidenceCountry} - ${searchCubit.usersList[index].currentResidenceCity}',
+              CustomHeaderTitle(
+                  headerTitle:
+                      'عروسة ${searchCubit.userModelList[0].clothStyle} ${searchCubit.userModelList[0].age} سنة'),
+              Text(
+                  'تعيش فى ${searchCubit.userModelList[0].currentResidenceCountry} - ${searchCubit.userModelList[0].currentResidenceCity}',
                   style: AppTextStyles.cairoW300PrimaryColor),
-               Text('الحالة الاجتماعية : ${searchCubit.usersList[index].maritalStatus}',
+              Text(
+                  'الحالة الاجتماعية : ${searchCubit.userModelList[0].maritalStatus}',
                   style: AppTextStyles.cairoW300PrimaryColor),
-            
               isProfileOpen
                   ? InkWell(
                       onTap: onTapExpandLess,

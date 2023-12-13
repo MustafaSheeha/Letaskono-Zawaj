@@ -115,9 +115,7 @@ class _RequestViewState extends State<RequestView>
                           )),
                         ],
                       ),
-                      state is GetAllUsersLoadingInitial
-                          ? const Center(child: CircularProgressIndicator())
-                          : Center(
+                      Center(
                               child: TextButton(
                               child: const Text('data2'),
                               onPressed: () {

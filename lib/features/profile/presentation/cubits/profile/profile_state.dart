@@ -22,12 +22,4 @@ final class GetMyUsersFailureInitial extends ProfileState {
   GetMyUsersFailureInitial({required this.errorMessege});
 }
 
-final class GetAllUsersLoadingInitial extends ProfileState {}
 
-final class GetAllUsersSuccessInitial extends ProfileState {}
-
-final class GetAllUsersFailureInitial extends ProfileState {
-  final String errorMessege;
-
-  GetAllUsersFailureInitial({required this.errorMessege});
-}

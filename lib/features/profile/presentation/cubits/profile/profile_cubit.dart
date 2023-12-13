@@ -11,29 +11,6 @@ class ProfileCubit extends Cubit<ProfileState> {
   UserModel userModel = UserModel();
   
   var db = FirebaseFirestore.instance;
-  // Future<void> getAllUsers() async {
-  //   var usersRef = db.collection("users");
-  //   try {
-  //     emit(GetAllUsersLoadingInitial());
-  //     await usersRef.get().then(
-  //       (querySnapshot) {
-  //         print("Successfully completed");
-  //         for (var docSnapshot in querySnapshot.docs) {
-  //           usersList.add(docSnapshot);
-  //           print(
-  //               '#################################### Start #########################################');
-  //           print('${docSnapshot.id} => ${docSnapshot.data()}');
-  //           print(
-  //               '#################################### Finish #########################################');
-  //         }
-  //       },
-  //       onError: (e) => print("Error completing: $e"),
-  //     );
-  //     emit(GetAllUsersSuccessInitial());
-  //   } on Exception catch (e) {
-  //     emit(GetAllUsersFailureInitial(errorMessege: e.toString()));
-  //   }
-  // }
 
   Future<void> getMyUser() async {
     var usersRef = db.collection("users");

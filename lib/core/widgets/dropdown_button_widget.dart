@@ -35,7 +35,7 @@ class DropdownButtonWidget extends StatelessWidget {
           isExpanded: true,
           alignment: Alignment.centerRight,
           underline: Container(),
-          padding: const EdgeInsets.all(11),
+          padding: const EdgeInsets.all(8),
           value: selectedValue,
           items: dropdownButtonList.map((e) {
             return DropdownMenuItem<String?>(

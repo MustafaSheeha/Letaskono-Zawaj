@@ -7,6 +7,7 @@ import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/functions/awesome_snackbar_content.dart';
 import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_elevated_button.dart';
+import 'package:letaskono_zawaj/core/widgets/custom_persistant_bottom_nav_bar.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_form_field.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
@@ -36,9 +37,13 @@ class LoginForm extends StatelessWidget {
                 title: AppStrings.accountLoggedInSuccessfully,
                 message: AppStrings.redirectingToYourAccount,
                 contentType: ContentType.success);
-
-            customFutureDelayed(
-                context, AppRoutes.customPersistantBottomNavBar);
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CustomPersistantBottomNavBar(),
+                ));
+            // customFutureDelayed(
+            //     context, AppRoutes.customPersistantBottomNavBar);
           } else {
             showAwesomeSnackbar(
                 context: context,

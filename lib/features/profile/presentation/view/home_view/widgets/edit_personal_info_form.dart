@@ -26,7 +26,7 @@ class _EditPersonalInfoFormState extends State<EditPersonalInfoForm> {
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
         if (state is GetMyUsersSuccessInitial) {}
-        if (state is GetAllUsersFailureInitial) {}
+        if (state is GetMyUsersFailureInitial) {}
       },
       builder: (context, state) {
         return CardContainer(

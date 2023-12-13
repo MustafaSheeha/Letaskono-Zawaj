@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/database/drop_down_buttom_list.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
-import 'package:letaskono_zawaj/core/utils/functions/custom_shimmer.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_form_field.dart';
 import 'package:letaskono_zawaj/core/widgets/dropdown_button_widget.dart';

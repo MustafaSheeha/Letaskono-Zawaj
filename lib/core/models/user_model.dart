@@ -260,6 +260,7 @@ class UserModel {
           'yourThoughtAboutLifeSuccess': yourThoughtAboutLifeSuccess,
         if (diseasesAndDisability != null)
           'diseasesAndDisability': diseasesAndDisability,
+        if (isSmoking != null) 'isSmoking': isSmoking,
         if (detailedAddress != null) 'detailedAddress': detailedAddress,
         if (listenMusicWatchMovies != null)
           'listenMusicWatchMovies': listenMusicWatchMovies,

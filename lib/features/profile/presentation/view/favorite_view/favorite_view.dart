@@ -6,7 +6,7 @@ import 'package:letaskono_zawaj/core/utils/functions/flutter_app_bar.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_drawer.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/view/widgets/user_card.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/view/widgets/female_user_card.dart';
 
 class FavoriteView extends StatefulWidget {
   const FavoriteView({super.key});
@@ -34,7 +34,7 @@ class _FavoriteViewState extends State<FavoriteView> {
           SizedBox(height: 0.02 * screenHeight),
           CarouselSlider(
               items: [
-                UserCard(
+                FemaleUserCard(
                   index: 1,
                   favoriteSaveOrDelete: false,
                   isProfileOpen: isProfileOpen,

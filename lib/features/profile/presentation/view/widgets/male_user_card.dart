@@ -9,8 +9,8 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
 
-class UserCard extends StatelessWidget {
-  const UserCard({
+class MaleUserCard extends StatelessWidget {
+  const MaleUserCard({
     super.key,
     this.onTapExpandMore,
     required this.isProfileOpen,
@@ -90,12 +90,12 @@ class UserCard extends StatelessWidget {
               )),
               CustomHeaderTitle(
                   headerTitle:
-                      'عروسة ${searchCubit.userModelList[index].clothStyle} ${searchCubit.userModelList[index].age} سنة'),
+                      'عريس ${searchCubit.maleUserModelList[index].faceStyle} ${searchCubit.maleUserModelList[index].age} سنة'),
               Text(
-                  'تعيش فى ${searchCubit.userModelList[index].currentResidenceCountry} - ${searchCubit.userModelList[index].currentResidenceCity}',
+                  'يعيش فى ${searchCubit.maleUserModelList[index].currentResidenceCountry} - ${searchCubit.maleUserModelList[index].currentResidenceCity}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               Text(
-                  'الحالة الاجتماعية : ${searchCubit.userModelList[index].maritalStatus}',
+                  'الحالة الاجتماعية : ${searchCubit.maleUserModelList[index].maritalStatus}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               isProfileOpen
                   ? InkWell(

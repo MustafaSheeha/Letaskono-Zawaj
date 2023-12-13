@@ -206,4 +206,5 @@ abstract class AppStrings {
   static const yourThoughtsAlmostTime =
       'ما هو أكثر ما يشغل تفكيرك معظم الوقت ؟';
   static const travelingAbroad = 'هل لديك الرغبة في السفر للخارج ؟';
+  static const noDataFound = 'لا توجد بيانات';
 }

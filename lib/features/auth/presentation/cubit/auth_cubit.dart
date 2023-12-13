@@ -72,9 +72,9 @@ class AuthCubit extends Cubit<AuthState> {
         handlingRegisterationFirebaseAuthException(e);
       } catch (e) {
         emit(RegisterFailureState(errorMessege: e.toString()));
-        print('*********************************************');
+        print('RegisterFailureState*********************************************');
         print(e.toString());
-        print('*********************************************');
+        print('RegisterFailureState*********************************************');
       }
       emit(ConnectionSuccessState());
     } else {
@@ -124,9 +124,9 @@ class AuthCubit extends Cubit<AuthState> {
         handlingLoginFirebaseAuthException(e);
       } catch (e) {
         emit(LoginFailureState(errorMessege: e.toString()));
-        print('*********************************************');
+        print('LoginFailureState*********************************************');
         print(e.toString());
-        print('*********************************************');
+        print('LoginFailureState*********************************************');
       }
     } else {
       emit(ConnectionFailureState(
@@ -172,7 +172,7 @@ class AuthCubit extends Cubit<AuthState> {
         emit(PasswordResetSuccessState());
       } on Exception catch (e) {
         emit(PasswordResetFailureState(errorMessege: e.toString()));
-        print('*********************************************');
+        print('PasswordResetFailureState*********************************************');
         print(e.toString());
       }
     } else {
@@ -291,7 +291,7 @@ class AuthCubit extends Cubit<AuthState> {
       await emailDocRef.get().then(
         (DocumentSnapshot doc) {
           final data = doc.data() as Map<String, dynamic>;
-          isCreateProfile = data["isCreateProfile"];
+          isCreateProfile = data["isCreateProfile"]??false;
           if (isCreateProfile == true) {
             userModel.isCreateProfile = true;
           } else {

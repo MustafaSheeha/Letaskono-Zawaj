@@ -9,6 +9,7 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/forgot_password_view/widgets/forgot_password_form.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
+import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
 
 class ForgotPasswordView extends StatelessWidget {
   const ForgotPasswordView({super.key});
@@ -37,7 +38,11 @@ class ForgotPasswordView extends StatelessWidget {
                     text: AppStrings.login,
                     fontSize: 0.031 * screenWidth,
                     onPressed: () {
-                      naviPushReplacementNamed(context, AppRoutes.login);
+                      // naviPushReplacementNamed(context, AppRoutes.login);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginView()));
                     },
                   ),
                 ]),

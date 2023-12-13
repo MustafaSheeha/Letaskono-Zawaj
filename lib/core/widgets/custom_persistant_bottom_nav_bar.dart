@@ -57,7 +57,7 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
         child: const HomeView(),
       ),
        BlocProvider(
-        create: (context) => SearchCubit()..getAllUsers(),
+        create: (context) => SearchCubit()..getAllFemaleUsers()..getAllMaleUsers(),
         child: const SearchView(),
       ),
       const ChatView(),

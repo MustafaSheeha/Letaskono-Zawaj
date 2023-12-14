@@ -46,8 +46,6 @@ class EditUserForm extends StatelessWidget {
             : Form(
                 key: profileCubit.editProfileFormKey,
                 child: SingleChildScrollView(
-                  keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag,
                   physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
@@ -62,9 +60,9 @@ class EditUserForm extends StatelessWidget {
                           : CustomElevatedButton(
                               onPressed: () async {
                                 print('beforeeeeeeeeeeeeeeee edit');
-
+                  
                                 await profileCubit.editMyUser();
-
+                  
                                 print('afterrrrrrrrrrrrrrr edit');
                               },
                               text: AppStrings.saveEditings),

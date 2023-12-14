@@ -6,7 +6,8 @@ import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/sear
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(SearchInitial());
   UserModel userModel = UserModel();
-  int index=0;
+  int femaleIndex=0;
+  int maleIndex=0;
   List<UserModel> femaleUserModelList = [];
   List<UserModel> maleUserModelList = [];
   var db = FirebaseFirestore.instance;

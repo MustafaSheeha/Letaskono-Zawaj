@@ -7,6 +7,7 @@ import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_app_bar.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/register/widgets/registeration_form.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 
@@ -21,6 +22,7 @@ class RegisterView extends StatelessWidget {
       create: (context) => AuthCubit(),
       child: Scaffold(
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Column(
             children: [
@@ -32,7 +34,6 @@ class RegisterView extends StatelessWidget {
                       style: AppTextStyles.cairoW800PrimaryColor
                           .copyWith(fontSize: 0.08 * screenWidth)),
                   SizedBox(height: 0.015 * screenHeight),
-
                   Text(AppStrings.createNewAccountToInteract,
                       style: AppTextStyles.cairoW400Black
                           .copyWith(fontSize: 0.035 * screenWidth)),
@@ -42,7 +43,12 @@ class RegisterView extends StatelessWidget {
                     text: AppStrings.alreadyHaveAccount,
                     fontSize: 0.031 * screenWidth,
                     onPressed: () {
-                      naviPushReplacementNamed(context, AppRoutes.login);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginView(),
+                          ));
+                      // naviPushReplacementNamed(context, AppRoutes.login);
                     },
                   ),
                 ]),

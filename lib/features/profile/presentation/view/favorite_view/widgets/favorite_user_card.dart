@@ -16,9 +16,9 @@ class FavoriteUserCard extends StatelessWidget {
     required this.isProfileOpen,
     this.onTapExpandLess,
     required this.favoriteSaveOrDelete,
-    required this.index,
+    required this.index, required this.currentIndex,
   });
-  final int index;
+  final int index;final int currentIndex;
   final Function()? onTapExpandMore;
   final Function()? onTapExpandLess;
   final bool isProfileOpen;
@@ -58,7 +58,11 @@ class FavoriteUserCard extends StatelessWidget {
                         color: AppColors.primaryColor,
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: CustomTextButton(
-                      onPressed: () {},
+                      onPressed: () async{
+                        print('start deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite');
+                      await  searchCubit.deleteFemaleProfileToFavorite(currentIndex);
+                        print('end deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite');
+                      },
                       text: AppStrings.deleteProfileFromFavorite,
                       style: AppTextStyles.cairoW800PrimaryColor
                           .copyWith(color: AppColors.white),
@@ -72,22 +76,22 @@ class FavoriteUserCard extends StatelessWidget {
                 height: 130,
                 width: 130,
               )),
-              searchCubit.mayFavoriteUserModelList[index].gender == 'Male'
+              searchCubit.myFavoriteUserModelList[index].gender == 'Male'
                   ? CustomHeaderTitle(
                       headerTitle:
-                          'عريس ${searchCubit.mayFavoriteUserModelList[index].faceStyle} ${searchCubit.mayFavoriteUserModelList[index].age} سنة')
+                          'عريس ${searchCubit.myFavoriteUserModelList[index].faceStyle} ${searchCubit.myFavoriteUserModelList[index].age} سنة')
                   : CustomHeaderTitle(
                       headerTitle:
-                          'عروسة ${searchCubit.mayFavoriteUserModelList[index].clothStyle} ${searchCubit.mayFavoriteUserModelList[index].age} سنة'),
-              searchCubit.mayFavoriteUserModelList[index].gender == 'Male'
+                          'عروسة ${searchCubit.myFavoriteUserModelList[index].clothStyle} ${searchCubit.myFavoriteUserModelList[index].age} سنة'),
+              searchCubit.myFavoriteUserModelList[index].gender == 'Male'
                   ? Text(
-                      'يعيش فى ${searchCubit.mayFavoriteUserModelList[index].currentResidenceCountry} - ${searchCubit.mayFavoriteUserModelList[index].currentResidenceCity}',
+                      'يعيش فى ${searchCubit.myFavoriteUserModelList[index].currentResidenceCountry} - ${searchCubit.myFavoriteUserModelList[index].currentResidenceCity}',
                       style: AppTextStyles.cairoW300PrimaryColor)
                   : Text(
-                      'تعيش فى ${searchCubit.mayFavoriteUserModelList[index].currentResidenceCountry} - ${searchCubit.mayFavoriteUserModelList[index].currentResidenceCity}',
+                      'تعيش فى ${searchCubit.myFavoriteUserModelList[index].currentResidenceCountry} - ${searchCubit.myFavoriteUserModelList[index].currentResidenceCity}',
                       style: AppTextStyles.cairoW300PrimaryColor),
               Text(
-                  'الحالة الاجتماعية : ${searchCubit.mayFavoriteUserModelList[index].maritalStatus}',
+                  'الحالة الاجتماعية : ${searchCubit.myFavoriteUserModelList[index].maritalStatus}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               isProfileOpen
                   ? InkWell(

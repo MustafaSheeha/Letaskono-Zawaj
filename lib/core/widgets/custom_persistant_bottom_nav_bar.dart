@@ -66,7 +66,9 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
       const RequestView(),
       BlocProvider(
         create: (context) => SearchCubit()
-          ..getAllFavoriteUsers(),
+          ..getMyFavoriteList()
+          // ..getAllFavoriteUsers()
+          ,
         child: const FavoriteView(),
       ),
       // const RegisterView(),

@@ -12,7 +12,7 @@ class SearchCubit extends Cubit<SearchState> {
   int favoriteIndex = 0;
   List<UserModel> femaleUserModelList = [];
   List<UserModel> maleUserModelList = [];
-  List<UserModel> mayFavoriteUserModelList = [];
+  List<UserModel> myFavoriteUserModelList = [];
   Map<String, dynamic> myfavoriteMap = {};
   var db = FirebaseFirestore.instance;
   Future<void> getAllFemaleUsers() async {
@@ -74,6 +74,16 @@ class SearchCubit extends Cubit<SearchState> {
         .set(myfavoriteMap, SetOptions(merge: true));
   }
 
+  Future<void> deleteFemaleProfileToFavorite(int index) async {
+    var favoriteCollectionRef = db.collection("favorite");
+    final updates = <String, dynamic>{
+      "$index": FieldValue.delete(),
+    };
+    await favoriteCollectionRef
+        .doc(FirebaseAuth.instance.currentUser!.email)
+        .update(updates);
+  }
+
   Future<void> saveMaleProfileToFavorite({required String partnerEmail}) async {
     await getMyFavoriteList();
     myfavoriteMap["$favoriteIndex"] = partnerEmail;
@@ -92,9 +102,11 @@ class SearchCubit extends Cubit<SearchState> {
       (DocumentSnapshot doc) {
         final data = doc.data() as Map<String, dynamic>;
         myfavoriteMap = data;
-
-        favoriteIndex = int.parse(myfavoriteMap.keys.last);
-        favoriteIndex++;
+        if (myfavoriteMap.isEmpty) {
+        } else {
+          favoriteIndex = int.parse(myfavoriteMap.keys.last);
+          favoriteIndex++;
+        }
         print('favoriteIndex ::::::::::::::::::: $favoriteIndex');
       },
       onError: (e) => print("Error getting document: $e"),
@@ -109,9 +121,9 @@ class SearchCubit extends Cubit<SearchState> {
       emit(GetMyFavoriteUsersLoadingState());
       var usersRef = db.collection("users");
 
-      for (var v = 0; v < myfavoriteMap.length; v++) {
+      for (var v = 0; v <= myfavoriteMap.length; v++) {
         print(
-            '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> myfavoriteMap[v] ${myfavoriteMap[v]}');
+            '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> myfavoriteMap[v] ${myfavoriteMap['$v']}');
         final myFavoriteUserRef = usersRef
             .doc(myfavoriteMap["$v"])
             .withConverter(
@@ -123,7 +135,7 @@ class SearchCubit extends Cubit<SearchState> {
         print(docSnap);
         final userModel = docSnap.data();
         if (userModel != null) {
-          mayFavoriteUserModelList.add(userModel);
+          myFavoriteUserModelList.add(userModel);
           print(
               'favorite userfavorite userfavorite userfavorite userfavorite userfavorite userfavorite user');
           print(userModel);

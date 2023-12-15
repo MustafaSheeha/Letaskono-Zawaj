@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/utils/functions/flutter_app_bar.dart';
-import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_drawer.dart';
-import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/search_view/widgets/female_carousel_slider.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/search_view/widgets/male_carousel_slider.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/search_view/widgets/search_filter_widget.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/view/widgets/female_user_card.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});

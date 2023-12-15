@@ -172,7 +172,7 @@ abstract class AppStrings {
   static const searchFilter = 'تصفية البحث';
   static const sendRequest = 'ارسال طلب قبول';
   static const saveProfileToFavorite = 'اضافة الى قائمة الحفظ';
-  static const deleteProfileFromFavorite = 'حذف من قائمة الحفظ';
+  static const deleteProfileFromFavorite = 'حذف';
   static const sentRequest = 'الطلبات التي أرسلتها';
   static const receivedRequest = 'الطلبات المرسلة لك';
   static const men = 'رجال';

@@ -60,7 +60,15 @@ class MaleUserCard extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           child: CustomTextButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              print(
+                                  'Start saveMaleProfileToFavorite saveMaleProfileToFavorite saveMaleProfileToFavorite');
+                              await searchCubit.saveMaleProfileToFavorite(
+                                  partnerEmail: searchCubit
+                                      .maleUserModelList[index].email!);
+                              print(
+                                  'End saveMaleProfileToFavorite saveMaleProfileToFavorite saveMaleProfileToFavorite');
+                            },
                             text: AppStrings.saveProfileToFavorite,
                             style: AppTextStyles.cairoW800PrimaryColor.copyWith(
                               color: AppColors.white,

@@ -26,7 +26,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
       final user = docSnap.data();
       emit(GetMyUsersSuccessState());
-      print('>>>>>>>>>>>>>>>>>>>>>>>>>> got data'); // Convert to City object
+      print('>>>>>>>>>>>>>>>>>>>>>>>>>>ProfileCubit getMyUser'); // Convert to City object
       if (user != null) {
         userModel = user;
       } else {

@@ -22,12 +22,12 @@ final class GetAllMaleUsersFailureState extends SearchState {
   GetAllMaleUsersFailureState({required this.errorMessege});
 }
 
-final class ShowUserDetailsLoadingState extends SearchState {}
+final class GetMyFavoriteUsersLoadingState extends SearchState {}
 
-final class ShowUserDetailsSuccessState extends SearchState {}
+final class GetMyFavoriteUsersSuccessState extends SearchState {}
 
-final class ShowUserDetailsFailureState extends SearchState {
+final class GetMyFavoriteUsersFailureState extends SearchState {
   final String errorMessege;
 
-  ShowUserDetailsFailureState({required this.errorMessege});
+  GetMyFavoriteUsersFailureState({required this.errorMessege});
 }

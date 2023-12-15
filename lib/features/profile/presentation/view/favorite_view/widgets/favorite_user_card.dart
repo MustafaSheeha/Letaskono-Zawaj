@@ -9,8 +9,8 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
 
-class FemaleUserCard extends StatelessWidget {
-  const FemaleUserCard({
+class FavoriteUserCard extends StatelessWidget {
+  const FavoriteUserCard({
     super.key,
     this.onTapExpandMore,
     required this.isProfileOpen,
@@ -53,41 +53,17 @@ class FemaleUserCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  favoriteSaveOrDelete
-                      ? Container(
-                          decoration: const BoxDecoration(
-                              color: AppColors.primaryColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: CustomTextButton(
-                            onPressed: () async {
-                              print(
-                                  'Start saveProfileToFavorite saveProfileToFavorite saveProfileToFavorite');
-                              await searchCubit.saveFemaleProfileToFavorite(
-                                  partnerEmail: searchCubit
-                                      .femaleUserModelList[index].email!);
-                              print(
-                                  'End saveProfileToFavorite saveProfileToFavorite saveProfileToFavorite');
-                            },
-                            text: AppStrings.saveProfileToFavorite,
-                            style: AppTextStyles.cairoW800PrimaryColor.copyWith(
-                              color: AppColors.white,
-                              fontSize: 0.025 * screenWidth,
-                            ),
-                          ),
-                        )
-                      : Container(
-                          decoration: const BoxDecoration(
-                              color: AppColors.primaryColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: CustomTextButton(
-                            onPressed: () {},
-                            text: AppStrings.deleteProfileFromFavorite,
-                            style: AppTextStyles.cairoW800PrimaryColor
-                                .copyWith(color: AppColors.white),
-                          ),
-                        ),
+                  Container(
+                    decoration: const BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: CustomTextButton(
+                      onPressed: () {},
+                      text: AppStrings.deleteProfileFromFavorite,
+                      style: AppTextStyles.cairoW800PrimaryColor
+                          .copyWith(color: AppColors.white),
+                    ),
+                  ),
                 ],
               ),
               ClipOval(
@@ -96,14 +72,22 @@ class FemaleUserCard extends StatelessWidget {
                 height: 130,
                 width: 130,
               )),
-              CustomHeaderTitle(
-                  headerTitle:
-                      'عروسة ${searchCubit.femaleUserModelList[index].clothStyle} ${searchCubit.femaleUserModelList[index].age} سنة'),
+              searchCubit.mayFavoriteUserModelList[index].gender == 'Male'
+                  ? CustomHeaderTitle(
+                      headerTitle:
+                          'عريس ${searchCubit.mayFavoriteUserModelList[index].faceStyle} ${searchCubit.mayFavoriteUserModelList[index].age} سنة')
+                  : CustomHeaderTitle(
+                      headerTitle:
+                          'عروسة ${searchCubit.mayFavoriteUserModelList[index].clothStyle} ${searchCubit.mayFavoriteUserModelList[index].age} سنة'),
+              searchCubit.mayFavoriteUserModelList[index].gender == 'Male'
+                  ? Text(
+                      'يعيش فى ${searchCubit.mayFavoriteUserModelList[index].currentResidenceCountry} - ${searchCubit.mayFavoriteUserModelList[index].currentResidenceCity}',
+                      style: AppTextStyles.cairoW300PrimaryColor)
+                  : Text(
+                      'تعيش فى ${searchCubit.mayFavoriteUserModelList[index].currentResidenceCountry} - ${searchCubit.mayFavoriteUserModelList[index].currentResidenceCity}',
+                      style: AppTextStyles.cairoW300PrimaryColor),
               Text(
-                  'تعيش فى ${searchCubit.femaleUserModelList[index].currentResidenceCountry} - ${searchCubit.femaleUserModelList[index].currentResidenceCity}',
-                  style: AppTextStyles.cairoW300PrimaryColor),
-              Text(
-                  'الحالة الاجتماعية : ${searchCubit.femaleUserModelList[index].maritalStatus}',
+                  'الحالة الاجتماعية : ${searchCubit.mayFavoriteUserModelList[index].maritalStatus}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               isProfileOpen
                   ? InkWell(

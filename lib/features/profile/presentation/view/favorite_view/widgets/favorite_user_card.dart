@@ -59,9 +59,9 @@ class FavoriteUserCard extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: CustomTextButton(
                       onPressed: () async{
-                        print('start deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite');
+                        print('>>>>>>>>>>>>>>>>>>>>>>>>>> start deleteFemaleProfileToFavorite');
                       await  profileCubit.deleteFemaleProfileToFavorite(currentIndex);
-                        print('end deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite');
+                        print('>>>>>>>>>>>>>>>>>>>>>>>>>> end deleteFemaleProfileToFavorite');
                       },
                       text: AppStrings.deleteProfileFromFavorite,
                       style: AppTextStyles.cairoW800PrimaryColor

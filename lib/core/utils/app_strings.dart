@@ -207,4 +207,10 @@ abstract class AppStrings {
       'ما هو أكثر ما يشغل تفكيرك معظم الوقت ؟';
   static const travelingAbroad = 'هل لديك الرغبة في السفر للخارج ؟';
   static const noDataFound = 'لا توجد بيانات';
+  static const myAccount = 'حسابى';
+  static const search = 'البحث';
+  static const chat = 'المحادثات';
+  static const requests = 'الطلبات';
+  static const favorite = 'المحفوظات';
+  static const youHaveNoFavorite = 'ليس لديك أي محفوظات';
 }

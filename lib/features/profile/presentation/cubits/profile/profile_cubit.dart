@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/models/user_model.dart';
+import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
@@ -31,13 +32,13 @@ class ProfileCubit extends Cubit<ProfileState> {
       final docSnap = await myUserRef.get();
 
       final user = docSnap.data();
-      emit(GetMyUsersSuccessState());
       print(
-          '>>>>>>>>>>>>>>>>>>>>>>>>>>ProfileCubit getMyUser'); // Convert to City object
+          '>>>>>>>>>>>>>>>>>>>>>>>>>> ProfileCubit getMyUser'); // Convert to City object
       if (user != null) {
         userModel = user;
-        print(userModel.favoriteList);
         userModel.favoriteList = user.favoriteList ?? [];
+        print(userModel.favoriteList);
+        emit(GetMyUsersSuccessState());
       } else {
         print("No such document.");
         emit(GetMyUsersFailureState(errorMessege: "No such document."));
@@ -118,7 +119,9 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> saveProfileToFavoriteList({required String partnerEmail}) async {
-    // userModel.favoriteList = [];
+    await getMyUser();
+    userModel.favoriteList?.add(partnerEmail);
+    print(userModel.favoriteList);
     final usersCollectionRef = db.collection("users");
     final userDocRef =
         usersCollectionRef.doc(FirebaseAuth.instance.currentUser!.email);
@@ -126,8 +129,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       fromFirestore: UserModel.fromFirestore,
       toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
     );
-    userModel.favoriteList?.add(partnerEmail);
-    print(userModel.favoriteList);
+
     try {
       emit(SaveProfileToFavoriteListLoadingState());
       print(
@@ -145,13 +147,50 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> deleteFemaleProfileToFavorite(int index) async {
-    var favoriteCollectionRef = db.collection("favorite");
+    var favoriteCollectionRef = db.collection("users");
     final updates = <String, dynamic>{
-      "$index": FieldValue.delete(),
+      "favoriteList": FieldValue.arrayRemove([userModel.favoriteList?[index]]),
     };
     await favoriteCollectionRef
         .doc(FirebaseAuth.instance.currentUser!.email)
         .update(updates);
+  }
+
+  Future<void> getMyFavoriteUserModelList() async {
+    await getMyUser();
+    var usersCollectionRef = db.collection("users");
+    print(
+        '>>>>>>>>>>>>>>>>>>>>>>>> userModel.favoriteList.length : ${userModel.favoriteList?.length} ');
+    for (var index = 0; index < userModel.favoriteList!.length; index++) {
+      final userDocRef =
+          usersCollectionRef.doc('${userModel.favoriteList?[index]}');
+      final userConverterRef = userDocRef.withConverter(
+        fromFirestore: UserModel.fromFirestore,
+        toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
+      );
+      try {
+        emit(GetMyFavoriteUsersLoadingState());
+        print(
+            '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMyFavoriteUsersLoadingState');
+        final docSnap = await userConverterRef.get();
+        final user = docSnap.data();
+        if (user != null) {
+          myFavoriteUserModelList.add(user);
+          emit(GetMyFavoriteUsersSuccessState());
+          print(
+              '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMyFavoriteUsersSuccessState');
+        } else {
+          emit(GetMyFavoriteUsersFailureState(
+              errorMessege: AppStrings.someThingWentWrong));
+          print(
+              '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMyFavoriteUsersFailureState ${AppStrings.someThingWentWrong}');
+        }
+      } on Exception catch (e) {
+        emit(GetMyFavoriteUsersFailureState(errorMessege: e.toString()));
+        print(
+            '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMyFavoriteUsersFailureState ${e.toString()} ');
+      }
+    }
   }
 
 }

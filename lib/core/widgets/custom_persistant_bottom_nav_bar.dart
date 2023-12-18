@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
+import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/chat_view/chat_view.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/favorite_view/favorite_view.dart';
@@ -64,10 +65,7 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
       const ChatView(),
       const RequestView(),
       BlocProvider(
-        create: (context) => ProfileCubit()
-          // ..getMyFavoriteList()
-          // ..getAllFavoriteUsers()
-          ,
+        create: (context) => ProfileCubit()..getMyFavoriteUserModelList(),
         child: const FavoriteView(),
       ),
       // const RegisterView(),
@@ -80,7 +78,7 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
         icon: const Icon(Icons.person_2, color: AppColors.primaryColor),
         inactiveIcon:
             const Icon(Icons.person_2_outlined, color: AppColors.white),
-        title: ("حسابي"),
+        title: (AppStrings.myAccount),
         textStyle: const TextStyle(fontFamily: 'Cairo'),
         activeColorPrimary: Colors.white,
         activeColorSecondary: AppColors.primaryColor,
@@ -88,7 +86,7 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.search, color: AppColors.primaryColor),
         inactiveIcon: const Icon(Icons.search_outlined, color: AppColors.white),
-        title: ("البحث"),
+        title: (AppStrings.search),
         textStyle: const TextStyle(fontFamily: 'Cairo'),
         activeColorPrimary: Colors.white,
         activeColorSecondary: AppColors.primaryColor,
@@ -96,7 +94,7 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.drafts, color: AppColors.primaryColor),
         inactiveIcon: const Icon(Icons.drafts_outlined, color: AppColors.white),
-        title: ("المراسلة"),
+        title: (AppStrings.chat),
         textStyle: const TextStyle(fontFamily: 'Cairo'),
         activeColorPrimary: Colors.white,
         activeColorSecondary: AppColors.primaryColor,
@@ -105,7 +103,7 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
         icon: const Icon(Icons.request_page, color: AppColors.primaryColor),
         inactiveIcon:
             const Icon(Icons.request_page_outlined, color: AppColors.white),
-        title: ("الطلبات"),
+        title: (AppStrings.requests),
         textStyle: const TextStyle(fontFamily: 'Cairo'),
         activeColorPrimary: Colors.white,
         activeColorSecondary: AppColors.primaryColor,
@@ -114,7 +112,7 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
         icon: const Icon(Icons.favorite, color: AppColors.primaryColor),
         inactiveIcon:
             const Icon(Icons.favorite_outline, color: AppColors.white),
-        title: ("المحفوظات"),
+        title: (AppStrings.favorite),
         textStyle: const TextStyle(fontFamily: 'Cairo'),
         activeColorPrimary: Colors.white,
         activeColorSecondary: AppColors.primaryColor,

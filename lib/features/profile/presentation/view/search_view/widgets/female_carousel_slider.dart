@@ -6,8 +6,8 @@ import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/widgets/female_user_card.dart';
 
 class FemaleCarouselSlider extends StatefulWidget {
@@ -40,11 +40,11 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
   Widget build(BuildContext context) {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return BlocConsumer<SearchCubit, SearchState>(
+    return BlocConsumer< ProfileCubit, ProfileState>(
       listener: (context, state) {
       },
       builder: (context, state) {
-        SearchCubit searchCubit = BlocProvider.of<SearchCubit>(context);
+         ProfileCubit  profileCubit = BlocProvider.of< ProfileCubit>(context);
         return SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -52,7 +52,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
               SizedBox(height: 0.02 * screenHeight),
               CarouselSlider(
                   items: buildCardList(
-                    searchCubit.femaleUserModelList.length,
+                     profileCubit.femaleUserModelList.length,
                     () {
                       setState(() {
                         isFemaleProfileOpen = false;
@@ -68,10 +68,10 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                     onPageChanged: (index, reason) {
                       setState(() {
                         isFemaleProfileOpen = false;
-                        searchCubit.femaleIndex = index;
+                         profileCubit.femaleIndex = index;
                         print(
                             'currentPagecurrentPagecurrentPagecurrentPagecurrentPagecurrentPagecurrentPage');
-                        print(searchCubit.femaleIndex);
+                        print( profileCubit.femaleIndex);
                         print(
                             'currentPagecurrentPagecurrentPagecurrentPagecurrentPagecurrentPagecurrentPage');
                       });
@@ -101,7 +101,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.martialStatus,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -109,7 +109,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.nationality,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .nationality ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -117,7 +117,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.currentResidenceCountry,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .currentResidenceCountry ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -125,7 +125,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.currentResidenceCity,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .currentResidenceCity ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -133,7 +133,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.educationalDegree,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .educationalDegree ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -141,8 +141,8 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.job,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
-                                        .femaleUserModelList[searchCubit.femaleIndex].job ??
+                                 profileCubit
+                                        .femaleUserModelList[ profileCubit.femaleIndex].job ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
                             SizedBox(height: 0.02 * screenHeight),
@@ -159,15 +159,15 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.age,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
-                                        .femaleUserModelList[searchCubit.femaleIndex].age ??
+                                 profileCubit
+                                        .femaleUserModelList[ profileCubit.femaleIndex].age ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
                             SizedBox(height: 0.02 * screenHeight),
                             const Text(AppStrings.height,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .height ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -175,7 +175,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.weight,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .weight ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -183,7 +183,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.skinColor,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .skinColor ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -201,7 +201,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.prayerCommitment,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .prayerCommitment ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -209,7 +209,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.clothStyle,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .clothStyle ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -217,7 +217,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.quranMemorizing,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .quranMemorizing ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -225,7 +225,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.acceptToWearNiqab,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                 profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .acceptToWearNiqab ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -233,7 +233,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.yourSheikhs,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .yourSheikhs ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -256,7 +256,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               style: AppTextStyles.cairoW800PrimaryColor,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .tellAboutYou ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -266,7 +266,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.tellAboutPartner,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .tellAboutPartner ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -289,7 +289,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               style: AppTextStyles.cairoW800PrimaryColor,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .isParentKnowAboutLetaskono ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -302,7 +302,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .youAcceptToMarryWithoutQaamah ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -315,7 +315,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .parentAcceptToMarryWithoutQaamah ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -328,7 +328,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .fatherJob ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -341,18 +341,18 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .motherJob ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
                               textAlign: TextAlign.center,
                             ),
-                            searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                             profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ==
                                     'عزباء'
                                 ? const SizedBox.shrink()
                                 : SizedBox(height: 0.02 * screenHeight),
-                            searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                             profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ==
                                     'عزباء'
                                 ? const SizedBox.shrink()
@@ -361,23 +361,23 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                             profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ==
                                     'عزباء'
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                     profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                             .boysNumber ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                             profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ==
                                     'عزباء'
                                 ? const SizedBox.shrink()
                                 : SizedBox(height: 0.02 * screenHeight),
-                            searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                             profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ==
                                     'عزباء'
                                 ? const SizedBox.shrink()
@@ -386,23 +386,23 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                             profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ==
                                     'عزباء'
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                     profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                             .girlsNumber ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                             profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ==
                                     'عزباء'
                                 ? const SizedBox.shrink()
                                 : SizedBox(height: 0.02 * screenHeight),
-                            searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                             profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ==
                                     'عزباء'
                                 ? const SizedBox.shrink()
@@ -411,12 +411,12 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                             profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                         .maritalStatus ==
                                     'عزباء'
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                                     profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                             .howOldYourChildren ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -429,7 +429,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .yourRelationWithFamily ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -452,7 +452,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               style: AppTextStyles.cairoW800PrimaryColor,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .yourThoughtAboutGuardianship ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -462,7 +462,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.jobDetails,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .jobDetails ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -472,7 +472,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.isYourJobHalal,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .isYourJobHalal ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -482,7 +482,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.phobia,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .phobia ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -495,7 +495,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .engagementEthics ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -505,7 +505,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.yourLifeGoals,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .yourLifeGoals ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -515,7 +515,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.learningReligiousKnowledge,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .learningReligiousKnowledge ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -525,7 +525,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.yourThoughtAboutLifeSuccess,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .yourThoughtAboutLifeSuccess ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -535,7 +535,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.diseasesAndDisability,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .diseasesAndDisability ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -545,7 +545,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.isSmoking,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .isSmoking ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -558,7 +558,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .detailedAddress ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -568,7 +568,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.listenMusicWatchMovies,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .listenMusicWatchMovies ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -581,7 +581,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .broomParty ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -591,7 +591,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.howSpendSparetime,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .howSpendSparetime ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -601,7 +601,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.canCook,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .canCook ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -611,7 +611,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.yourThoughtsAlmostTime,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .yourThoughtsAlmostTime ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -621,7 +621,7 @@ class _FemaleCarouselSliderState extends State<FemaleCarouselSlider> {
                             const Text(AppStrings.travelingAbroad,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit.femaleUserModelList[searchCubit.femaleIndex]
+                               profileCubit.femaleUserModelList[ profileCubit.femaleIndex]
                                       .travelingAbroad ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,

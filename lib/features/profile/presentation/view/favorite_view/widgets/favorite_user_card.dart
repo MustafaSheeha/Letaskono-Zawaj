@@ -6,8 +6,8 @@ import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 
 class FavoriteUserCard extends StatelessWidget {
   const FavoriteUserCard({
@@ -29,10 +29,10 @@ class FavoriteUserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     // final screenHeight = MediaQuery.of(context).size.height;
-    return BlocConsumer<SearchCubit, SearchState>(
+    return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {},
       builder: (context, state) {
-        SearchCubit searchCubit = BlocProvider.of<SearchCubit>(context);
+        ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
         return CardContainer(
           widget: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -60,7 +60,7 @@ class FavoriteUserCard extends StatelessWidget {
                     child: CustomTextButton(
                       onPressed: () async{
                         print('start deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite');
-                      await  searchCubit.deleteFemaleProfileToFavorite(currentIndex);
+                      await  profileCubit.deleteFemaleProfileToFavorite(currentIndex);
                         print('end deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite deleteFemaleProfileToFavorite');
                       },
                       text: AppStrings.deleteProfileFromFavorite,
@@ -76,22 +76,22 @@ class FavoriteUserCard extends StatelessWidget {
                 height: 130,
                 width: 130,
               )),
-              searchCubit.myFavoriteUserModelList[index].gender == 'Male'
+              profileCubit.myFavoriteUserModelList[index].gender == 'Male'
                   ? CustomHeaderTitle(
                       headerTitle:
-                          'عريس ${searchCubit.myFavoriteUserModelList[index].faceStyle} ${searchCubit.myFavoriteUserModelList[index].age} سنة')
+                          'عريس ${profileCubit.myFavoriteUserModelList[index].faceStyle} ${profileCubit.myFavoriteUserModelList[index].age} سنة')
                   : CustomHeaderTitle(
                       headerTitle:
-                          'عروسة ${searchCubit.myFavoriteUserModelList[index].clothStyle} ${searchCubit.myFavoriteUserModelList[index].age} سنة'),
-              searchCubit.myFavoriteUserModelList[index].gender == 'Male'
+                          'عروسة ${profileCubit.myFavoriteUserModelList[index].clothStyle} ${profileCubit.myFavoriteUserModelList[index].age} سنة'),
+              profileCubit.myFavoriteUserModelList[index].gender == 'Male'
                   ? Text(
-                      'يعيش فى ${searchCubit.myFavoriteUserModelList[index].currentResidenceCountry} - ${searchCubit.myFavoriteUserModelList[index].currentResidenceCity}',
+                      'يعيش فى ${profileCubit.myFavoriteUserModelList[index].currentResidenceCountry} - ${profileCubit.myFavoriteUserModelList[index].currentResidenceCity}',
                       style: AppTextStyles.cairoW300PrimaryColor)
                   : Text(
-                      'تعيش فى ${searchCubit.myFavoriteUserModelList[index].currentResidenceCountry} - ${searchCubit.myFavoriteUserModelList[index].currentResidenceCity}',
+                      'تعيش فى ${profileCubit.myFavoriteUserModelList[index].currentResidenceCountry} - ${profileCubit.myFavoriteUserModelList[index].currentResidenceCity}',
                       style: AppTextStyles.cairoW300PrimaryColor),
               Text(
-                  'الحالة الاجتماعية : ${searchCubit.myFavoriteUserModelList[index].maritalStatus}',
+                  'الحالة الاجتماعية : ${profileCubit.myFavoriteUserModelList[index].maritalStatus}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               isProfileOpen
                   ? InkWell(

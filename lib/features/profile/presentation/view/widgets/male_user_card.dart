@@ -6,8 +6,8 @@ import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 
 class MaleUserCard extends StatelessWidget {
   const MaleUserCard({
@@ -29,10 +29,10 @@ class MaleUserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     // final screenHeight = MediaQuery.of(context).size.height;
-    return BlocConsumer<SearchCubit, SearchState>(
+    return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {},
       builder: (context, state) {
-        SearchCubit searchCubit = BlocProvider.of<SearchCubit>(context);
+        ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
         return CardContainer(
           widget: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -61,13 +61,15 @@ class MaleUserCard extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(20))),
                           child: CustomTextButton(
                             onPressed: () async {
+                              print(profileCubit.femaleUserModelList[index].email);
                               print(
-                                  'Start saveMaleProfileToFavorite saveMaleProfileToFavorite saveMaleProfileToFavorite');
-                              await searchCubit.saveMaleProfileToFavorite(
-                                  partnerEmail: searchCubit
-                                      .maleUserModelList[index].email!);
+                                  'Start saveProfileToFavorite saveProfileToFavorite saveProfileToFavorite');
+                              // await profileCubit.saveFemaleProfileToFavorite(
+                              //     partnerEmail: profileCubit
+                              //         .femaleUserModelList[index].email!);
+                              await profileCubit.saveProfileToFavoriteList(partnerEmail:profileCubit.maleUserModelList[index].email! );
                               print(
-                                  'End saveMaleProfileToFavorite saveMaleProfileToFavorite saveMaleProfileToFavorite');
+                                  'End saveProfileToFavorite saveProfileToFavorite saveProfileToFavorite');
                             },
                             text: AppStrings.saveProfileToFavorite,
                             style: AppTextStyles.cairoW800PrimaryColor.copyWith(
@@ -98,12 +100,12 @@ class MaleUserCard extends StatelessWidget {
               )),
               CustomHeaderTitle(
                   headerTitle:
-                      'عريس ${searchCubit.maleUserModelList[index].faceStyle} ${searchCubit.maleUserModelList[index].age} سنة'),
+                      'عريس ${profileCubit.maleUserModelList[index].faceStyle} ${profileCubit.maleUserModelList[index].age} سنة'),
               Text(
-                  'يعيش فى ${searchCubit.maleUserModelList[index].currentResidenceCountry} - ${searchCubit.maleUserModelList[index].currentResidenceCity}',
+                  'يعيش فى ${profileCubit.maleUserModelList[index].currentResidenceCountry} - ${profileCubit.maleUserModelList[index].currentResidenceCity}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               Text(
-                  'الحالة الاجتماعية : ${searchCubit.maleUserModelList[index].maritalStatus}',
+                  'الحالة الاجتماعية : ${profileCubit.maleUserModelList[index].maritalStatus}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               isProfileOpen
                   ? InkWell(

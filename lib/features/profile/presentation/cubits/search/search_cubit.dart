@@ -64,15 +64,15 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////
-  Future<void> saveFemaleProfileToFavorite(
-      {required String partnerEmail}) async {
-    await getMyFavoriteList();
-    myfavoriteMap["$favoriteIndex"] = partnerEmail;
-    var favoriteCollectionRef = db.collection("favorite");
-    await favoriteCollectionRef
-        .doc(FirebaseAuth.instance.currentUser!.email)
-        .set(myfavoriteMap, SetOptions(merge: true));
-  }
+  // Future<void> saveFemaleProfileToFavorite(
+  //     {required String partnerEmail}) async {
+  //   await getMyFavoriteList();
+  //   myfavoriteMap["$favoriteIndex"] = partnerEmail;
+  //   var favoriteCollectionRef = db.collection("favorite");
+  //   await favoriteCollectionRef
+  //       .doc(FirebaseAuth.instance.currentUser!.email)
+  //       .set(myfavoriteMap, SetOptions(merge: true));
+  // }
 
   Future<void> deleteFemaleProfileToFavorite(int index) async {
     var favoriteCollectionRef = db.collection("favorite");
@@ -84,48 +84,91 @@ class SearchCubit extends Cubit<SearchState> {
         .update(updates);
   }
 
-  Future<void> saveMaleProfileToFavorite({required String partnerEmail}) async {
-    await getMyFavoriteList();
-    myfavoriteMap["$favoriteIndex"] = partnerEmail;
-    var favoriteCollectionRef = db.collection("favorite");
-    await favoriteCollectionRef
-        .doc(FirebaseAuth.instance.currentUser!.email)
-        .set(myfavoriteMap, SetOptions(merge: true));
+  // Future<void> saveMaleProfileToFavorite({required String partnerEmail}) async {
+  //   await getMyFavoriteList();
+  //   myfavoriteMap["$favoriteIndex"] = partnerEmail;
+  //   var favoriteCollectionRef = db.collection("favorite");
+  //   await favoriteCollectionRef
+  //       .doc(FirebaseAuth.instance.currentUser!.email)
+  //       .set(myfavoriteMap, SetOptions(merge: true));
+  // }
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////
+  Future<void> getMyUser() async {
+    final usersCollectionRef = db.collection("users");
+    final userDocRef =
+        usersCollectionRef.doc(FirebaseAuth.instance.currentUser!.email);
+    final userConverterRef = userDocRef.withConverter(
+      fromFirestore: UserModel.fromFirestore,
+      toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
+    );
+    final snapDoc = await userConverterRef.get();
+    final user = snapDoc.data();
+    if (user != null) {
+      userModel = user;
+      userModel.favoriteList = user.favoriteList ?? [];
+    }
+  }
+
+  Future<void> saveProfileToFavoriteList({required String partnerEmail}) async {
+    // userModel.favoriteList = [];
+    final usersCollectionRef = db.collection("users");
+    final userDocRef =
+        usersCollectionRef.doc(FirebaseAuth.instance.currentUser!.email);
+    final userConverterRef = userDocRef.withConverter(
+      fromFirestore: UserModel.fromFirestore,
+      toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
+    );
+    await getMyUser();
+    userModel.favoriteList?.add(partnerEmail);
+    print(userModel.favoriteList);
+    try {
+      emit(SaveProfileToFavoriteListLoadingState());
+      print(
+          'SaveProfileToFavoriteListLoadingState SaveProfileToFavoriteListLoadingState SaveProfileToFavoriteListLoadingState');
+      await userConverterRef.set(userModel, SetOptions(merge: true));
+      emit(SaveProfileToFavoriteListSuccessState());
+      print(
+          'SaveProfileToFavoriteListSuccessState SaveProfileToFavoriteListSuccessState SaveProfileToFavoriteListSuccessState');
+    } on Exception catch (e) {
+      emit(SaveProfileToFavoriteListFailureState(errorMessege: e.toString()));
+      print(
+          'SaveProfileToFavoriteListFailureState SaveProfileToFavoriteListFailureState SaveProfileToFavoriteListFailureState');
+      print(e.toString());
+    }
   }
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////
-  Future<void> getMyFavoriteList() async {
-    var favoriteCollectionRef = db.collection("favorite");
-    var myfavoriteDocList =
-        favoriteCollectionRef.doc(FirebaseAuth.instance.currentUser!.email);
-    await myfavoriteDocList.get().then(
-      (DocumentSnapshot doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        myfavoriteMap = data;
-        if (myfavoriteMap.isEmpty) {
-        } else {
-          favoriteIndex = int.parse(myfavoriteMap.keys.last);
-          favoriteIndex++;
-        }
-        print('favoriteIndex ::::::::::::::::::: $favoriteIndex');
-      },
-      onError: (e) => print("Error getting document: $e"),
-    );
-  }
+  // Future<void> getMyFavoriteList() async {
+  //   var favoriteCollectionRef = db.collection("favorite");
+  //   var myfavoriteDocList =
+  //       favoriteCollectionRef.doc(FirebaseAuth.instance.currentUser!.email);
+  //   await myfavoriteDocList.get().then(
+  //     (DocumentSnapshot doc) {
+  //       final data = doc.data() as Map<String, dynamic>;
+  //       myfavoriteMap = data;
+  //       if (myfavoriteMap.isEmpty) {
+  //       } else {
+  //         favoriteIndex = int.parse(myfavoriteMap.keys.last);
+  //         favoriteIndex++;
+  //       }
+  //       print('favoriteIndex ::::::::::::::::::: $favoriteIndex');
+  //     },
+  //     onError: (e) => print("Error getting document: $e"),
+  //   );
+  // }
 
-  Future<void> getAllFavoriteUsers() async {
-    await getMyFavoriteList();
-    // favoriteIndex = int.parse(myfavoriteMap.keys.last);
-    // print('favoriteIndex ::::::::::::::::::: $favoriteIndex');
+  Future<void> getAllFavoriteUsers() async {var v = 0;
+    await getMyUser();
+    final list= userModel.favoriteList;
     try {
       emit(GetMyFavoriteUsersLoadingState());
       var usersRef = db.collection("users");
 
-      for (var v = 0; v <= myfavoriteMap.length; v++) {
-        print(
-            '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> myfavoriteMap[v] ${myfavoriteMap['$v']}');
+      for (v; v <userModel.favoriteList!.length; v++) {
+       
         final myFavoriteUserRef = usersRef
-            .doc(myfavoriteMap["$v"])
+            .doc(list?[v])
             .withConverter(
               fromFirestore: UserModel.fromFirestore,
               toFirestore: (UserModel userModel, _) => userModel.toFirestore(),

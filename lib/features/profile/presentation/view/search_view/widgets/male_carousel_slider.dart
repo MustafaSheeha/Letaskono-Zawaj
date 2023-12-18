@@ -5,8 +5,8 @@ import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/widgets/male_user_card.dart';
 
 class MaleCarouselSlider extends StatefulWidget {
@@ -39,17 +39,17 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
   Widget build(BuildContext context) {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return BlocConsumer<SearchCubit, SearchState>(
+    return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {},
       builder: (context, state) {
-        SearchCubit searchCubit = BlocProvider.of<SearchCubit>(context);
+        ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
         return SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(height: 0.02 * screenHeight),
               CarouselSlider(
                   items: buildCardList(
-                    searchCubit.maleUserModelList.length,
+                    profileCubit.maleUserModelList.length,
                     () {
                       setState(() {
                         isMaleProfileOpen = false;
@@ -65,7 +65,7 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                     onPageChanged: (index, reason) {
                       setState(() {
                         isMaleProfileOpen = false;
-                        searchCubit.maleIndex = index;
+                        profileCubit.maleIndex = index;
                       });
                     },
                     enableInfiniteScroll: false,
@@ -93,9 +93,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.martialStatus,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .maritalStatus ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -103,9 +103,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.nationality,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .nationality ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -113,9 +113,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.currentResidenceCountry,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .currentResidenceCountry ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -123,9 +123,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.currentResidenceCity,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .currentResidenceCity ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -133,9 +133,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.educationalDegree,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .educationalDegree ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -143,9 +143,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.job,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .job ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -163,9 +163,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.age,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .age ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -173,9 +173,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.height,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .height ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -183,9 +183,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.weight,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .weight ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -193,9 +193,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.skinColor,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .skinColor ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -213,9 +213,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.prayerCommitment,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .prayerCommitment ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -223,9 +223,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.faceStyle,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .faceStyle ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -233,9 +233,9 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.quranMemorizing,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                                searchCubit
+                                profileCubit
                                         .maleUserModelList[
-                                            searchCubit.maleIndex]
+                                            profileCubit.maleIndex]
                                         .quranMemorizing ??
                                     AppStrings.noDataFound,
                                 style: AppTextStyles.cairoW800Black),
@@ -243,8 +243,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.yourSheikhs,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .yourSheikhs ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -267,8 +267,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                               style: AppTextStyles.cairoW800PrimaryColor,
                             ),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .tellAboutYou ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -278,8 +278,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.tellAboutPartner,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .tellAboutPartner ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -297,7 +297,7 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             SizedBox(height: 0.02 * screenHeight),
                             const CustomHeaderTitle(
                                 headerTitle: AppStrings.familyInfo),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .gender ==
                                     'Male'
                                 ? const SizedBox.shrink()
@@ -305,25 +305,25 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                                     AppStrings.isParentKnowAboutLetaskono,
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .gender ==
                                     'Male'
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    searchCubit
+                                    profileCubit
                                             .maleUserModelList[
-                                                searchCubit.maleIndex]
+                                                profileCubit.maleIndex]
                                             .isParentKnowAboutLetaskono ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .gender ==
                                     'Male'
                                 ? const SizedBox.shrink()
                                 : SizedBox(height: 0.02 * screenHeight),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .gender ==
                                     'Male'
                                 ? const SizedBox.shrink()
@@ -332,25 +332,25 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .gender ==
                                     'Male'
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    searchCubit
+                                    profileCubit
                                             .maleUserModelList[
-                                                searchCubit.maleIndex]
+                                                profileCubit.maleIndex]
                                             .youAcceptToMarryWithoutQaamah ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .gender ==
                                     'Male'
                                 ? const SizedBox.shrink()
                                 : SizedBox(height: 0.02 * screenHeight),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .gender ==
                                     'Male'
                                 ? const SizedBox.shrink()
@@ -359,20 +359,20 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .gender ==
                                     'Male'
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    searchCubit
+                                    profileCubit
                                             .maleUserModelList[
-                                                searchCubit.maleIndex]
+                                                profileCubit.maleIndex]
                                             .parentAcceptToMarryWithoutQaamah ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .gender ==
                                     'Male'
                                 ? const SizedBox.shrink()
@@ -383,8 +383,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .fatherJob ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -397,19 +397,19 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .motherJob ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
                               textAlign: TextAlign.center,
                             ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .maritalStatus ==
                                     'أعزب'
                                 ? const SizedBox.shrink()
                                 : SizedBox(height: 0.02 * screenHeight),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .maritalStatus ==
                                     'أعزب'
                                 ? const SizedBox.shrink()
@@ -418,25 +418,25 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .maritalStatus ==
                                     'أعزب'
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    searchCubit
+                                    profileCubit
                                             .maleUserModelList[
-                                                searchCubit.maleIndex]
+                                                profileCubit.maleIndex]
                                             .boysNumber ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .maritalStatus ==
                                     'أعزب'
                                 ? const SizedBox.shrink()
                                 : SizedBox(height: 0.02 * screenHeight),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .maritalStatus ==
                                     'أعزب'
                                 ? const SizedBox.shrink()
@@ -445,25 +445,25 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .maritalStatus ==
                                     'أعزب'
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    searchCubit
+                                    profileCubit
                                             .maleUserModelList[
-                                                searchCubit.maleIndex]
+                                                profileCubit.maleIndex]
                                             .girlsNumber ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .maritalStatus ==
                                     'أعزب'
                                 ? const SizedBox.shrink()
                                 : SizedBox(height: 0.02 * screenHeight),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .maritalStatus ==
                                     'أعزب'
                                 ? const SizedBox.shrink()
@@ -472,14 +472,14 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                     textAlign: TextAlign.center,
                                   ),
-                            searchCubit.maleUserModelList[searchCubit.maleIndex]
+                            profileCubit.maleUserModelList[profileCubit.maleIndex]
                                         .maritalStatus ==
                                     'أعزب'
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    searchCubit
+                                    profileCubit
                                             .maleUserModelList[
-                                                searchCubit.maleIndex]
+                                                profileCubit.maleIndex]
                                             .howOldYourChildren ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -492,8 +492,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .yourRelationWithFamily ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -516,8 +516,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                               style: AppTextStyles.cairoW800PrimaryColor,
                             ),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .yourThoughtAboutGuardianship ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -527,8 +527,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.jobDetails,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .jobDetails ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -538,8 +538,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.isYourJobHalal,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .isYourJobHalal ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -549,8 +549,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.phobia,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .phobia ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -563,8 +563,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .engagementEthics ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -574,8 +574,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.yourLifeGoals,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .yourLifeGoals ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -585,8 +585,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.learningReligiousKnowledge,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .learningReligiousKnowledge ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -596,8 +596,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.yourThoughtAboutLifeSuccess,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .yourThoughtAboutLifeSuccess ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -607,8 +607,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.diseasesAndDisability,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .diseasesAndDisability ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -618,8 +618,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.isSmoking,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .isSmoking ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -632,8 +632,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .detailedAddress ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -643,8 +643,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.listenMusicWatchMovies,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .listenMusicWatchMovies ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -657,8 +657,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .broomParty ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -668,8 +668,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.howSpendSparetime,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .howSpendSparetime ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -679,8 +679,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.canCook,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .canCook ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -690,8 +690,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.yourThoughtsAlmostTime,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .yourThoughtsAlmostTime ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,
@@ -701,8 +701,8 @@ class _MaleCarouselSliderState extends State<MaleCarouselSlider> {
                             const Text(AppStrings.travelingAbroad,
                                 style: AppTextStyles.cairoW800PrimaryColor),
                             Text(
-                              searchCubit
-                                      .maleUserModelList[searchCubit.maleIndex]
+                              profileCubit
+                                      .maleUserModelList[profileCubit.maleIndex]
                                       .travelingAbroad ??
                                   AppStrings.noDataFound,
                               style: AppTextStyles.cairoW800Black,

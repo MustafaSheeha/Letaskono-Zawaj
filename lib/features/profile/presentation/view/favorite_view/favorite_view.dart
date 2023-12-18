@@ -7,8 +7,8 @@ import 'package:letaskono_zawaj/core/utils/functions/flutter_app_bar.dart';
 import 'package:letaskono_zawaj/core/widgets/card_container.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_drawer.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/favorite_view/widgets/favorite_user_card.dart';
 
 class FavoriteView extends StatefulWidget {
@@ -37,23 +37,19 @@ class _FavoriteViewState extends State<FavoriteView> {
     }
     return cardList;
   }
-  @override
-  void initState() {
-    BlocProvider.of<SearchCubit>(context).getAllFavoriteUsers();
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return BlocConsumer<SearchCubit, SearchState>(
+    return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
         if (state is GetMyFavoriteUsersSuccessState) {}
         if (state is GetMyFavoriteUsersFailureState) {}
       },
       builder: (context, state) {
-        SearchCubit searchCubit = BlocProvider.of<SearchCubit>(context);
+         ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
         return Scaffold(
           resizeToAvoidBottomInset: true,
           extendBodyBehindAppBar: true,
@@ -62,13 +58,13 @@ class _FavoriteViewState extends State<FavoriteView> {
           endDrawer: const CustomDrawer(),
           body: state is GetMyFavoriteUsersLoadingState
               ? const Center(child: CircularProgressIndicator())
-              :searchCubit.myfavoriteMap.isEmpty?const Center(child: Text('لم تقم بحفظ اى ملف بعد')): ListView(
+              :profileCubit.myFavoriteUserModelList.isEmpty?const Center(child: Text('لم تقم بحفظ اى ملف بعد')): ListView(
                   physics: const BouncingScrollPhysics(),
                   children: [
                     SizedBox(height: 0.02 * screenHeight),
                     CarouselSlider(
                         items: buildCardList(
-                          searchCubit.myFavoriteUserModelList.length,
+                          profileCubit.myFavoriteUserModelList.length,
                           () {
                             setState(() {
                               isProfileOpen = false;
@@ -85,10 +81,10 @@ class _FavoriteViewState extends State<FavoriteView> {
                             setState(() {
                               isProfileOpen = false;
                               currentIndex = index;
-                              // searchCubit.favoriteIndex = index;
+                              // ProfileCubit.favoriteIndex = index;
                               // print(
                               //     'currentPagecurrentPagecurrentPagecurrentPagecurrentPagecurrentPagecurrentPage');
-                              // print(searchCubit.favoriteIndex);
+                              // print(ProfileCubit.favoriteIndex);
                               // print(
                               //     'currentPagecurrentPagecurrentPagecurrentPagecurrentPagecurrentPagecurrentPage');
                             });
@@ -119,9 +115,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -130,9 +126,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .nationality ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -141,9 +137,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .currentResidenceCountry ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -152,9 +148,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .currentResidenceCity ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -163,9 +159,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .educationalDegree ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -174,9 +170,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .job ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -195,9 +191,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .age ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -206,9 +202,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .height ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -217,9 +213,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .weight ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -228,9 +224,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .skinColor ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -249,9 +245,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .prayerCommitment ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -260,9 +256,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .clothStyle ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -271,9 +267,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .quranMemorizing ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -282,9 +278,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                      searchCubit
+                                      profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .acceptToWearNiqab ??
                                           AppStrings.noDataFound,
                                       style: AppTextStyles.cairoW800Black),
@@ -293,9 +289,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .yourSheikhs ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -318,9 +314,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .tellAboutYou ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -331,9 +327,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .tellAboutPartner ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -356,9 +352,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .isParentKnowAboutLetaskono ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -371,9 +367,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .youAcceptToMarryWithoutQaamah ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -386,9 +382,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .parentAcceptToMarryWithoutQaamah ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -401,9 +397,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .fatherJob ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -416,24 +412,24 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .motherJob ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
                                     textAlign: TextAlign.center,
                                   ),
-                                  searchCubit
+                                  profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ==
                                           'عزباء'
                                       ? const SizedBox.shrink()
                                       : SizedBox(height: 0.02 * screenHeight),
-                                  searchCubit
+                                  profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ==
                                           'عزباء'
                                       ? const SizedBox.shrink()
@@ -443,31 +439,31 @@ class _FavoriteViewState extends State<FavoriteView> {
                                               .cairoW800PrimaryColor,
                                           textAlign: TextAlign.center,
                                         ),
-                                  searchCubit
+                                  profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ==
                                           'عزباء'
                                       ? const SizedBox.shrink()
                                       : Text(
-                                          searchCubit
+                                          profileCubit
                                                   .myFavoriteUserModelList[
-                                                      currentIndex!]
+                                                      currentIndex ]
                                                   .boysNumber ??
                                               AppStrings.noDataFound,
                                           style: AppTextStyles.cairoW800Black,
                                           textAlign: TextAlign.center,
                                         ),
-                                  searchCubit
+                                  profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ==
                                           'عزباء'
                                       ? const SizedBox.shrink()
                                       : SizedBox(height: 0.02 * screenHeight),
-                                  searchCubit
+                                  profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ==
                                           'عزباء'
                                       ? const SizedBox.shrink()
@@ -477,31 +473,31 @@ class _FavoriteViewState extends State<FavoriteView> {
                                               .cairoW800PrimaryColor,
                                           textAlign: TextAlign.center,
                                         ),
-                                  searchCubit
+                                  profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ==
                                           'عزباء'
                                       ? const SizedBox.shrink()
                                       : Text(
-                                          searchCubit
+                                          profileCubit
                                                   .myFavoriteUserModelList[
-                                                      currentIndex!]
+                                                      currentIndex ]
                                                   .girlsNumber ??
                                               AppStrings.noDataFound,
                                           style: AppTextStyles.cairoW800Black,
                                           textAlign: TextAlign.center,
                                         ),
-                                  searchCubit
+                                  profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ==
                                           'عزباء'
                                       ? const SizedBox.shrink()
                                       : SizedBox(height: 0.02 * screenHeight),
-                                  searchCubit
+                                  profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ==
                                           'عزباء'
                                       ? const SizedBox.shrink()
@@ -511,16 +507,16 @@ class _FavoriteViewState extends State<FavoriteView> {
                                               .cairoW800PrimaryColor,
                                           textAlign: TextAlign.center,
                                         ),
-                                  searchCubit
+                                  profileCubit
                                               .myFavoriteUserModelList[
-                                                  currentIndex!]
+                                                  currentIndex ]
                                               .maritalStatus ==
                                           'عزباء'
                                       ? const SizedBox.shrink()
                                       : Text(
-                                          searchCubit
+                                          profileCubit
                                                   .myFavoriteUserModelList[
-                                                      currentIndex!]
+                                                      currentIndex ]
                                                   .howOldYourChildren ??
                                               AppStrings.noDataFound,
                                           style: AppTextStyles.cairoW800Black,
@@ -533,9 +529,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .yourRelationWithFamily ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -558,9 +554,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     style: AppTextStyles.cairoW800PrimaryColor,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .yourThoughtAboutGuardianship ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -571,9 +567,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .jobDetails ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -584,9 +580,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .isYourJobHalal ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -597,9 +593,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .phobia ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -612,9 +608,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .engagementEthics ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -625,9 +621,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .yourLifeGoals ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -639,9 +635,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .learningReligiousKnowledge ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -653,9 +649,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .yourThoughtAboutLifeSuccess ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -666,9 +662,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .diseasesAndDisability ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -679,9 +675,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .isSmoking ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -694,9 +690,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .detailedAddress ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -707,9 +703,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .listenMusicWatchMovies ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -722,9 +718,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .broomParty ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -735,9 +731,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .howSpendSparetime ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -748,9 +744,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .canCook ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -761,9 +757,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .yourThoughtsAlmostTime ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,
@@ -774,9 +770,9 @@ class _FavoriteViewState extends State<FavoriteView> {
                                       style:
                                           AppTextStyles.cairoW800PrimaryColor),
                                   Text(
-                                    searchCubit
+                                    profileCubit
                                             .myFavoriteUserModelList[
-                                                currentIndex!]
+                                                currentIndex ]
                                             .travelingAbroad ??
                                         AppStrings.noDataFound,
                                     style: AppTextStyles.cairoW800Black,

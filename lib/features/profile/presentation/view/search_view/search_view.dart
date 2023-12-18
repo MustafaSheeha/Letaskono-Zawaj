@@ -6,6 +6,8 @@ import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
 import 'package:letaskono_zawaj/core/utils/functions/flutter_app_bar.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_drawer.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/search_view/widgets/female_carousel_slider.dart';
@@ -25,10 +27,10 @@ class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     TabController tabcontroller = TabController(length: 2, vsync: this);
-    return BlocConsumer<SearchCubit, SearchState>(
+    return BlocConsumer< ProfileCubit, ProfileState>(
       listener: (context, state) {},
       builder: (context, state) {
-        // SearchCubit searchCubit = BlocProvider.of<SearchCubit>(context);
+        //  ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
         return Scaffold(
             resizeToAvoidBottomInset: true,
             extendBodyBehindAppBar: true,

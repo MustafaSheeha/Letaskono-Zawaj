@@ -60,68 +60,71 @@ class UserModel {
   String? canCook;
   String? yourThoughtsAlmostTime;
   String? travelingAbroad;
+  // favoriteList
+  List<dynamic>? favoriteList;
 
-  UserModel({
-    this.userId,
-    this.gender,
-    this.name,
-    this.email,
-    this.phone,
-    this.password,
-    this.isCreateProfile,
-    // General Info
-    this.maritalStatus,
-    this.currentResidenceCountry,
-    this.currentResidenceCity,
-    this.nationality,
-    this.educationalDegree,
-    this.job,
-    // Personal Info
-    this.age,
-    this.height,
-    this.weight,
-    this.skinColor,
-    // Religious Info
-    this.prayerCommitment,
-    this.faceStyle,
-    this.clothStyle,
-    this.quranMemorizing,
-    this.acceptToWearNiqab,
-    this.yourSheikhs,
-    // Marriage Info
-    this.tellAboutYou,
-    this.tellAboutPartner,
-    // Family Info
-    this.boysNumber,
-    this.girlsNumber,
-    this.howOldYourChildren,
-    this.fatherJob,
-    this.motherJob,
-    this.isParentKnowAboutLetaskono,
-    this.youAcceptToMarryWithoutQaamah,
-    this.parentAcceptToMarryWithoutQaamah,
-    this.parentPhone,
-    // additional  Info
-    this.yourThoughtAboutGuardianship,
-    this.jobDetails,
-    this.phobia,
-    this.isYourJobHalal,
-    this.engagementEthics,
-    this.yourLifeGoals,
-    this.learningReligiousKnowledge,
-    this.morningEveningAzkar,
-    this.yourThoughtAboutLifeSuccess,
-    this.diseasesAndDisability,
-    this.isSmoking,
-    this.detailedAddress,
-    this.listenMusicWatchMovies,
-    this.broomParty,
-    this.yourRelationWithFamily,
-    this.howSpendSparetime,
-    this.canCook,
-    this.yourThoughtsAlmostTime,
-    this.travelingAbroad ,
-  });
+  UserModel(
+      {this.userId,
+      this.gender,
+      this.name,
+      this.email,
+      this.phone,
+      this.password,
+      this.isCreateProfile,
+      // General Info
+      this.maritalStatus,
+      this.currentResidenceCountry,
+      this.currentResidenceCity,
+      this.nationality,
+      this.educationalDegree,
+      this.job,
+      // Personal Info
+      this.age,
+      this.height,
+      this.weight,
+      this.skinColor,
+      // Religious Info
+      this.prayerCommitment,
+      this.faceStyle,
+      this.clothStyle,
+      this.quranMemorizing,
+      this.acceptToWearNiqab,
+      this.yourSheikhs,
+      // Marriage Info
+      this.tellAboutYou,
+      this.tellAboutPartner,
+      // Family Info
+      this.boysNumber,
+      this.girlsNumber,
+      this.howOldYourChildren,
+      this.fatherJob,
+      this.motherJob,
+      this.isParentKnowAboutLetaskono,
+      this.youAcceptToMarryWithoutQaamah,
+      this.parentAcceptToMarryWithoutQaamah,
+      this.parentPhone,
+      // additional  Info
+      this.yourThoughtAboutGuardianship,
+      this.jobDetails,
+      this.phobia,
+      this.isYourJobHalal,
+      this.engagementEthics,
+      this.yourLifeGoals,
+      this.learningReligiousKnowledge,
+      this.morningEveningAzkar,
+      this.yourThoughtAboutLifeSuccess,
+      this.diseasesAndDisability,
+      this.isSmoking,
+      this.detailedAddress,
+      this.listenMusicWatchMovies,
+      this.broomParty,
+      this.yourRelationWithFamily,
+      this.howSpendSparetime,
+      this.canCook,
+      this.yourThoughtsAlmostTime,
+      this.travelingAbroad,
+      // favoriteList
+      this.favoriteList});
 
   // Map<String, dynamic> toFirestore();
   factory UserModel.fromFirestore(
@@ -195,6 +198,8 @@ class UserModel {
       canCook: data?['canCook'] as String?,
       yourThoughtsAlmostTime: data?['yourThoughtsAlmostTime'] as String?,
       travelingAbroad: data?['travelingAbroad'] as String?,
+      // favoriteList
+      favoriteList: data?['favoriteList'] is Iterable? List.from(data?['favoriteList']) : null,
     );
   }
 
@@ -272,5 +277,7 @@ class UserModel {
         if (yourThoughtsAlmostTime != null)
           'yourThoughtsAlmostTime': yourThoughtsAlmostTime,
         if (travelingAbroad != null) 'travelingAbroad': travelingAbroad,
+        // favoriteList
+        if (favoriteList != null) 'favoriteList': favoriteList,
       };
 }

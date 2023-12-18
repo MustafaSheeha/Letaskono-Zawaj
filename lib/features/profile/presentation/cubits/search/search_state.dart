@@ -31,3 +31,13 @@ final class GetMyFavoriteUsersFailureState extends SearchState {
 
   GetMyFavoriteUsersFailureState({required this.errorMessege});
 }
+
+final class SaveProfileToFavoriteListLoadingState extends SearchState {}
+
+final class SaveProfileToFavoriteListSuccessState extends SearchState {}
+
+final class SaveProfileToFavoriteListFailureState extends SearchState {
+  final String errorMessege;
+
+  SaveProfileToFavoriteListFailureState({required this.errorMessege});
+}

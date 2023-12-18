@@ -1,7 +1,8 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:letaskono_zawaj/core/routes/app_routes.dart';
+import 'package:letaskono_zawaj/core/utils/app_assets.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/functions/awesome_snackbar_content.dart';
@@ -10,6 +11,7 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
+import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -23,11 +25,11 @@ class CustomDrawer extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is SignOutSuccessState) {
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginView(),
-              ));
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginView(),
+                ));
           }
           if (state is SignOutFailureState) {
             showAwesomeSnackbar(
@@ -45,15 +47,27 @@ class CustomDrawer extends StatelessWidget {
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(80)),
                 side: BorderSide(color: AppColors.primaryColor)),
-            child: state is SignOutLoadingState
-                ? const Center(child: CircularProgressIndicator())
-                : CustomTextButton(
-                    text: 'تسجيل الخروج',
-                    fontSize: 16,
-                    onPressed: () async {
-                      await authCubit.signOut(context);
-                    },
-                  ),
+            child: Column(
+              
+              children: [
+                UserAccountsDrawerHeader(
+                  currentAccountPicture: Image.asset(Assets.onBoardingTwo),
+                  decoration: const BoxDecoration(color: AppColors.primaryColor),
+                    accountName: Text(
+                        '${BlocProvider.of<ProfileCubit>(context).userModel.name}'),
+                    accountEmail:
+                        Text('${FirebaseAuth.instance.currentUser!.email}')),
+                state is SignOutLoadingState
+                    ? const Center(child: CircularProgressIndicator())
+                    : CustomTextButton(
+                        text: AppStrings.loggedOut,
+                        fontSize: 16,
+                        onPressed: () async {
+                          await authCubit.signOut(context);
+                        },
+                      ),
+              ],
+            ),
           );
         },
       ),

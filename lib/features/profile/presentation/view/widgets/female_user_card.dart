@@ -8,8 +8,6 @@ import 'package:letaskono_zawaj/core/widgets/custom_header_title.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
 
 class FemaleUserCard extends StatelessWidget {
   const FemaleUserCard({

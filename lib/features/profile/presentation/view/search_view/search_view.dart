@@ -8,8 +8,6 @@ import 'package:letaskono_zawaj/core/utils/functions/flutter_app_bar.dart';
 import 'package:letaskono_zawaj/core/widgets/custom_drawer.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_state.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/search_view/widgets/female_carousel_slider.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/search_view/widgets/male_carousel_slider.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/search_view/widgets/search_filter_widget.dart';

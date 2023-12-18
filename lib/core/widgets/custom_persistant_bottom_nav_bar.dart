@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/search/search_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/chat_view/chat_view.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/favorite_view/favorite_view.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/view/home_view/home_view.dart';

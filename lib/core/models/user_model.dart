@@ -60,8 +60,10 @@ class UserModel {
   String? canCook;
   String? yourThoughtsAlmostTime;
   String? travelingAbroad;
-  // favoriteList
+  // Interations List
   List<dynamic>? favoriteList;
+  List<dynamic>? sendRequestList;
+  List<dynamic>? receivedRequestList;
 
   UserModel(
       {this.userId,
@@ -123,8 +125,11 @@ class UserModel {
       this.canCook,
       this.yourThoughtsAlmostTime,
       this.travelingAbroad,
-      // favoriteList
-      this.favoriteList});
+      // Interations List
+      this.favoriteList,
+      this.sendRequestList,
+      this.receivedRequestList,
+      });
 
   // Map<String, dynamic> toFirestore();
   factory UserModel.fromFirestore(
@@ -198,8 +203,10 @@ class UserModel {
       canCook: data?['canCook'] as String?,
       yourThoughtsAlmostTime: data?['yourThoughtsAlmostTime'] as String?,
       travelingAbroad: data?['travelingAbroad'] as String?,
-      // favoriteList
+      // Interations List
       favoriteList: data?['favoriteList'] is Iterable? List.from(data?['favoriteList']) : null,
+      sendRequestList: data?['sendRequestList'] is Iterable? List.from(data?['sendRequestList']) : null,
+      receivedRequestList: data?['receivedRequestList'] is Iterable? List.from(data?['receivedRequestList']) : null,
     );
   }
 
@@ -277,7 +284,9 @@ class UserModel {
         if (yourThoughtsAlmostTime != null)
           'yourThoughtsAlmostTime': yourThoughtsAlmostTime,
         if (travelingAbroad != null) 'travelingAbroad': travelingAbroad,
-        // favoriteList
+        // Interations List
         if (favoriteList != null) 'favoriteList': favoriteList,
+        if (sendRequestList != null) 'sendRequestList': sendRequestList,
+        if (receivedRequestList != null) 'receivedRequestList': receivedRequestList,
       };
 }

@@ -61,10 +61,10 @@ class _RequestViewState extends State<RequestView>
                   isScrollable: true,
                   tabs: const [
                     Tab(
-                      text: AppStrings.sentRequest,
+                      text: AppStrings.receivedRequest,
                     ),
                     Tab(
-                      text: AppStrings.receivedRequest,
+                      text: AppStrings.sentRequest,
                     ),
                   ],
                 ),
@@ -75,57 +75,12 @@ class _RequestViewState extends State<RequestView>
                     controller: tabcontroller,
                     children: [
                       Column(
-                        children: [
-                          state is GetMyUsersLoadingState
-                              ? const Center(
-                                  child: CircularProgressIndicator())
-                              : Center(
-                                  child: TextButton(
-                                  child: const Text('Get My User'),
-                                  onPressed: () async {
-                                    print(
-                                        '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ getAllUsers start');
-                                    await BlocProvider.of<ProfileCubit>(
-                                            context)
-                                        .getMyUser();
-                                    print(
-                                        '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ getAllUsers end');
-                                  },
-                                )),
-                          Center(
-                              child: TextButton(
-                            child: const Text('Save user to Model'),
-                            onPressed: () async {
-                              print(
-                                  '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ userModelFromFirestore start');
-                             
-                              print(
-                                  '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ userModelFromFirestore end');
-                            },
-                          )),
-                          Center(
-                              child: TextButton(
-                            child: const Text('Show userModel'),
-                            onPressed: () async {
-                              print(
-                                  '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ start');
-                              print(
-                                  '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ end');
-                            },
-                          )),
-                        ],
+                        children: [],
                       ),
-                      Center(
-                              child: TextButton(
-                              child: const Text('data2'),
-                              onPressed: () {
-                                print(
-                                    '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ start');
-    
-                                print(
-                                    '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ end');
-                              },
-                            )),
+                      Column(
+                        children: [],
+                      ),
+                      
                     ],
                   ),
                 )

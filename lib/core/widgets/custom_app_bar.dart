@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
@@ -22,20 +23,22 @@ class CustomAppBar extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(width: 0.03 * screenWidth),
-                const Icon(Icons.notifications_active,
-                    color: AppColors.red, size: 30),
-                SizedBox(width: 0.73 * screenWidth),
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.menu_outlined,
-                        color: AppColors.white, size: 30)),
-                SizedBox(width: 0.03 * screenWidth),
-              ],
-            ),
+            FirebaseAuth.instance.currentUser == null
+                ? const SizedBox.shrink()
+                : Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(width: 0.03 * screenWidth),
+                      const Icon(Icons.notifications_active,
+                          color: AppColors.red, size: 30),
+                      SizedBox(width: 0.73 * screenWidth),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.menu_outlined,
+                              color: AppColors.white, size: 30)),
+                      SizedBox(width: 0.03 * screenWidth),
+                    ],
+                  ),
             // SizedBox(height: 0.05*screenHeight),
             Text(
               AppStrings.quran2,

@@ -63,7 +63,10 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
         child: const SearchView(),
       ),
       const ChatView(),
-      const RequestView(),
+      BlocProvider(
+        create: (context) => ProfileCubit(),
+        child: const RequestView(),
+      ),
       BlocProvider(
         create: (context) => ProfileCubit()..getMyFavoriteUserModelList(),
         child: const FavoriteView(),

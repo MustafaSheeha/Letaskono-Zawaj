@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:letaskono_zawaj/core/routes/app_routes.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/app_text_styles.dart';
-import 'package:letaskono_zawaj/core/utils/functions/navigation.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/forgot_password_view/forgot_password_view.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/register/register_view.dart';
 

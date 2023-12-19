@@ -193,4 +193,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
+Future<void> sendAcceptRequest()async{
+  
+}
 }

@@ -13,7 +13,6 @@ import 'package:letaskono_zawaj/core/models/user_model.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/features/auth/data/registeration_user_model.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
-import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());

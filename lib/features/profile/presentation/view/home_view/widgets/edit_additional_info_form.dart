@@ -40,10 +40,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
                 initialValue:
-                    profileCubit.userModel.yourThoughtAboutGuardianship,
+                    profileCubit.myUserModel.yourThoughtAboutGuardianship,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.yourThoughtAboutGuardianship = p0;
+                  profileCubit.myUserModel.yourThoughtAboutGuardianship = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -51,10 +51,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.jobDetails,
+                initialValue: profileCubit.myUserModel.jobDetails,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.jobDetails = p0;
+                  profileCubit.myUserModel.jobDetails = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -62,10 +62,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.isYourJobHalal,
+                initialValue: profileCubit.myUserModel.isYourJobHalal,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.isYourJobHalal = p0;
+                  profileCubit.myUserModel.isYourJobHalal = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -73,10 +73,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.phobia,
+                initialValue: profileCubit.myUserModel.phobia,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.phobia = p0;
+                  profileCubit.myUserModel.phobia = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -87,10 +87,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.engagementEthics,
+                initialValue: profileCubit.myUserModel.engagementEthics,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.engagementEthics = p0;
+                  profileCubit.myUserModel.engagementEthics = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -98,10 +98,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.yourLifeGoals,
+                initialValue: profileCubit.myUserModel.yourLifeGoals,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.yourLifeGoals = p0;
+                  profileCubit.myUserModel.yourLifeGoals = p0;
                 },
               ),
               // ///////////////////
@@ -113,10 +113,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.learningReligiousKnowledge,
+                initialValue: profileCubit.myUserModel.learningReligiousKnowledge,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.learningReligiousKnowledge = p0;
+                  profileCubit.myUserModel.learningReligiousKnowledge = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -128,10 +128,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
                 initialValue:
-                    profileCubit.userModel.yourThoughtAboutLifeSuccess,
+                    profileCubit.myUserModel.yourThoughtAboutLifeSuccess,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.yourThoughtAboutLifeSuccess = p0;
+                  profileCubit.myUserModel.yourThoughtAboutLifeSuccess = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -142,10 +142,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.diseasesAndDisability,
+                initialValue: profileCubit.myUserModel.diseasesAndDisability,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.diseasesAndDisability = p0;
+                  profileCubit.myUserModel.diseasesAndDisability = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -156,10 +156,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.isSmoking,
+                initialValue: profileCubit.myUserModel.isSmoking,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.isSmoking = p0;
+                  profileCubit.myUserModel.isSmoking = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -170,10 +170,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.detailedAddress,
+                initialValue: profileCubit.myUserModel.detailedAddress,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.detailedAddress = p0;
+                  profileCubit.myUserModel.detailedAddress = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -184,10 +184,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.listenMusicWatchMovies,
+                initialValue: profileCubit.myUserModel.listenMusicWatchMovies,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.listenMusicWatchMovies = p0;
+                  profileCubit.myUserModel.listenMusicWatchMovies = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -198,10 +198,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.broomParty,
+                initialValue: profileCubit.myUserModel.broomParty,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.broomParty = p0;
+                  profileCubit.myUserModel.broomParty = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -212,14 +212,14 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.howSpendSparetime,
+                initialValue: profileCubit.myUserModel.howSpendSparetime,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.howSpendSparetime = p0;
+                  profileCubit.myUserModel.howSpendSparetime = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : const Text(
                       AppStrings.canCook,
@@ -227,16 +227,16 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
                       textAlign: TextAlign.end,
                     ),
               SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : CustomTextFormField(
-                      initialValue: profileCubit.userModel.canCook,
+                      initialValue: profileCubit.myUserModel.canCook,
                       obscureText: false,
                       onChanged: (p0) {
-                        profileCubit.userModel.canCook = p0;
+                        profileCubit.myUserModel.canCook = p0;
                       },
                     ),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : SizedBox(height: 0.01 * screenHeight),
               const Text(
@@ -246,10 +246,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.yourThoughtsAlmostTime,
+                initialValue: profileCubit.myUserModel.yourThoughtsAlmostTime,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.yourThoughtsAlmostTime = p0;
+                  profileCubit.myUserModel.yourThoughtsAlmostTime = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -260,10 +260,10 @@ class _EditAddittionalInfoFormState extends State<EditAddittionalInfoForm> {
               ),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.travelingAbroad,
+                initialValue: profileCubit.myUserModel.travelingAbroad,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.travelingAbroad = p0;
+                  profileCubit.myUserModel.travelingAbroad = p0;
                 },
               ),
               SizedBox(height: 0.02 * screenHeight),

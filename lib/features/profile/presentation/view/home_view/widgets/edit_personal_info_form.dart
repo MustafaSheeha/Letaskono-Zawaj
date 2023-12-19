@@ -40,10 +40,10 @@ class _EditPersonalInfoFormState extends State<EditPersonalInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.age,
+                initialValue: profileCubit.myUserModel.age,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.age = p0;
+                  profileCubit.myUserModel.age = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -51,10 +51,10 @@ class _EditPersonalInfoFormState extends State<EditPersonalInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.height,
+                initialValue: profileCubit.myUserModel.height,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.height = p0;
+                  profileCubit.myUserModel.height = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -62,10 +62,10 @@ class _EditPersonalInfoFormState extends State<EditPersonalInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.weight,
+                initialValue: profileCubit.myUserModel.weight,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.weight = p0;
+                  profileCubit.myUserModel.weight = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -75,10 +75,10 @@ class _EditPersonalInfoFormState extends State<EditPersonalInfoForm> {
               DropdownButtonWidget(
                 onChanged: (p0) {
                   setState(() {
-                    profileCubit.userModel.skinColor = p0;
+                    profileCubit.myUserModel.skinColor = p0;
                   });
                 },
-                selectedValue: profileCubit.userModel.skinColor,
+                selectedValue: profileCubit.myUserModel.skinColor,
                 dropdownButtonList: DropdownButtonList.skinColorList,
               ),
               SizedBox(height: 0.02 * screenHeight),

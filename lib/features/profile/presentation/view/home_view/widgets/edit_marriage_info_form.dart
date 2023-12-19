@@ -38,10 +38,10 @@ class _EditMarriageInfoFormState extends State<EditMarriageInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.tellAboutYou,
+                initialValue: profileCubit.myUserModel.tellAboutYou,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.tellAboutYou = p0;
+                  profileCubit.myUserModel.tellAboutYou = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -49,10 +49,10 @@ class _EditMarriageInfoFormState extends State<EditMarriageInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.tellAboutPartner,
+                initialValue: profileCubit.myUserModel.tellAboutPartner,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.tellAboutPartner = p0;
+                  profileCubit.myUserModel.tellAboutPartner = p0;
                 },
               ),
               SizedBox(height: 0.02 * screenHeight),

@@ -45,8 +45,17 @@ class FemaleUserCard extends StatelessWidget {
                         color: AppColors.primaryColor,
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: CustomTextButton(
-                      onPressed: () {},
-                      text: AppStrings.sendRequest,
+                      onPressed: ()async {
+                        print(
+                            '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Email : ${profileCubit.femaleUserModelList[index].email}');
+                 await       profileCubit.saveSendRequest(
+                            partnerEmail:
+                                '${profileCubit.femaleUserModelList[index].email}');
+                  await      profileCubit.saveReceivedRequest(
+                            partnerEmail:
+                                '${profileCubit.femaleUserModelList[index].email}');
+                      },
+                      text: AppStrings.sendAcceptRequest,
                       style: AppTextStyles.cairoW800PrimaryColor.copyWith(
                         color: AppColors.white,
                         fontSize: 0.025 * screenWidth,
@@ -61,13 +70,16 @@ class FemaleUserCard extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(20))),
                           child: CustomTextButton(
                             onPressed: () async {
-                              print(profileCubit.femaleUserModelList[index].email);
+                              print(profileCubit
+                                  .femaleUserModelList[index].email);
                               print(
                                   'Start saveProfileToFavorite saveProfileToFavorite saveProfileToFavorite');
                               // await profileCubit.saveFemaleProfileToFavorite(
                               //     partnerEmail: profileCubit
                               //         .femaleUserModelList[index].email!);
-                              await profileCubit.saveProfileToFavoriteList(partnerEmail:profileCubit.femaleUserModelList[index].email! );
+                              await profileCubit.saveProfileToFavoriteList(
+                                  partnerEmail: profileCubit
+                                      .femaleUserModelList[index].email!);
                               print(
                                   'End saveProfileToFavorite saveProfileToFavorite saveProfileToFavorite');
                             },

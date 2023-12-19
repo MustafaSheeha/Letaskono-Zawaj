@@ -55,6 +55,26 @@ final class GetMyFavoriteUsersFailureState extends ProfileState {
   GetMyFavoriteUsersFailureState({required this.errorMessege});
 }
 
+final class GetMySendUsersLoadingState extends ProfileState {}
+
+final class GetMySendUsersSuccessState extends ProfileState {}
+
+final class GetMySendUsersFailureState extends ProfileState {
+  final String errorMessege;
+
+  GetMySendUsersFailureState({required this.errorMessege});
+}
+
+final class GetMyReceivedUsersLoadingState extends ProfileState {}
+
+final class GetMyReceivedUsersSuccessState extends ProfileState {}
+
+final class GetMyReceivedUsersFailureState extends ProfileState {
+  final String errorMessege;
+
+  GetMyReceivedUsersFailureState({required this.errorMessege});
+}
+
 final class SaveProfileToFavoriteListLoadingState extends ProfileState {}
 
 final class SaveProfileToFavoriteListSuccessState extends ProfileState {}

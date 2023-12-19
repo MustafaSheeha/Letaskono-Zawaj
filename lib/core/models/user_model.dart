@@ -204,9 +204,9 @@ class UserModel {
       yourThoughtsAlmostTime: data?['yourThoughtsAlmostTime'] as String?,
       travelingAbroad: data?['travelingAbroad'] as String?,
       // Interations List
-      favoriteList: data?['favoriteList'] is Iterable? List.from(data?['favoriteList']) : null,
-      sendRequestList: data?['sendRequestList'] is Iterable? List.from(data?['sendRequestList']) : null,
-      receivedRequestList: data?['receivedRequestList'] is Iterable? List.from(data?['receivedRequestList']) : null,
+      favoriteList: data?['favoriteList'] ,
+    sendRequestList: data?['sendRequestList'] ,
+    receivedRequestList: data?['receivedRequestList'],
     );
   }
 

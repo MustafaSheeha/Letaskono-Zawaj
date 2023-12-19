@@ -64,7 +64,9 @@ class CustomPersistantBottomNavBar extends StatelessWidget {
       ),
       const ChatView(),
       BlocProvider(
-        create: (context) => ProfileCubit(),
+        create: (context) => ProfileCubit()
+          ..getMySendUserModelList()
+          ..getMyReceivedUserModelList(),
         child: const RequestView(),
       ),
       BlocProvider(

@@ -42,11 +42,11 @@ class _EditGeneralInfoFormState extends State<EditGeneralInfoForm> {
               DropdownButtonWidget(
                 onChanged: (p0) {
                   setState(() {
-                    profileCubit.userModel.maritalStatus = p0;
+                    profileCubit.myUserModel.maritalStatus = p0;
                   });
                 },
-                selectedValue: profileCubit.userModel.maritalStatus,
-                dropdownButtonList: profileCubit.userModel.gender == "Male"
+                selectedValue: profileCubit.myUserModel.maritalStatus,
+                dropdownButtonList: profileCubit.myUserModel.gender == "Male"
                     ? DropdownButtonList.martialStatusMaleList
                     : DropdownButtonList.martialStatusFemaleList,
               ),
@@ -57,11 +57,11 @@ class _EditGeneralInfoFormState extends State<EditGeneralInfoForm> {
               DropdownButtonWidget(
                 onChanged: (p0) {
                   setState(() {
-                    profileCubit.userModel.nationality = p0;
+                    profileCubit.myUserModel.nationality = p0;
                   });
                 },
-                selectedValue: profileCubit.userModel.nationality,
-                dropdownButtonList: profileCubit.userModel.gender == "Male"
+                selectedValue: profileCubit.myUserModel.nationality,
+                dropdownButtonList: profileCubit.myUserModel.gender == "Male"
                     ? DropdownButtonList.nationalityMaleList
                     : DropdownButtonList.nationalityFemaleList,
               ),
@@ -70,10 +70,10 @@ class _EditGeneralInfoFormState extends State<EditGeneralInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.currentResidenceCountry,
+                initialValue: profileCubit.myUserModel.currentResidenceCountry,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.currentResidenceCountry = p0;
+                  profileCubit.myUserModel.currentResidenceCountry = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -81,10 +81,10 @@ class _EditGeneralInfoFormState extends State<EditGeneralInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.currentResidenceCity,
+                initialValue: profileCubit.myUserModel.currentResidenceCity,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.currentResidenceCity = p0;
+                  profileCubit.myUserModel.currentResidenceCity = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -94,11 +94,11 @@ class _EditGeneralInfoFormState extends State<EditGeneralInfoForm> {
               DropdownButtonWidget(
                 onChanged: (p0) {
                   setState(() {
-                    profileCubit.userModel.educationalDegree = p0;
+                    profileCubit.myUserModel.educationalDegree = p0;
                   });
                 },
-                selectedValue: profileCubit.userModel.educationalDegree,
-                dropdownButtonList: profileCubit.userModel.gender == "Male"
+                selectedValue: profileCubit.myUserModel.educationalDegree,
+                dropdownButtonList: profileCubit.myUserModel.gender == "Male"
                     ? DropdownButtonList.educationalDegreeList
                     : DropdownButtonList.educationalDegreeList,
               ),
@@ -107,10 +107,10 @@ class _EditGeneralInfoFormState extends State<EditGeneralInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.job,
+                initialValue: profileCubit.myUserModel.job,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.job = p0;
+                  profileCubit.myUserModel.job = p0;
                 },
               ),
               SizedBox(height: 0.02 * screenHeight),

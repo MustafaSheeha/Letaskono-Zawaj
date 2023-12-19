@@ -35,97 +35,97 @@ class _EditFamilyInfoFormState extends State<EditFamilyInfoForm> {
             children: [
               SizedBox(height: 0.02 * screenHeight),
               const CustomHeaderTitle(headerTitle: AppStrings.familyInfo),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : const Text(AppStrings.isParentKnowAboutLetaskono,
                       style: AppTextStyles.cairoW300PrimaryColor),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : DropdownButtonWidget(
                       onChanged: (p0) {
                         setState(() {
-                          profileCubit.userModel.isParentKnowAboutLetaskono =
+                          profileCubit.myUserModel.isParentKnowAboutLetaskono =
                               p0;
                         });
                       },
                       selectedValue:
-                          profileCubit.userModel.isParentKnowAboutLetaskono,
+                          profileCubit.myUserModel.isParentKnowAboutLetaskono,
                       dropdownButtonList:
                           DropdownButtonList.isParentKnowAboutLetaskonoList,
                     ),
               SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : const Text(
                       AppStrings.youAcceptToMarryWithoutQaamah,
                       style: AppTextStyles.cairoW300PrimaryColor,
                       textAlign: TextAlign.end,
                     ),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : DropdownButtonWidget(
                       onChanged: (p0) {
                         setState(() {
-                          profileCubit.userModel.youAcceptToMarryWithoutQaamah =
+                          profileCubit.myUserModel.youAcceptToMarryWithoutQaamah =
                               p0;
                         });
                       },
                       selectedValue:
-                          profileCubit.userModel.youAcceptToMarryWithoutQaamah,
+                          profileCubit.myUserModel.youAcceptToMarryWithoutQaamah,
                       dropdownButtonList:
                           DropdownButtonList.youAcceptToMarryWithoutQaamahList,
                     ),
               SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : const Text(
                       AppStrings.parentAcceptToMarryWithoutQaamah,
                       style: AppTextStyles.cairoW300PrimaryColor,
                       textAlign: TextAlign.end,
                     ),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : DropdownButtonWidget(
                       onChanged: (p0) {
                         setState(() {
                           profileCubit
-                              .userModel.parentAcceptToMarryWithoutQaamah = p0;
+                              .myUserModel.parentAcceptToMarryWithoutQaamah = p0;
                         });
                       },
                       selectedValue: profileCubit
-                          .userModel.parentAcceptToMarryWithoutQaamah,
+                          .myUserModel.parentAcceptToMarryWithoutQaamah,
                       dropdownButtonList: DropdownButtonList
                           .parentAcceptToMarryWithoutQaamahhList,
                     ),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : const Text(
                       AppStrings.parentPhone,
                       style: AppTextStyles.cairoW300PrimaryColor,
                       textAlign: TextAlign.end,
                     ),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == 'Male'
+              profileCubit.myUserModel.gender == 'Male'
                   ? const SizedBox.shrink()
                   : CustomTextFormField(
-                      initialValue: profileCubit.userModel.parentPhone,
+                      initialValue: profileCubit.myUserModel.parentPhone,
                       obscureText: false,
                       onChanged: (p0) {
-                        profileCubit.userModel.parentPhone = p0;
+                        profileCubit.myUserModel.parentPhone = p0;
                       },
                     ),
               SizedBox(height: 0.01 * screenHeight),
@@ -133,10 +133,10 @@ class _EditFamilyInfoFormState extends State<EditFamilyInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.fatherJob,
+                initialValue: profileCubit.myUserModel.fatherJob,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.fatherJob = p0;
+                  profileCubit.myUserModel.fatherJob = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -144,10 +144,10 @@ class _EditFamilyInfoFormState extends State<EditFamilyInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.motherJob,
+                initialValue: profileCubit.myUserModel.motherJob,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.motherJob = p0;
+                  profileCubit.myUserModel.motherJob = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -155,10 +155,10 @@ class _EditFamilyInfoFormState extends State<EditFamilyInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.boysNumber,
+                initialValue: profileCubit.myUserModel.boysNumber,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.boysNumber = p0;
+                  profileCubit.myUserModel.boysNumber = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -166,10 +166,10 @@ class _EditFamilyInfoFormState extends State<EditFamilyInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.girlsNumber,
+                initialValue: profileCubit.myUserModel.girlsNumber,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.girlsNumber = p0;
+                  profileCubit.myUserModel.girlsNumber = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -177,10 +177,10 @@ class _EditFamilyInfoFormState extends State<EditFamilyInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.howOldYourChildren,
+                initialValue: profileCubit.myUserModel.howOldYourChildren,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.howOldYourChildren = p0;
+                  profileCubit.myUserModel.howOldYourChildren = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -188,10 +188,10 @@ class _EditFamilyInfoFormState extends State<EditFamilyInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.yourRelationWithFamily,
+                initialValue: profileCubit.myUserModel.yourRelationWithFamily,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.yourRelationWithFamily = p0;
+                  profileCubit.myUserModel.yourRelationWithFamily = p0;
                 },
               ),
               SizedBox(height: 0.02 * screenHeight),

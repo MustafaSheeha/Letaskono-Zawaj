@@ -9,12 +9,17 @@ import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/pro
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
   GlobalKey<FormState> editProfileFormKey = GlobalKey();
-  UserModel userModel = UserModel();
+  UserModel myUserModel = UserModel();
+  UserModel otherUserModel = UserModel();
   List<UserModel> femaleUserModelList = [];
   List<UserModel> maleUserModelList = [];
   List<UserModel> myFavoriteUserModelList = [];
+  List<UserModel> myReceivedUserModelList = [];
+  List<UserModel> mySendUserModelList = [];
   int femaleIndex = 0;
   int maleIndex = 0;
+  int sendIndex = 0;
+  int receivedIndex = 0;
   int favoriteIndex = 0;
   var db = FirebaseFirestore.instance;
 
@@ -35,9 +40,10 @@ class ProfileCubit extends Cubit<ProfileState> {
       print(
           '>>>>>>>>>>>>>>>>>>>>>>>>>> ProfileCubit getMyUser'); // Convert to City object
       if (user != null) {
-        userModel = user;
-        userModel.favoriteList = user.favoriteList ?? [];
-        print(userModel.favoriteList);
+        myUserModel = user;
+        myUserModel.favoriteList = user.favoriteList ?? [];
+        print(
+            '>>>>>>>>>>>>>>>>>>>>>> userModel.favoriteList: ${myUserModel.favoriteList}');
         emit(GetMyUsersSuccessState());
       } else {
         print("No such document.");
@@ -59,7 +65,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     print('EEEEEEEEEEEEEEEEEEEEEEEE start edit');
     try {
       emit(EditMyUsersLoadingState());
-      await myUserRef.set(userModel, SetOptions(merge: true));
+      await myUserRef.set(myUserModel, SetOptions(merge: true));
       print('EEEEEEEEEEEEEEEEEEEEEEEE do edit');
 
       emit(EditMyUsersSuccessState());
@@ -83,7 +89,8 @@ class ProfileCubit extends Cubit<ProfileState> {
           for (var docSnapshot in querySnapshot.docs) {
             femaleUserModelList
                 .add(UserModel.fromFirestore(docSnapshot, SnapshotOptions()));
-            print('${docSnapshot.id} => ${docSnapshot.data()}');
+            print(
+                'Female user added ${docSnapshot.id} => ${docSnapshot.data()}');
           }
         },
         onError: (e) => print("Error completing: $e"),
@@ -107,7 +114,8 @@ class ProfileCubit extends Cubit<ProfileState> {
           for (var docSnapshot in querySnapshot.docs) {
             maleUserModelList
                 .add(UserModel.fromFirestore(docSnapshot, SnapshotOptions()));
-            print('${docSnapshot.id} => ${docSnapshot.data()}');
+            print(
+                'Male user added :${docSnapshot.id} => ${docSnapshot.data()}');
           }
         },
         onError: (e) => print("Error completing: $e"),
@@ -120,8 +128,8 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> saveProfileToFavoriteList({required String partnerEmail}) async {
     await getMyUser();
-    userModel.favoriteList?.add(partnerEmail);
-    print(userModel.favoriteList);
+    myUserModel.favoriteList?.add(partnerEmail);
+    print(myUserModel.favoriteList);
     final usersCollectionRef = db.collection("users");
     final userDocRef =
         usersCollectionRef.doc(FirebaseAuth.instance.currentUser!.email);
@@ -134,7 +142,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(SaveProfileToFavoriteListLoadingState());
       print(
           '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SaveProfileToFavoriteListLoadingState');
-      await userConverterRef.set(userModel, SetOptions(merge: true));
+      await userConverterRef.set(myUserModel, SetOptions(merge: true));
       emit(SaveProfileToFavoriteListSuccessState());
       print(
           '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SaveProfileToFavoriteListSuccessState');
@@ -149,7 +157,8 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> deleteFemaleProfileToFavorite(int index) async {
     var favoriteCollectionRef = db.collection("users");
     final updates = <String, dynamic>{
-      "favoriteList": FieldValue.arrayRemove([userModel.favoriteList?[index]]),
+      "favoriteList":
+          FieldValue.arrayRemove([myUserModel.favoriteList?[index]]),
     };
     await favoriteCollectionRef
         .doc(FirebaseAuth.instance.currentUser!.email)
@@ -160,10 +169,10 @@ class ProfileCubit extends Cubit<ProfileState> {
     await getMyUser();
     var usersCollectionRef = db.collection("users");
     print(
-        '>>>>>>>>>>>>>>>>>>>>>>>> userModel.favoriteList.length : ${userModel.favoriteList?.length} ');
-    for (var index = 0; index < userModel.favoriteList!.length; index++) {
+        '>>>>>>>>>>>>>>>>>>>>>>>> userModel.favoriteList.length : ${myUserModel.favoriteList?.length} ');
+    for (var index = 0; index < myUserModel.favoriteList!.length; index++) {
       final userDocRef =
-          usersCollectionRef.doc('${userModel.favoriteList?[index]}');
+          usersCollectionRef.doc('${myUserModel.favoriteList?[index]}');
       final userConverterRef = userDocRef.withConverter(
         fromFirestore: UserModel.fromFirestore,
         toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
@@ -193,7 +202,136 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-Future<void> sendAcceptRequest()async{
-  
-}
+  Future<void> saveSendRequest({required String partnerEmail}) async {
+    await getMyUser();
+    // myUserModel.sendRequestList = [];
+    myUserModel.sendRequestList?.add(partnerEmail);
+    var usersCollectionRef = db.collection("users");
+    final myUserDocRef = usersCollectionRef
+        .doc(FirebaseAuth.instance.currentUser!.email)
+        .withConverter(
+          fromFirestore: UserModel.fromFirestore,
+          toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
+        );
+    try {
+      print(
+          '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> saveSendRequest Start');
+      print(
+          '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  userModel.sendRequestList : ${myUserModel.sendRequestList}');
+      await myUserDocRef.set(myUserModel, SetOptions(merge: true));
+      print(
+          '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> saveSendRequest Success');
+    } on Exception catch (e) {
+      print(
+          '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> saveSendRequest Failed : ${e.toString()}');
+    }
+  }
+
+  Future<void> saveReceivedRequest({required String partnerEmail}) async {
+    // await getMyUser();
+    otherUserModel.receivedRequestList = [];
+    otherUserModel.receivedRequestList
+        ?.add(FirebaseAuth.instance.currentUser!.email);
+    var favoriteCollectionRef = db.collection("users");
+    final otherUserDocRef =
+        favoriteCollectionRef.doc(partnerEmail).withConverter(
+              fromFirestore: UserModel.fromFirestore,
+              toFirestore: (UserModel otherUserModel, _) =>
+                  otherUserModel.toFirestore(),
+            );
+    try {
+      print(
+          '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> saveReceivedRequest Start');
+      print(
+          '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  otherUserModel.receivedRequestList : ${otherUserModel.receivedRequestList}');
+      await otherUserDocRef.set(otherUserModel, SetOptions(merge: true));
+      print(
+          '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> saveReceivedRequest Success');
+    } on Exception catch (e) {
+      print(
+          '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> saveReceivedRequest Failed : ${e.toString()}');
+    }
+  }
+
+  Future<void> getMySendUserModelList() async {
+    await getMyUser();
+myUserModel.sendRequestList?? [];
+    var usersCollectionRef = db.collection("users");
+    print(
+        '>>>>>>>>>>>>>>>>>>>>>>>> userModel.sendRequestList.length : ${myUserModel.sendRequestList?.length} ');
+    if (myUserModel.sendRequestList!.isEmpty) {
+    } else {
+      for (var index = 0;
+          index < myUserModel.sendRequestList!.length;
+          index++) {
+        final userDocRef =
+            usersCollectionRef.doc('${myUserModel.sendRequestList?[index]}');
+        final userConverterRef = userDocRef.withConverter(
+          fromFirestore: UserModel.fromFirestore,
+          toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
+        );
+        try {
+          emit(GetMySendUsersLoadingState());
+          print(
+              '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMySendUsersSuccessState');
+          final docSnap = await userConverterRef.get();
+          final user = docSnap.data();
+          if (user != null) {
+            mySendUserModelList.add(user);
+            emit(GetMySendUsersSuccessState());
+            print(
+                '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMySendUsersSuccessState');
+          } else {
+            emit(GetMySendUsersFailureState(
+                errorMessege: AppStrings.someThingWentWrong));
+            print(
+                '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMySendUsersFailureState ${AppStrings.someThingWentWrong}');
+          }
+        } on Exception catch (e) {
+          emit(GetMySendUsersFailureState(errorMessege: e.toString()));
+          print(
+              '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMySendUsersFailureState ${e.toString()} ');
+        }
+      }
+    }
+  }
+
+  Future<void> getMyReceivedUserModelList() async {
+    await getMyUser();
+    var usersCollectionRef = db.collection("users");
+    print(
+        '>>>>>>>>>>>>>>>>>>>>>>>> userModel.receivedRequestList.length : ${myUserModel.receivedRequestList?.length} ');
+    for (var index = 0;
+        index < myUserModel.receivedRequestList!.length;
+        index++) {
+      final userDocRef =
+          usersCollectionRef.doc('${myUserModel.receivedRequestList?[index]}');
+      final userConverterRef = userDocRef.withConverter(
+        fromFirestore: UserModel.fromFirestore,
+        toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
+      );
+      try {
+        emit(GetMyReceivedUsersLoadingState());
+        print(
+            '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMyReceivedUsersLoadingState');
+        final docSnap = await userConverterRef.get();
+        final user = docSnap.data();
+        if (user != null) {
+          myReceivedUserModelList.add(user);
+          emit(GetMyReceivedUsersSuccessState());
+          print(
+              '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMyReceivedUsersSuccessState');
+        } else {
+          emit(GetMyReceivedUsersFailureState(
+              errorMessege: AppStrings.someThingWentWrong));
+          print(
+              '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMyReceivedUsersFailureState ${AppStrings.someThingWentWrong}');
+        }
+      } on Exception catch (e) {
+        emit(GetMyReceivedUsersFailureState(errorMessege: e.toString()));
+        print(
+            '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GetMyReceivedUsersFailureState ${e.toString()} ');
+      }
+    }
+  }
 }

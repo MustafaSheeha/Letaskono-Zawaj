@@ -9,16 +9,16 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 
-class FavoriteUserCard extends StatelessWidget {
-  const FavoriteUserCard({
+class SendUserCard extends StatelessWidget {
+  const SendUserCard({
     super.key,
     this.onTapExpandMore,
     required this.isProfileOpen,
     this.onTapExpandLess,
     required this.favoriteSaveOrDelete,
-    required this.index, required this.currentIndex,
+    required this.index,
   });
-  final int index;final int currentIndex;
+  final int index;
   final Function()? onTapExpandMore;
   final Function()? onTapExpandLess;
   final bool isProfileOpen;
@@ -37,38 +37,18 @@ class FavoriteUserCard extends StatelessWidget {
           widget: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    child: CustomTextButton(
-                      onPressed: () {},
-                      text: AppStrings.sendAcceptRequest,
-                      style: AppTextStyles.cairoW800PrimaryColor.copyWith(
-                        color: AppColors.white,
-                        fontSize: 0.025 * screenWidth,
-                      ),
-                    ),
+              Container(
+                decoration: const BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: CustomTextButton(
+                  onPressed: () {},
+                  text: AppStrings.cancelAcceptRequest,
+                  style: AppTextStyles.cairoW800PrimaryColor.copyWith(
+                    color: AppColors.white,
+                    fontSize: 0.025 * screenWidth,
                   ),
-                  Container(
-                    decoration: const BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    child: CustomTextButton(
-                      onPressed: () async{
-                        print('>>>>>>>>>>>>>>>>>>>>>>>>>> start deleteFemaleProfileToFavorite');
-                      await  profileCubit.deleteFemaleProfileToFavorite(currentIndex);
-                        print('>>>>>>>>>>>>>>>>>>>>>>>>>> end deleteFemaleProfileToFavorite');
-                      },
-                      text: AppStrings.deleteProfileFromFavorite,
-                      style: AppTextStyles.cairoW800PrimaryColor
-                          .copyWith(color: AppColors.white),
-                    ),
-                  ),
-                ],
+                ),
               ),
               ClipOval(
                   child: Image.asset(
@@ -76,22 +56,22 @@ class FavoriteUserCard extends StatelessWidget {
                 height: 130,
                 width: 130,
               )),
-              profileCubit.myFavoriteUserModelList[index].gender == 'Male'
+              profileCubit.mySendUserModelList[index].gender == 'Male'
                   ? CustomHeaderTitle(
                       headerTitle:
-                          'عريس ${profileCubit.myFavoriteUserModelList[index].faceStyle} ${profileCubit.myFavoriteUserModelList[index].age} سنة')
+                          'عريس ${profileCubit.mySendUserModelList[index].faceStyle} ${profileCubit.mySendUserModelList[index].age} سنة')
                   : CustomHeaderTitle(
                       headerTitle:
-                          'عروسة ${profileCubit.myFavoriteUserModelList[index].clothStyle} ${profileCubit.myFavoriteUserModelList[index].age} سنة'),
-              profileCubit.myFavoriteUserModelList[index].gender == 'Male'
+                          'عروسة ${profileCubit.mySendUserModelList[index].clothStyle} ${profileCubit.mySendUserModelList[index].age} سنة'),
+              profileCubit.mySendUserModelList[index].gender == 'Male'
                   ? Text(
-                      'يعيش فى ${profileCubit.myFavoriteUserModelList[index].currentResidenceCountry} - ${profileCubit.myFavoriteUserModelList[index].currentResidenceCity}',
+                      'يعيش فى ${profileCubit.mySendUserModelList[index].currentResidenceCountry} - ${profileCubit.mySendUserModelList[index].currentResidenceCity}',
                       style: AppTextStyles.cairoW300PrimaryColor)
                   : Text(
-                      'تعيش فى ${profileCubit.myFavoriteUserModelList[index].currentResidenceCountry} - ${profileCubit.myFavoriteUserModelList[index].currentResidenceCity}',
+                      'تعيش فى ${profileCubit.mySendUserModelList[index].currentResidenceCountry} - ${profileCubit.mySendUserModelList[index].currentResidenceCity}',
                       style: AppTextStyles.cairoW300PrimaryColor),
               Text(
-                  'الحالة الاجتماعية : ${profileCubit.myFavoriteUserModelList[index].maritalStatus}',
+                  'الحالة الاجتماعية : ${profileCubit.mySendUserModelList[index].maritalStatus}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               isProfileOpen
                   ? InkWell(

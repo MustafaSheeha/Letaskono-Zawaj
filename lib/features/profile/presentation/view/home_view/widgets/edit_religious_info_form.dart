@@ -42,36 +42,36 @@ class _EditReligiousInfoFormState extends State<EditReligiousInfoForm> {
               DropdownButtonWidget(
                 onChanged: (p0) {
                   setState(() {
-                    profileCubit.userModel.prayerCommitment = p0;
+                    profileCubit.myUserModel.prayerCommitment = p0;
                   });
                 },
-                selectedValue: profileCubit.userModel.prayerCommitment,
+                selectedValue: profileCubit.myUserModel.prayerCommitment,
                 dropdownButtonList: DropdownButtonList.prayerCommitmentList,
               ),
               SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == "Male"
+              profileCubit.myUserModel.gender == "Male"
                   ? const Text(AppStrings.faceStyle,
                       style: AppTextStyles.cairoW300PrimaryColor)
                   : const Text(AppStrings.clothStyle,
                       style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == "Male"
+              profileCubit.myUserModel.gender == "Male"
                   ? DropdownButtonWidget(
                       onChanged: (p0) {
                         setState(() {
-                          profileCubit.userModel.faceStyle = p0;
+                          profileCubit.myUserModel.faceStyle = p0;
                         });
                       },
-                      selectedValue: profileCubit.userModel.faceStyle,
+                      selectedValue: profileCubit.myUserModel.faceStyle,
                       dropdownButtonList: DropdownButtonList.faceStyleList,
                     )
                   : DropdownButtonWidget(
                       onChanged: (p0) {
                         setState(() {
-                          profileCubit.userModel.clothStyle = p0;
+                          profileCubit.myUserModel.clothStyle = p0;
                         });
                       },
-                      selectedValue: profileCubit.userModel.clothStyle,
+                      selectedValue: profileCubit.myUserModel.clothStyle,
                       dropdownButtonList: DropdownButtonList.clothStyleList,
                     ),
               SizedBox(height: 0.01 * screenHeight),
@@ -81,41 +81,41 @@ class _EditReligiousInfoFormState extends State<EditReligiousInfoForm> {
               DropdownButtonWidget(
                 onChanged: (p0) {
                   setState(() {
-                    profileCubit.userModel.quranMemorizing = p0;
+                    profileCubit.myUserModel.quranMemorizing = p0;
                   });
                 },
-                selectedValue: profileCubit.userModel.quranMemorizing,
+                selectedValue: profileCubit.myUserModel.quranMemorizing,
                 dropdownButtonList: DropdownButtonList.quranMemorizingList,
               ),
               SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == "Male"
+              profileCubit.myUserModel.gender == "Male"
                   ? const SizedBox.shrink()
                   : const Text(AppStrings.acceptToWearNiqab,
                       style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
-              profileCubit.userModel.gender == "Male"
+              profileCubit.myUserModel.gender == "Male"
                   ? const SizedBox.shrink()
                   : DropdownButtonWidget(
                       onChanged: (p0) {
                         setState(() {
-                          profileCubit.userModel.acceptToWearNiqab = p0;
+                          profileCubit.myUserModel.acceptToWearNiqab = p0;
                         });
                       },
-                      selectedValue: profileCubit.userModel.acceptToWearNiqab,
+                      selectedValue: profileCubit.myUserModel.acceptToWearNiqab,
                       dropdownButtonList:
                           DropdownButtonList.acceptToWearNiqabList,
                     ),
-              profileCubit.userModel.gender == "Male"
+              profileCubit.myUserModel.gender == "Male"
                   ? const SizedBox.shrink()
                   : SizedBox(height: 0.01 * screenHeight),
               const Text(AppStrings.yourSheikhs,
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.yourSheikhs,
+                initialValue: profileCubit.myUserModel.yourSheikhs,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.yourSheikhs = p0;
+                  profileCubit.myUserModel.yourSheikhs = p0;
                 },
               ),
               SizedBox(height: 0.01 * screenHeight),
@@ -123,10 +123,10 @@ class _EditReligiousInfoFormState extends State<EditReligiousInfoForm> {
                   style: AppTextStyles.cairoW300PrimaryColor),
               SizedBox(height: 0.01 * screenHeight),
               CustomTextFormField(
-                initialValue: profileCubit.userModel.morningEveningAzkar,
+                initialValue: profileCubit.myUserModel.morningEveningAzkar,
                 obscureText: false,
                 onChanged: (p0) {
-                  profileCubit.userModel.morningEveningAzkar = p0;
+                  profileCubit.myUserModel.morningEveningAzkar = p0;
                 },
               ),
               SizedBox(height: 0.02 * screenHeight),

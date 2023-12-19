@@ -9,8 +9,8 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
 import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_state.dart';
 
-class MaleUserCard extends StatelessWidget {
-  const MaleUserCard({
+class ReceivedUserCard extends StatelessWidget {
+  const ReceivedUserCard({
     super.key,
     this.onTapExpandMore,
     required this.isProfileOpen,
@@ -45,63 +45,25 @@ class MaleUserCard extends StatelessWidget {
                         color: AppColors.primaryColor,
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: CustomTextButton(
-                      onPressed: () async {
-                        print(
-                            '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Email : ${profileCubit.maleUserModelList[index].email}');
-                        await profileCubit.saveSendRequest(
-                            partnerEmail:
-                                '${profileCubit.maleUserModelList[index].email}');
-                        await profileCubit.saveReceivedRequest(
-                            partnerEmail:
-                                '${profileCubit.maleUserModelList[index].email}');
-                      },
-                      text: AppStrings.sendAcceptRequest,
+                      onPressed: () {},
+                      text: AppStrings.acceptRequest,
                       style: AppTextStyles.cairoW800PrimaryColor.copyWith(
                         color: AppColors.white,
                         fontSize: 0.025 * screenWidth,
                       ),
                     ),
                   ),
-                  favoriteSaveOrDelete
-                      ? Container(
-                          decoration: const BoxDecoration(
-                              color: AppColors.primaryColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: CustomTextButton(
-                            onPressed: () async {
-                              print(profileCubit
-                                  .femaleUserModelList[index].email);
-                              print(
-                                  'Start saveProfileToFavorite saveProfileToFavorite saveProfileToFavorite');
-                              // await profileCubit.saveFemaleProfileToFavorite(
-                              //     partnerEmail: profileCubit
-                              //         .femaleUserModelList[index].email!);
-                              await profileCubit.saveProfileToFavoriteList(
-                                  partnerEmail: profileCubit
-                                      .maleUserModelList[index].email!);
-                              print(
-                                  'End saveProfileToFavorite saveProfileToFavorite saveProfileToFavorite');
-                            },
-                            text: AppStrings.saveProfileToFavorite,
-                            style: AppTextStyles.cairoW800PrimaryColor.copyWith(
-                              color: AppColors.white,
-                              fontSize: 0.025 * screenWidth,
-                            ),
-                          ),
-                        )
-                      : Container(
-                          decoration: const BoxDecoration(
-                              color: AppColors.primaryColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: CustomTextButton(
-                            onPressed: () {},
-                            text: AppStrings.deleteProfileFromFavorite,
-                            style: AppTextStyles.cairoW800PrimaryColor
-                                .copyWith(color: AppColors.white),
-                          ),
-                        ),
+                  Container(
+                    decoration: const BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: CustomTextButton(
+                      onPressed: () {},
+                      text: AppStrings.refuseRequest,
+                      style: AppTextStyles.cairoW800PrimaryColor
+                          .copyWith(color: AppColors.white),
+                    ),
+                  ),
                 ],
               ),
               ClipOval(
@@ -110,14 +72,22 @@ class MaleUserCard extends StatelessWidget {
                 height: 130,
                 width: 130,
               )),
-              CustomHeaderTitle(
-                  headerTitle:
-                      'عريس ${profileCubit.maleUserModelList[index].faceStyle} ${profileCubit.maleUserModelList[index].age} سنة'),
+              profileCubit.myReceivedUserModelList[index].gender == 'Male'
+                  ? CustomHeaderTitle(
+                      headerTitle:
+                          'عريس ${profileCubit.myReceivedUserModelList[index].faceStyle} ${profileCubit.myReceivedUserModelList[index].age} سنة')
+                  : CustomHeaderTitle(
+                      headerTitle:
+                          'عروسة ${profileCubit.myReceivedUserModelList[index].clothStyle} ${profileCubit.myReceivedUserModelList[index].age} سنة'),
+              profileCubit.myReceivedUserModelList[index].gender == 'Male'
+                  ? Text(
+                      'يعيش فى ${profileCubit.myReceivedUserModelList[index].currentResidenceCountry} - ${profileCubit.myReceivedUserModelList[index].currentResidenceCity}',
+                      style: AppTextStyles.cairoW300PrimaryColor)
+                  : Text(
+                      'تعيش فى ${profileCubit.myReceivedUserModelList[index].currentResidenceCountry} - ${profileCubit.myReceivedUserModelList[index].currentResidenceCity}',
+                      style: AppTextStyles.cairoW300PrimaryColor),
               Text(
-                  'يعيش فى ${profileCubit.maleUserModelList[index].currentResidenceCountry} - ${profileCubit.maleUserModelList[index].currentResidenceCity}',
-                  style: AppTextStyles.cairoW300PrimaryColor),
-              Text(
-                  'الحالة الاجتماعية : ${profileCubit.maleUserModelList[index].maritalStatus}',
+                  'الحالة الاجتماعية : ${profileCubit.myReceivedUserModelList[index].maritalStatus}',
                   style: AppTextStyles.cairoW300PrimaryColor),
               isProfileOpen
                   ? InkWell(

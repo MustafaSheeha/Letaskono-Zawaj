@@ -1,8 +1,6 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:letaskono_zawaj/core/utils/app_assets.dart';
 import 'package:letaskono_zawaj/core/utils/app_colors.dart';
 import 'package:letaskono_zawaj/core/utils/app_strings.dart';
 import 'package:letaskono_zawaj/core/utils/functions/awesome_snackbar_content.dart';
@@ -11,7 +9,6 @@ import 'package:letaskono_zawaj/core/widgets/custom_text_button.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/cubit/auth_state.dart';
 import 'package:letaskono_zawaj/features/auth/presentation/view/login/login_view.dart';
-import 'package:letaskono_zawaj/features/profile/presentation/cubits/profile/profile_cubit.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -50,13 +47,13 @@ class CustomDrawer extends StatelessWidget {
             child: Column(
               
               children: [
-                UserAccountsDrawerHeader(
-                  currentAccountPicture: Image.asset(Assets.onBoardingTwo),
-                  decoration: const BoxDecoration(color: AppColors.primaryColor),
-                    accountName: Text(
-                        '${BlocProvider.of<ProfileCubit>(context).userModel.name}'),
-                    accountEmail:
-                        Text('${FirebaseAuth.instance.currentUser!.email}')),
+                // UserAccountsDrawerHeader(
+                //   currentAccountPicture: Image.asset(Assets.onBoardingTwo),
+                //   decoration: const BoxDecoration(color: AppColors.primaryColor),
+                //     accountName: Text(
+                //         '${BlocProvider.of<ProfileCubit>(context).myUserModel.name}'),
+                //     accountEmail:
+                //         Text('${FirebaseAuth.instance.currentUser!.email}')),
                 state is SignOutLoadingState
                     ? const Center(child: CircularProgressIndicator())
                     : CustomTextButton(

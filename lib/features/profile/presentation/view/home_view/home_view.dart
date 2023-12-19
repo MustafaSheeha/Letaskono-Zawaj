@@ -42,17 +42,17 @@ class HomeView extends StatelessWidget {
                         SizedBox(height: screenHeight * 0.005),
                         const Text(AppStrings.name,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.name.toString(),
+                        Text(profileCubit.myUserModel.name.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: screenHeight * 0.018),
                         const Text(AppStrings.email,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.email.toString(),
+                        Text(profileCubit.myUserModel.email.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: screenHeight * 0.018),
                         const Text(AppStrings.phoneNumber,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.phone.toString(),
+                        Text(profileCubit.myUserModel.phone.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: screenHeight * 0.018),
                         const Text(AppStrings.accountStatus,
@@ -81,37 +81,37 @@ class HomeView extends StatelessWidget {
                             headerTitle: AppStrings.generalInfo),
                         const Text(AppStrings.martialStatus,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.maritalStatus.toString(),
+                        Text(profileCubit.myUserModel.maritalStatus.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.nationality,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.nationality.toString(),
+                        Text(profileCubit.myUserModel.nationality.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.currentResidenceCountry,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                            profileCubit.userModel.currentResidenceCountry
+                            profileCubit.myUserModel.currentResidenceCountry
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.currentResidenceCity,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                            profileCubit.userModel.currentResidenceCity
+                            profileCubit.myUserModel.currentResidenceCity
                                 .toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.educationalDegree,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                            profileCubit.userModel.educationalDegree.toString(),
+                            profileCubit.myUserModel.educationalDegree.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.job,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.job.toString(),
+                        Text(profileCubit.myUserModel.job.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                       ],
@@ -125,22 +125,22 @@ class HomeView extends StatelessWidget {
                             headerTitle: AppStrings.personalInfo),
                         const Text(AppStrings.age,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.age.toString(),
+                        Text(profileCubit.myUserModel.age.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.height,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.height.toString(),
+                        Text(profileCubit.myUserModel.height.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.weight,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.weight.toString(),
+                        Text(profileCubit.myUserModel.weight.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.skinColor,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.skinColor.toString(),
+                        Text(profileCubit.myUserModel.skinColor.toString(),
                             style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                       ],
@@ -155,48 +155,48 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.prayerCommitment,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.prayerCommitment.toString(),
+                          profileCubit.myUserModel.prayerCommitment.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const Text(AppStrings.faceStyle,
                                 style: AppTextStyles.cairoW800PrimaryColor)
                             : const Text(AppStrings.clothStyle,
                                 style: AppTextStyles.cairoW800PrimaryColor),
-                        profileCubit.userModel.gender == 'Male'
-                            ? Text(profileCubit.userModel.faceStyle.toString(),
+                        profileCubit.myUserModel.gender == 'Male'
+                            ? Text(profileCubit.myUserModel.faceStyle.toString(),
                                 style: AppTextStyles.cairoW800Black)
-                            : Text(profileCubit.userModel.clothStyle.toString(),
+                            : Text(profileCubit.myUserModel.clothStyle.toString(),
                                 style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.quranMemorizing,
                             style: AppTextStyles.cairoW800PrimaryColor),
-                        Text(profileCubit.userModel.quranMemorizing.toString(),
+                        Text(profileCubit.myUserModel.quranMemorizing.toString(),
                             style: AppTextStyles.cairoW800Black),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : const Text(AppStrings.acceptToWearNiqab,
                                 style: AppTextStyles.cairoW800PrimaryColor),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : Text(
-                                profileCubit.userModel.acceptToWearNiqab
+                                profileCubit.myUserModel.acceptToWearNiqab
                                     .toString(),
                                 style: AppTextStyles.cairoW800Black),
                         SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.morningEveningAzkar,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.morningEveningAzkar == null
+                          profileCubit.myUserModel.morningEveningAzkar == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.morningEveningAzkar
+                              : profileCubit.myUserModel.morningEveningAzkar
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -217,7 +217,7 @@ class HomeView extends StatelessWidget {
                           style: AppTextStyles.cairoW800PrimaryColor,
                         ),
                         Text(
-                          profileCubit.userModel.tellAboutYou.toString(),
+                          profileCubit.myUserModel.tellAboutYou.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
@@ -225,7 +225,7 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.tellAboutPartner,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.tellAboutPartner.toString(),
+                          profileCubit.myUserModel.tellAboutPartner.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
@@ -240,98 +240,98 @@ class HomeView extends StatelessWidget {
                         SizedBox(height: 0.02 * screenHeight),
                         const CustomHeaderTitle(
                             headerTitle: AppStrings.familyInfo),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : const Text(AppStrings.isParentKnowAboutLetaskono,
                                 style: AppTextStyles.cairoW300PrimaryColor),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : Text(
-                                profileCubit.userModel
+                                profileCubit.myUserModel
                                             .isParentKnowAboutLetaskono ==
                                         null
                                     ? AppStrings.noDataFound
                                     : profileCubit
-                                        .userModel.isParentKnowAboutLetaskono
+                                        .myUserModel.isParentKnowAboutLetaskono
                                         .toString(),
                                 style: AppTextStyles.cairoW800Black,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : const Text(
                                 AppStrings.youAcceptToMarryWithoutQaamah,
                                 style: AppTextStyles.cairoW300PrimaryColor,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : Text(
-                                profileCubit.userModel
+                                profileCubit.myUserModel
                                             .youAcceptToMarryWithoutQaamah ==
                                         null
                                     ? AppStrings.noDataFound
                                     : profileCubit
-                                        .userModel.youAcceptToMarryWithoutQaamah
+                                        .myUserModel.youAcceptToMarryWithoutQaamah
                                         .toString(),
                                 style: AppTextStyles.cairoW800Black,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : const Text(
                                 AppStrings.parentAcceptToMarryWithoutQaamah,
                                 style: AppTextStyles.cairoW300PrimaryColor,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : Text(
-                                profileCubit.userModel
+                                profileCubit.myUserModel
                                             .parentAcceptToMarryWithoutQaamah ==
                                         null
                                     ? AppStrings.noDataFound
-                                    : profileCubit.userModel
+                                    : profileCubit.myUserModel
                                         .parentAcceptToMarryWithoutQaamah
                                         .toString(),
                                 style: AppTextStyles.cairoW800Black,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : const Text(
                                 AppStrings.parentPhone,
                                 style: AppTextStyles.cairoW300PrimaryColor,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : Text(
-                                profileCubit.userModel.parentPhone == null
+                                profileCubit.myUserModel.parentPhone == null
                                     ? AppStrings.noDataFound
-                                    : profileCubit.userModel.parentPhone
+                                    : profileCubit.myUserModel.parentPhone
                                         .toString(),
                                 style: AppTextStyles.cairoW800Black,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.fatherJob,
                             style: AppTextStyles.cairoW300PrimaryColor),
                         Text(
-                          profileCubit.userModel.fatherJob == null
+                          profileCubit.myUserModel.fatherJob == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.fatherJob.toString(),
+                              : profileCubit.myUserModel.fatherJob.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
@@ -339,71 +339,71 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.motherJob,
                             style: AppTextStyles.cairoW300PrimaryColor),
                         Text(
-                          profileCubit.userModel.motherJob == null
+                          profileCubit.myUserModel.motherJob == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.motherJob.toString(),
+                              : profileCubit.myUserModel.motherJob.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 0.02 * screenHeight),
-                        profileCubit.userModel.maritalStatus == 'أعزب'
+                        profileCubit.myUserModel.maritalStatus == 'أعزب'
                             ? const SizedBox.shrink()
                             : const Text(AppStrings.boysNumber,
                                 style: AppTextStyles.cairoW300PrimaryColor),
-                        profileCubit.userModel.maritalStatus == 'أعزب'
+                        profileCubit.myUserModel.maritalStatus == 'أعزب'
                             ? const SizedBox.shrink()
                             : Text(
-                                profileCubit.userModel.boysNumber == null
+                                profileCubit.myUserModel.boysNumber == null
                                     ? AppStrings.noDataFound
-                                    : profileCubit.userModel.boysNumber
+                                    : profileCubit.myUserModel.boysNumber
                                         .toString(),
                                 style: AppTextStyles.cairoW800Black,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.maritalStatus == 'أعزب'
+                        profileCubit.myUserModel.maritalStatus == 'أعزب'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
-                        profileCubit.userModel.maritalStatus == 'أعزب'
+                        profileCubit.myUserModel.maritalStatus == 'أعزب'
                             ? const SizedBox.shrink()
                             : const Text(AppStrings.girlsNumber,
                                 style: AppTextStyles.cairoW300PrimaryColor),
-                        profileCubit.userModel.maritalStatus == 'أعزب'
+                        profileCubit.myUserModel.maritalStatus == 'أعزب'
                             ? const SizedBox.shrink()
                             : Text(
-                                profileCubit.userModel.girlsNumber == null
+                                profileCubit.myUserModel.girlsNumber == null
                                     ? AppStrings.noDataFound
-                                    : profileCubit.userModel.girlsNumber
+                                    : profileCubit.myUserModel.girlsNumber
                                         .toString(),
                                 style: AppTextStyles.cairoW800Black,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.maritalStatus == 'أعزب'
+                        profileCubit.myUserModel.maritalStatus == 'أعزب'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
-                        profileCubit.userModel.maritalStatus == 'أعزب'
+                        profileCubit.myUserModel.maritalStatus == 'أعزب'
                             ? const SizedBox.shrink()
                             : const Text(AppStrings.howOldYourChildren,
                                 style: AppTextStyles.cairoW300PrimaryColor),
-                        profileCubit.userModel.maritalStatus == 'أعزب'
+                        profileCubit.myUserModel.maritalStatus == 'أعزب'
                             ? const SizedBox.shrink()
                             : Text(
-                                profileCubit.userModel.howOldYourChildren ==
+                                profileCubit.myUserModel.howOldYourChildren ==
                                         null
                                     ? AppStrings.noDataFound
-                                    : profileCubit.userModel.howOldYourChildren
+                                    : profileCubit.myUserModel.howOldYourChildren
                                         .toString(),
                                 style: AppTextStyles.cairoW800Black,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.maritalStatus == 'أعزب'
+                        profileCubit.myUserModel.maritalStatus == 'أعزب'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
                         const Text(AppStrings.yourRelationWithFamily,
                             style: AppTextStyles.cairoW300PrimaryColor),
                         Text(
-                          profileCubit.userModel.yourRelationWithFamily == null
+                          profileCubit.myUserModel.yourRelationWithFamily == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.yourRelationWithFamily
+                              : profileCubit.myUserModel.yourRelationWithFamily
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -424,11 +424,11 @@ class HomeView extends StatelessWidget {
                           style: AppTextStyles.cairoW800PrimaryColor,
                         ),
                         Text(
-                          profileCubit.userModel.yourThoughtAboutGuardianship ==
+                          profileCubit.myUserModel.yourThoughtAboutGuardianship ==
                                   null
                               ? AppStrings.noDataFound
                               : profileCubit
-                                  .userModel.yourThoughtAboutGuardianship
+                                  .myUserModel.yourThoughtAboutGuardianship
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -437,9 +437,9 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.jobDetails,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.jobDetails == null
+                          profileCubit.myUserModel.jobDetails == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.jobDetails.toString(),
+                              : profileCubit.myUserModel.jobDetails.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
@@ -447,9 +447,9 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.isYourJobHalal,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.isYourJobHalal == null
+                          profileCubit.myUserModel.isYourJobHalal == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.isYourJobHalal
+                              : profileCubit.myUserModel.isYourJobHalal
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -458,9 +458,9 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.phobia,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.phobia == null
+                          profileCubit.myUserModel.phobia == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.phobia.toString(),
+                              : profileCubit.myUserModel.phobia.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
@@ -471,9 +471,9 @@ class HomeView extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          profileCubit.userModel.engagementEthics == null
+                          profileCubit.myUserModel.engagementEthics == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.engagementEthics
+                              : profileCubit.myUserModel.engagementEthics
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -482,9 +482,9 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.yourLifeGoals,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.yourLifeGoals == null
+                          profileCubit.myUserModel.yourLifeGoals == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.yourLifeGoals.toString(),
+                              : profileCubit.myUserModel.yourLifeGoals.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
@@ -492,11 +492,11 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.learningReligiousKnowledge,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.learningReligiousKnowledge ==
+                          profileCubit.myUserModel.learningReligiousKnowledge ==
                                   null
                               ? AppStrings.noDataFound
                               : profileCubit
-                                  .userModel.learningReligiousKnowledge
+                                  .myUserModel.learningReligiousKnowledge
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -505,11 +505,11 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.yourThoughtAboutLifeSuccess,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.yourThoughtAboutLifeSuccess ==
+                          profileCubit.myUserModel.yourThoughtAboutLifeSuccess ==
                                   null
                               ? AppStrings.noDataFound
                               : profileCubit
-                                  .userModel.yourThoughtAboutLifeSuccess
+                                  .myUserModel.yourThoughtAboutLifeSuccess
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -518,9 +518,9 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.diseasesAndDisability,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.diseasesAndDisability == null
+                          profileCubit.myUserModel.diseasesAndDisability == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.diseasesAndDisability
+                              : profileCubit.myUserModel.diseasesAndDisability
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -529,9 +529,9 @@ class HomeView extends StatelessWidget {
                         const Text(AppStrings.isSmoking,
                             style: AppTextStyles.cairoW800PrimaryColor),
                         Text(
-                          profileCubit.userModel.isSmoking == null
+                          profileCubit.myUserModel.isSmoking == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.isSmoking.toString(),
+                              : profileCubit.myUserModel.isSmoking.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
@@ -542,9 +542,9 @@ class HomeView extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          profileCubit.userModel.detailedAddress == null
+                          profileCubit.myUserModel.detailedAddress == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.detailedAddress
+                              : profileCubit.myUserModel.detailedAddress
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -556,9 +556,9 @@ class HomeView extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          profileCubit.userModel.listenMusicWatchMovies == null
+                          profileCubit.myUserModel.listenMusicWatchMovies == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.listenMusicWatchMovies
+                              : profileCubit.myUserModel.listenMusicWatchMovies
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -570,9 +570,9 @@ class HomeView extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          profileCubit.userModel.broomParty == null
+                          profileCubit.myUserModel.broomParty == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.broomParty.toString(),
+                              : profileCubit.myUserModel.broomParty.toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
@@ -583,31 +583,31 @@ class HomeView extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          profileCubit.userModel.howSpendSparetime == null
+                          profileCubit.myUserModel.howSpendSparetime == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.howSpendSparetime
+                              : profileCubit.myUserModel.howSpendSparetime
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 0.02 * screenHeight),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : const Text(
                                 AppStrings.canCook,
                                 style: AppTextStyles.cairoW300PrimaryColor,
                                 textAlign: TextAlign.end,
                               ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : Text(
-                                profileCubit.userModel.canCook == null
+                                profileCubit.myUserModel.canCook == null
                                     ? AppStrings.noDataFound
-                                    : profileCubit.userModel.canCook.toString(),
+                                    : profileCubit.myUserModel.canCook.toString(),
                                 style: AppTextStyles.cairoW800Black,
                                 textAlign: TextAlign.center,
                               ),
-                        profileCubit.userModel.gender == 'Male'
+                        profileCubit.myUserModel.gender == 'Male'
                             ? const SizedBox.shrink()
                             : SizedBox(height: 0.02 * screenHeight),
                         const Text(
@@ -616,9 +616,9 @@ class HomeView extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          profileCubit.userModel.yourThoughtsAlmostTime == null
+                          profileCubit.myUserModel.yourThoughtsAlmostTime == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.yourThoughtsAlmostTime
+                              : profileCubit.myUserModel.yourThoughtsAlmostTime
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,
@@ -630,9 +630,9 @@ class HomeView extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          profileCubit.userModel.travelingAbroad == null
+                          profileCubit.myUserModel.travelingAbroad == null
                               ? AppStrings.noDataFound
-                              : profileCubit.userModel.travelingAbroad
+                              : profileCubit.myUserModel.travelingAbroad
                                   .toString(),
                           style: AppTextStyles.cairoW800Black,
                           textAlign: TextAlign.center,

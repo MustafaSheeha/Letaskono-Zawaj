@@ -171,7 +171,10 @@ abstract class AppStrings {
   static const expandMore = 'عرض المزيد';
   static const expandLess = 'عرض أقل';
   static const searchFilter = 'تصفية البحث';
-  static const sendRequest = 'ارسال طلب قبول';
+  static const sendAcceptRequest = 'ارسال طلب قبول';
+  static const acceptRequest = 'قبول الطلب';
+  static const refuseRequest = 'رفض الطلب';
+  static const cancelAcceptRequest = 'الغاء طلب قبول';
   static const saveProfileToFavorite = 'اضافة الى قائمة الحفظ';
   static const deleteProfileFromFavorite = 'حذف';
   static const sentRequest = 'الطلبات التي أرسلتها';
@@ -214,4 +217,6 @@ abstract class AppStrings {
   static const requests = 'الطلبات';
   static const favorite = 'المحفوظات';
   static const youHaveNoFavorite = 'ليس لديك أي محفوظات';
+  static const youHaveNoReceivedRequestsYet = 'لا توجد أي طلبات أرسلت إليك حاليا';
+  static const youHavenotSendRequestsYet = 'أنت لم تقم بارسال أي طلبات بعد';
 }
